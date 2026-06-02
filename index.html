@@ -476,9 +476,24 @@
 <!-- RCD REQUIREMENTS -->
 <div id="screen-rcd" class="screen">
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  
   <div class="card">
-    <h3>🛡️ RCD Requirements (Clause 2.6)</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Check which circuits need RCD protection. Current NZ requirements — max 30mA for socket outlets, lighting. Max 0.3s disconnection.</p>
+    <h3>🛡️ RCD Requirements — NZ (Clause 2.6)</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:8px;">AS/NZS 3000:2018 Clause 2.6. <strong style="color:var(--accent);">New Zealand requirements</strong> differ from Australia — see 2.6.2.2.3 and 2.6.3.3.</p>
+
+    <div style="font-size:12px; background:var(--card2); border-radius:8px; padding:12px; margin-bottom:12px; line-height:1.7;">
+      <div style="font-weight:600; color:var(--accent); margin-bottom:6px;">NZ Key Requirements:</div>
+      <div>• All RCDs must be <strong>Type A</strong> (2.6.2.2.3) — <em>no Type AC for new installs</em></div>
+      <div>• Must interrupt <strong>all live conductors</strong> (active + neutral) (2.6.2.2.3)</div>
+      <div>• Residential: 30mA on <strong>all socket-outlet, lighting, and hand-held equipment</strong> circuits (2.6.3.3.1)</div>
+      <div>• Max <strong>3 final subcircuits per RCD</strong>, min <strong>2 RCDs</strong> in residential (2.6.2.4)</div>
+      <div>• Lighting distributed between RCDs if &gt;1 installed (2.6.2.4)</div>
+      <div>• Range/cooktop socket can be <strong>exempt</strong> if marked and not for general use (2.6.3.3.1 Exception 2)</div>
+      <div>• School Yr8 &amp; below: <strong>10mA RCD</strong> on socket-outlets (2.6.3.3.2(b))</div>
+      <div>• Children's rides, vending machines: <strong>30mA RCD</strong> (2.6.3.3.2(d))</div>
+    </div>
+
+    <p style="font-size:12px; color:var(--text2); margin-bottom:8px;">Checklist — tick off items that apply to your job:</p>
     <div id="rcd-checklist"></div>
     <div id="rcd-result" class="result-box"></div>
   </div>
@@ -969,15 +984,22 @@ function switchCableTab(tab) {
 document.addEventListener('DOMContentLoaded', function() {
   // RCD
   makeChecklist([
-    {label: 'All 230V socket outlets ≤20A are RCD protected (≤30mA)', hint: 'Clause 2.6.2.2(a)'},
-    {label: 'All lighting circuits are RCD protected (≤30mA)', hint: 'Clause 2.6.2.2(b)'},
-    {label: 'All mobile equipment supply outlets are RCD protected', hint: 'Clause 2.6.2.2(c)'},
-    {label: 'RCDs trip within 300ms @ rated residual current', hint: 'Clause 2.6.5.1'},
-    {label: 'RCD operates at ½ rated residual current (≤30mA RCD must trip at ≤15mA)', hint: 'Clause 2.6.5.2'},
-    {label: 'RCD test button works (press quarterly, as labelled)', hint: 'Label required'},
-    {label: 'RCDs are Type A or better (no general-purpose Type AC for socket circuits)', hint: 'Clause 2.6.3'},
-    {label: 'Final subcircuits have dedicated RCD or RCBO (not shared across subcircuits unless >30mA)', hint: 'Clause 2.6.2.3'},
-    {label: 'Fridge/freezer on separate RCD or RCD protected socket', hint: 'Clause 2.6.2.5'}
+    {label: 'Residential: all socket-outlet circuits ≤32A have 30mA RCD protection', hint: 'Clause 2.6.3.3.1(a)'},
+    {label: 'Residential: all lighting circuits have 30mA RCD protection', hint: 'Clause 2.6.3.3.1(b)'},
+    {label: 'Hand-held equipment circuits (hair dryers, tools etc.) have 30mA RCD', hint: 'Clause 2.6.3.3.1(c)'},
+    {label: 'RCD is Type A (NZ requirement — no Type AC for new installations)', hint: 'Clause 2.6.2.2.3(b)'},
+    {label: 'RCD interrupts ALL live conductors (active + neutral) — NZ requirement', hint: 'Clause 2.6.2.2.3(a)'},
+    {label: 'No more than 3 final subcircuits protected by any one RCD (residential)', hint: 'Clause 2.6.2.4(b)(i)'},
+    {label: 'Minimum 2 RCDs installed (residential, where >1 final subcircuit)', hint: 'Clause 2.6.2.4(b)(ii)'},
+    {label: 'Lighting circuits distributed between RCDs (where >1 RCD installed)', hint: 'Clause 2.6.2.4(a)'},
+    {label: 'RCD trips at rated residual current — confirm with ramp test or IΔn tester', hint: 'Clause 2.6.2.1 / AS 3017'},
+    {label: 'RCD integral test button disconnects without undue delay', hint: 'AS 3017 Fig 4.27'},
+    {label: 'Cooking appliance socket-outlet (if exempt) clearly marked — not for general use', hint: 'Clause 2.6.3.3.1 Exception 2'},
+    {label: 'Outdoor sockets ≤30A protected by 30mA RCD (non-residential)', hint: 'Clause 2.6.3.3.2(c)(i)'},
+    {label: 'Education/childcare: socket-outlets ≤30A have 30mA RCD protection', hint: 'Clause 2.6.3.3.2(a)'},
+    {label: 'Junior education (Yr8 & below): socket-outlets have 10mA RCD protection', hint: 'Clause 2.6.3.3.2(b)'},
+    {label: 'Children\'s rides / vending machines have 30mA RCD protection', hint: 'Clause 2.6.3.3.2(d)'},
+    {label: 'Earth leakage current ≤⅓ of rated residual current at full load (avoid nuisance tripping)', hint: 'Clause 2.6.2.1 Note 1'}
   ], 'rcd-checklist');
 
   // Switchboard
