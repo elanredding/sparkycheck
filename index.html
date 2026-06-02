@@ -1196,9 +1196,10 @@ function initSearch() {
       { name: 's', weight: 1 },
       { name: 'd', weight: 0.8 }
     ],
-    threshold: 0.4,
+    threshold: 0.5,
     distance: 100,
     minMatchCharLength: 2,
+    ignoreLocation: true,
     includeScore: true
   });
 
@@ -1215,7 +1216,6 @@ function doSearch() {
   const catFilter = document.getElementById('search-cat').value;
 
   let q = input.value.trim();
-  let matches = [];
 
   if (q.length < 2) {
     results.innerHTML = '';
@@ -1224,26 +1224,51 @@ function doSearch() {
     return;
   }
 
-  // Search using Fuse
-  const rawMatches = fuse.search(q);
+  // Tokenize: split into words, filter stop words and short words
+  const stopWords = new Set(['what','for','the','a','an','and','or','of','to','in',
+    'is','it','with','at','by','on','do','does','are','can','how','my','we','you',
+    'be','has','have','this','that','will','would','should','could','its','if']);
+  const words = q.toLowerCase().split(/[\s,.-]+/).filter(w => w.length >= 2 && !stopWords.has(w));
 
-  // Filter by category if selected
-  for (const match of rawMatches) {
-    if (catFilter && match.item.c !== catFilter) continue;
-    matches.push(match);
+  if (words.length === 0) {
+    empty.style.display = 'none';
+    count.textContent = '0 results';
+    results.innerHTML = '<p style="color:var(--text2);font-size:12px;text-align:center;padding:12px;">Try more specific keywords.</p>';
+    return;
   }
 
-  // Sort by score
-  matches.sort((a, b) => a.score - b.score);
+  // Search each word independently, aggregate results
+  const resultMap = new Map(); // index -> { bestScore, wordCount, item }
 
-  // Limit to top 30
+  for (const word of words) {
+    const rawMatches = fuse.search(word);
+    for (const match of rawMatches) {
+      if (catFilter && match.item.c !== catFilter) continue;
+      const idx = match.refIndex;
+      if (resultMap.has(idx)) {
+        const entry = resultMap.get(idx);
+        if (match.score < entry.bestScore) entry.bestScore = match.score;
+        entry.wordCount++;
+      } else {
+        resultMap.set(idx, { bestScore: match.score, wordCount: 1, item: match.item });
+      }
+    }
+  }
+
+  // Convert to array, sort: word count desc, then score asc
+  let matches = Array.from(resultMap.values());
+  matches.sort((a, b) => {
+    if (b.wordCount !== a.wordCount) return b.wordCount - a.wordCount;
+    return a.bestScore - b.bestScore;
+  });
+
   const top = matches.slice(0, 30);
 
   empty.style.display = 'none';
   count.textContent = `${matches.length} result${matches.length !== 1 ? 's' : ''}`;
 
   if (top.length === 0) {
-    results.innerHTML = '<p style="color:var(--text2);font-size:12px;text-align:center;padding:12px;">No results found. Try different keywords.</p>';
+    results.innerHTML = '<p style="color:var(--text2);font-size:12px;text-align:center;padding:12px;">No results found. Try shorter or different keywords.</p>';
     return;
   }
 
