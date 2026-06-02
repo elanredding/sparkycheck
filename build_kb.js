@@ -90,26 +90,51 @@ if (json3008.installation_methods) {
   // Installation method entries
   for (const [methodKey, method] of Object.entries(json3008.installation_methods)) {
     const methodName = method.description || methodKey.replace(/_/g, ' ');
+    const detail = [];
+    if (method.description) detail.push(method.description);
     if (method.methods) {
       for (const m of method.methods) {
-        const detail = [];
-        if (m.description) detail.push(m.description);
+        const mDetail = [];
+        if (m.description) mDetail.push(m.description);
+        
+        // Add table/column references as searchable keywords
+        const tableRefs = [];
         if (m.tables_and_columns) {
           for (const [tcKey, tcVal] of Object.entries(m.tables_and_columns)) {
-            detail.push(`${tcKey}: ${tcVal}`);
+            mDetail.push(`${tcKey}: ${tcVal}`);
+            tableRefs.push(tcKey);
+            // Extract table numbers for search
+            const tbls = tcVal.match(/Tables?\s+[\d][\d-]*/g);
+            if (tbls) tableRefs.push(...tbls);
           }
         }
         if (m.derating_tables) {
-          detail.push(`Derating tables: ${m.derating_tables.join(', ')}`);
+          mDetail.push(`Derating tables: ${m.derating_tables.join(', ')}`);
+          m.derating_tables.forEach(dt => tableRefs.push(dt));
         }
+        
         addEntry(
           `Installation: ${m.id.replace(/_/g, ' ')} — ${methodName.substring(0, 60)}`,
           'AS/NZS 3008.1.1 Cable Sizing',
           m.description || methodName,
-          [m.id, methodKey, 'installation', 'cable', 'current-carrying'].filter(Boolean),
+          [m.id, methodKey, 'installation', 'cable', 'current-carrying', ...tableRefs].filter(Boolean),
           `AS/NZS 3008.1.1:2017 ${methodKey}`,
-          detail.join('\n')
+          mDetail.join('\n')
         );
+
+        // Also add granular entries for each table/column combo (e.g. "Table 10 Column 2")
+        if (m.tables_and_columns) {
+          for (const [tcKey, tcVal] of Object.entries(m.tables_and_columns)) {
+            addEntry(
+              `${tcKey} — ${m.id.replace(/_/g, ' ')}`,
+              'AS/NZS 3008.1.1 Cable Sizing',
+              `${tcVal} — ${m.description || ''}`,
+              [tcKey, m.id, 'table', 'column', 'current-carrying', 'cable', 'PVC', 'XLPE'].filter(Boolean),
+              `AS/NZS 3008.1.1:2017 ${methodKey}`,
+              `${tcVal} — applies to ${m.description || ''}`
+            );
+          }
+        }
       }
     }
   }
@@ -133,7 +158,7 @@ if (json3008.installation_methods) {
         `Derating: ${dtName}`,
         'AS/NZS 3008.1.1 Cable Sizing',
         dt.description || `Derating factor — ${dtKey}`,
-        [dtKey, 'derating', 'cable', 'current-carrying', 'grouping'].filter(Boolean),
+        [dtKey, 'derating', 'cable', 'current-carrying', 'grouping', 'temperature', 'depth'].filter(Boolean),
         `AS/NZS 3008.1.1:2017 ${dtKey}`,
         detail.join('\n')
       );
@@ -150,7 +175,7 @@ if (json3008.installation_methods) {
       'Ambient temperature correction factors',
       'AS/NZS 3008.1.1 Cable Sizing',
       at.description || 'Correction factors for ambient temperature',
-      ['ambient', 'temperature', 'correction', 'derating', 'cable'],
+      ['ambient', 'temperature', 'correction', 'derating', 'cable', 'Table 27'],
       'AS/NZS 3008.1.1:2017 Table 27',
       detail
     );
@@ -162,7 +187,7 @@ if (json3008.installation_methods) {
       'AS/NZS 3008.1.1:2017 — Cable Selection Standard',
       'AS/NZS 3008.1.1 Cable Sizing',
       json3008.standard.description || '',
-      ['cable', 'selection', 'current-carrying', 'voltage drop', 'short-circuit', 'sizing'],
+      ['cable', 'selection', 'current-carrying', 'voltage drop', 'short-circuit', 'sizing', '3008'],
       'AS/NZS 3008.1.1:2017',
       `Reference ambient air: ${json3008.standard.reference_ambient_air}°C\nReference ambient ground: ${json3008.standard.reference_ambient_ground}°C\nConductor temperature PVC: ${json3008.standard.conductor_temperature_pvc}°C\nConductor temperature XLPE: ${json3008.standard.conductor_temperature_xlpe}°C`
     );
