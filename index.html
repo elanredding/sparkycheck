@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sparky Check - AS/NZS 3000 Compliance</title>
+<link rel="manifest" href="data:application/json,{}">
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card2: #334155;
+    --accent: #f59e0b;
+    --accent2: #eab308;
+    --green: #22c55e;
+    --red: #ef4444;
+    --text: #f8fafc;
+    --text2: #94a3b8;
+    --border: #475569;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-bottom: 2px solid var(--accent);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header h1 span { color: var(--accent); }
+  .header .badge {
+    font-size: 10px;
+    background: var(--accent);
+    color: #0f172a;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+  .module-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .module-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all .15s;
+  }
+  .module-btn:active { background: var(--card2); border-color: var(--accent); }
+  .module-btn .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .module-btn .icon.calc { background: #1e3a5f; }
+  .module-btn .icon.check { background: #1e3a2f; }
+  .module-btn .icon.ref { background: #3a1e2f; }
+  .module-btn .desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+  .screen {
+    display: none;
+    animation: slideIn .2s ease;
+  }
+  .screen.active { display: block; }
+  @keyframes slideIn {
+    from { opacity: .5; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+  label:first-child { margin-top: 0; }
+  input, select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card2);
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition: border .15s;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  input[type="number"] { -moz-appearance: textfield; }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .btn {
+    background: var(--accent);
+    color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 16px;
+    transition: opacity .15s;
+  }
+  .btn:active { opacity: .8; }
+  .btn-secondary {
+    background: var(--card2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .result-box {
+    background: #1a2e1a;
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+  }
+  .result-box.show { display: block; }
+  .result-box.fail {
+    background: #2e1a1a;
+    border-color: var(--red);
+  }
+  .result-box .big {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .result-box .pass { color: var(--green); }
+  .result-box .fail-text { color: var(--red); }
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .checkbox-item:last-child { border-bottom: none; }
+  .checkbox-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    accent-color: var(--accent);
+  }
+  .checkbox-item label {
+    color: var(--text);
+    font-weight: 400;
+    margin: 0;
+    cursor: pointer;
+  }
+  .checkbox-item .hint {
+    font-size: 12px;
+    color: var(--text2);
+    display: block;
+    margin-top: 2px;
+  }
+  .inline-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .stat-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .stat-bar .stat {
+    flex: 1;
+    background: var(--card2);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  .stat-bar .stat .num {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .stat-bar .stat .lbl {
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    background: var(--card);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 16px;
+  }
+  .tab-bar button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text2);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .tab-bar button.active {
+    background: var(--accent);
+    color: #0f172a;
+  }
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .ref-table th {
+    background: var(--card2);
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text2);
+  }
+  .ref-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  select option { background: #1e293b; color: #f8fafc; }
+  @media (max-width: 500px) {
+    .container { padding: 12px; }
+    .card { padding: 14px; }
+    .inline-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚡ <span>Sparky</span>Check</h1>
+  <span class="badge">AS/NZS 3000</span>
+</div>
+
+<div class="container">
+
+<!-- HOME -->
+<div id="home" class="screen active">
+  <p style="color:var(--text2); margin-bottom:16px; font-size:13px; line-height:1.5;">
+    Compliance checkers, calculators, and references for NZ electricians based on AS/NZS 3000:2018.
+  </p>
+  <div class="module-grid">
+    <button class="module-btn" onclick="showScreen('vd')">
+      <div class="icon calc">📏</div>
+      <div>Voltage Drop Calculator<div class="desc">Check cable voltage drop is within 5% limit</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('maxd')">
+      <div class="icon calc">⚡</div>
+      <div>Max Demand Calculator<div class="desc">Calculate maximum demand for a switchboard</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('rcd')">
+      <div class="icon check">🛡️</div>
+      <div>RCD Requirements<div class="desc">Check what needs RCD protection (Clause 2.6)</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('cable')">
+      <div class="icon calc">🔌</div>
+      <div>Cable Sizing Guide<div class="desc">Min cable sizes, derating, installation factors</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('board')">
+      <div class="icon check">📋</div>
+      <div>Switchboard Compliance<div class="desc">Switchboard installation checklist</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('outdoor')">
+      <div class="icon check">🌿</div>
+      <div>Outdoor & Wet Areas<div class="desc">IP ratings, RCDs, cable types for outdoor</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('ev')">
+      <div class="icon check">🚗</div>
+      <div>EV Charger Install<div class="desc">EV charging requirements (Clause 7.6)</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('smoke')">
+      <div class="icon check">🔥</div>
+      <div>Smoke Alarm Compliance<div class="desc">AS 3786, placement, interconnection</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('ze')">
+      <div class="icon ref">📖</div>
+      <div>Earth Fault Loop Zs<div class="desc">Max Zs values for MCBs, RCBOs, fuses</div></div>
+    </button>
+    <button class="module-btn" onclick="showScreen('general')">
+      <div class="icon check">✅</div>
+      <div>General Install Checklist<div class="desc">Quick overall compliance checklist</div></div>
+    </button>
+  </div>
+  <p style="color:var(--text2); font-size:11px; text-align:center; margin-top:24px;">
+    Reference only — always verify against current AS/NZS 3000
+  </p>
+</div>
+
+<!-- VOLTAGE DROP CALC -->
+<div id="screen-vd" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>📏 Voltage Drop Calculator</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000 Clause 3.6 — Max 5% drop from point of supply to load (8% for street lighting)</p>
+    <label>Phase</label>
+    <select id="vd-phase"><option value="1">Single Phase (230V)</option><option value="3">Three Phase (400V)</option></select>
+    <label>Current (A)</label>
+    <input type="number" id="vd-current" placeholder="e.g. 32" step="any">
+    <label>Cable Length (metres) — one way</label>
+    <input type="number" id="vd-length" placeholder="e.g. 40" step="any">
+    <label>Conductor Size (mm²)</label>
+    <select id="vd-size">
+      <option value="1.0">1.0 mm²</option>
+      <option value="1.5">1.5 mm²</option>
+      <option value="2.5" selected>2.5 mm²</option>
+      <option value="4">4 mm²</option>
+      <option value="6">6 mm²</option>
+      <option value="10">10 mm²</option>
+      <option value="16">16 mm²</option>
+      <option value="25">25 mm²</option>
+      <option value="35">35 mm²</option>
+      <option value="50">50 mm²</option>
+    </select>
+    <label>Conductor Loading (estimate how loaded the cable is)</label>
+    <select id="vd-loading">
+      <option value="1.0">Fully loaded (cable at 75°C — standard AS/NZS 3008 value)</option>
+      <option value="0.93">Lightly loaded (&lt;50% rated current — ~50°C conductor)</option>
+      <option value="0.85">Very lightly loaded (near ambient — ~30°C conductor)</option>
+    </select>
+    <p style="font-size:11px; color:var(--text2); margin-top:6px;">Values per AS/NZS 3008.1 — Cu/PVC 70°C at 75°C operating temp. Method corrections affect ampacity, not voltage drop.</p>
+    <button class="btn" onclick="calcVD()">Calculate Voltage Drop</button>
+    <div id="vd-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- MAX DEMAND -->
+<div id="screen-maxd" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>⚡ Max Demand Calculator</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Per AS/NZS 3000 Table C1, C2, C3 — quick residential estimate</p>
+    <label>Type of Installation</label>
+    <select id="md-type">
+      <option value="house">House (standard residential)</option>
+      <option value="flat">Flat / Apartment (≤50m²)</option>
+      <option value="shop">Small Shop / Office</option>
+    </select>
+    <label>Floor Area (m²) — residential</label>
+    <input type="number" id="md-area" placeholder="e.g. 180" step="any">
+    <label>Number of Power Circuits (RCD protected)</label>
+    <input type="number" id="md-circuits" placeholder="e.g. 6" value="6">
+    <label>Hot Water Cylinder? (kW)</label>
+    <input type="number" id="md-hwc" placeholder="e.g. 3.0" value="3" step="0.1">
+    <label>Cooktop / Range (kW)</label>
+    <input type="number" id="md-range" placeholder="e.g. 6" value="6" step="0.1">
+    <label>Air Conditioning / Heat Pump (kW)</label>
+    <input type="number" id="md-ac" placeholder="e.g. 2.5" value="2.5" step="0.1">
+    <label>EV Charger (kW, if applicable)</label>
+    <input type="number" id="md-ev" placeholder="e.g. 7" value="0" step="0.1">
+    <button class="btn" onclick="calcMaxD()">Calculate Max Demand</button>
+    <div id="md-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- RCD REQUIREMENTS -->
+<div id="screen-rcd" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>🛡️ RCD Requirements (Clause 2.6)</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Check which circuits need RCD protection. Current NZ requirements — max 30mA for socket outlets, lighting. Max 0.3s disconnection.</p>
+    <div id="rcd-checklist"></div>
+    <div id="rcd-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- CABLE SIZING -->
+<div id="screen-cable" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="tab-bar">
+    <button class="active" onclick="switchCableTab('table')">Cable Table</button>
+    <button onclick="switchCableTab('derate')">Derating</button>
+  </div>
+  <div id="cable-table">
+    <div class="card">
+      <h3>🔌 Min Cable Sizes — Cu 70°C PVC (NZ common)</h3>
+      <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">Current-carrying capacity (A) — ambient 40°C, Method C (clipped direct)</p>
+      <table class="ref-table">
+        <tr><th>mm²</th><th>A (Method C)</th><th>Typical MCB</th><th>Max Load @230V</th></tr>
+        <tr><td>1.0</td><td>14</td><td>10A</td><td>1.8 kW</td></tr>
+        <tr><td>1.5</td><td>21</td><td>16A</td><td>3.7 kW</td></tr>
+        <tr><td>2.5</td><td>30</td><td>20A / 25A</td><td>5.7 kW</td></tr>
+        <tr><td>4.0</td><td>40</td><td>32A</td><td>7.4 kW</td></tr>
+        <tr><td>6.0</td><td>52</td><td>40A / 50A</td><td>11.5 kW</td></tr>
+        <tr><td>10</td><td>72</td><td>63A</td><td>14.5 kW</td></tr>
+        <tr><td>16</td><td>96</td><td>80A</td><td>18.4 kW</td></tr>
+        <tr><td>25</td><td>125</td><td>100A</td><td>23.0 kW</td></tr>
+        <tr><td>35</td><td>155</td><td>125A</td><td>28.8 kW</td></tr>
+      </table>
+    </div>
+  </div>
+  <div id="cable-derate" style="display:none;">
+    <div class="card">
+      <h3>🌡️ Derating Factors</h3>
+      <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">Multiply cable current rating by these factors</p>
+      <table class="ref-table">
+        <tr><th colspan="2">Ambient Temperature Derating (70°C cable)</th></tr>
+        <tr><td>40°C (standard)</td><td>1.0</td></tr>
+        <tr><td>45°C</td><td>0.93</td></tr>
+        <tr><td>50°C</td><td>0.86</td></tr>
+        <tr><td>55°C</td><td>0.79</td></tr>
+        <tr><th colspan="2">Grouping (cables bunched)</th></tr>
+        <tr><td>2-4 circuits</td><td>0.80</td></tr>
+        <tr><td>5-8 circuits</td><td>0.70</td></tr>
+        <tr><td>9+ circuits</td><td>0.60</td></tr>
+        <tr><th colspan="2">Installation Method</th></tr>
+        <tr><td>Method C (clipped)</td><td>1.0</td></tr>
+        <tr><td>Method B (enclosed)</td><td>0.80</td></tr>
+        <tr><td>Buried direct</td><td>1.05</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SWITCHBOARD -->
+<div id="screen-board" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>📋 Switchboard Compliance Checklist</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Per Clause 2.9 & 2.10 of AS/NZS 3000:2018</p>
+    <div id="board-checklist"></div>
+    <div id="board-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- OUTDOOR / WET -->
+<div id="screen-outdoor" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>🌿 Outdoor & Wet Area Requirements</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Clause 7.3 — Outdoor installations, IP ratings, RCDs</p>
+    <div id="outdoor-checklist"></div>
+    <div id="outdoor-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- EV CHARGER -->
+<div id="screen-ev" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>🚗 EV Charger Install Checklist</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Clause 7.6 — EV charging requirements</p>
+    <div id="ev-checklist"></div>
+    <div id="ev-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- SMOKE ALARM -->
+<div id="screen-smoke" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>🔥 Smoke Alarm Compliance</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS 3786, NZ Building Code Clause F7, Clause 4.6 AS/NZS 3000</p>
+    <div id="smoke-checklist"></div>
+    <div id="smoke-result" class="result-box"></div>
+  </div>
+</div>
+
+<!-- Zs TABLE -->
+<div id="screen-ze" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>📖 Max Earth Fault Loop Impedance (Zs)</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">AS/NZS 3000 Table 8.1 — Max Zs for 0.4s disconnection @230V (Uo=230V, Cmin=0.95)</p>
+    <table class="ref-table">
+      <tr><th>Protective Device</th><th>Rating</th><th>Max Zs (Ω)</th></tr>
+      <tr><td>MCB B-curve</td><td>6A</td><td>7.28</td></tr>
+      <tr><td>MCB B-curve</td><td>10A</td><td>4.37</td></tr>
+      <tr><td>MCB B-curve</td><td>16A</td><td>2.73</td></tr>
+      <tr><td>MCB B-curve</td><td>20A</td><td>2.19</td></tr>
+      <tr><td>MCB B-curve</td><td>32A</td><td>1.37</td></tr>
+      <tr><td>MCB B-curve</td><td>40A</td><td>1.09</td></tr>
+      <tr><td>MCB B-curve</td><td>63A</td><td>0.69</td></tr>
+      <tr><td>MCB C-curve</td><td>10A</td><td>2.19</td></tr>
+      <tr><td>MCB C-curve</td><td>16A</td><td>1.37</td></tr>
+      <tr><td>MCB C-curve</td><td>20A</td><td>1.09</td></tr>
+      <tr><td>MCB C-curve</td><td>32A</td><td>0.69</td></tr>
+      <tr><td>MCB C-curve</td><td>40A</td><td>0.55</td></tr>
+      <tr><td>RCBO (B or C)</td><td>—</td><td>Same as MCB of same curve</td></tr>
+      <tr><td>RCD (only)</td><td>30mA</td><td>RTD requirement</td></tr>
+    </table>
+    <p style="font-size:11px; color:var(--text2); margin-top:10px;">Zs = (0.95 × 230) / (I_mag × 5) for B-curve, ×10 for C-curve. Actual values depend on temp correction.</p>
+  </div>
+</div>
+
+<!-- GENERAL CHECKLIST -->
+<div id="screen-general" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>✅ General Installation Checks</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Quick run-through of key AS/NZS 3000 requirements for any job</p>
+    <div id="general-checklist"></div>
+    <div id="general-result" class="result-box"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  if (id === 'home') {
+    document.getElementById('home').classList.add('active');
+    return;
+  }
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+// ====== CHECKLIST HELPER ======
+function makeChecklist(items, containerId) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  items.forEach((item, i) => {
+    const d = document.createElement('div');
+    d.className = 'checkbox-item';
+    d.innerHTML = `
+      <input type="checkbox" id="chk-${containerId}-${i}">
+      <label for="chk-${containerId}-${i}">${item.label}${item.hint ? ' <span class="hint">' + item.hint + '</span>' : ''}</label>
+    `;
+    c.appendChild(d);
+  });
+  // add summary button
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-secondary';
+  btn.textContent = 'Check Results';
+  btn.onclick = function() { checkResults(containerId); };
+  c.appendChild(btn);
+}
+
+function checkResults(containerId) {
+  const items = document.getElementById(containerId).querySelectorAll('input[type="checkbox"]');
+  let total = items.length;
+  let checked = 0;
+  items.forEach(i => { if (i.checked) checked++; });
+  const pct = Math.round((checked / total) * 100);
+  let box = document.getElementById(containerId.replace('-checklist', '-result'));
+  if (!box) box = document.getElementById(containerId.replace('-checklist', '-checklist').replace('-checklist', '-result'));
+  // Actually find the correct result box
+  const prefix = containerId.replace('-checklist', '');
+  const resultBox = document.getElementById(prefix + '-result');
+  if (!resultBox) return;
+  resultBox.className = 'result-box show' + (pct < 70 ? ' fail' : '');
+  resultBox.innerHTML = `
+    <div class="stat-bar">
+      <div class="stat"><div class="num ${pct >= 100 ? 'pass' : ''}">${checked}/${total}</div><div class="lbl">Items Checked</div></div>
+      <div class="stat"><div class="num ${pct >= 70 ? 'pass' : 'fail-text'}">${pct}%</div><div class="lbl">Compliance</div></div>
+    </div>
+    ${pct === 100 ? '<p style="margin-top:8px; color:var(--green); font-weight:600;">✅ All good — this install looks compliant!</p>' : ''}
+    ${pct >= 70 && pct < 100 ? '<p style="margin-top:8px; color:var(--accent); font-weight:600;">⚠️ ' + (total - checked) + ' item(s) need attention</p>' : ''}
+    ${pct < 70 ? '<p style="margin-top:8px; color:var(--red); font-weight:600;">❌ ' + (total - checked) + ' item(s) outstanding — fix before proceeding</p>' : ''}
+  `;
+}
+
+// ====== VOLTAGE DROP ======
+function calcVD() {
+  const phase = parseFloat(document.getElementById('vd-phase').value);
+  const I = parseFloat(document.getElementById('vd-current').value);
+  const L = parseFloat(document.getElementById('vd-length').value);
+  const mm2 = parseFloat(document.getElementById('vd-size').value);
+  const loadFactor = parseFloat(document.getElementById('vd-loading').value);
+  const box = document.getElementById('vd-result');
+
+  if (!I || !L) { box.className = 'result-box fail show'; box.innerHTML = 'Enter current and length'; return; }
+
+  // Standard mV/A/m for Cu/PVC 70°C at 75°C operating temp (AS/NZS 3008.1)
+  // These are circuit values for multi-core / twin & earth (go + return included for single phase)
+  const mvPerA = {
+    1.0: 44.0,
+    1.5: 29.6,
+    2.5: 18.1,
+    4: 11.3,
+    6: 7.50,
+    10: 4.40,
+    16: 2.80,
+    25: 1.80,
+    35: 1.30,
+    50: 0.99
+  };
+
+  const mv = mvPerA[mm2] || 2.0;
+  // Apply temperature/loading correction factor
+  const mvCorrected = mv * loadFactor;
+  // Single phase: mV/A/m already includes go+return. Three phase: mV/A/m is per phase
+  const vd = (mvCorrected * I * L) / 1000;
+  const Vnom = phase === 1 ? 230 : 400;
+  const vdPercent = (vd / Vnom) * 100;
+  const maxVD = 5;
+  const pass = vdPercent <= maxVD;
+
+  box.className = 'result-box show' + (pass ? '' : ' fail');
+  let phaseLabel = phase === 1 ? 'Single Phase (230V)' : 'Three Phase (400V)';
+  let loadLabel = loadFactor === 1.0 ? 'Full load (75°C)' : loadFactor === 0.93 ? 'Light load (~50°C)' : 'Very light load (~30°C)';
+  box.innerHTML = `
+    <div class="big ${pass ? 'pass' : 'fail-text'}">${vd.toFixed(2)} V</div>
+    <div>${vdPercent.toFixed(2)}% voltage drop (${phaseLabel})</div>
+    <div style="font-size:12px; color:var(--text2); margin-top:4px;">${mm2} mm² Cu PVC — ${loadLabel}</div>
+    <div style="margin-top:8px;font-weight:600;" class="${pass ? 'pass' : 'fail-text'}">
+      ${pass ? '✅ Within limit (max 5%)' : '❌ Exceeds 5% limit — need larger cable'}
+    </div>
+    <div style="margin-top:6px;">
+      ${!pass ? 'Try ' + suggestCable(I, L, phase, loadFactor) : ''}
+    </div>
+  `;
+}
+
+function suggestCable(I, L, phase, loadFactor) {
+  const sizes = [1.0, 1.5, 2.5, 4, 6, 10, 16, 25, 35, 50];
+  const mvPerA = {
+    1.0: 44.0,
+    1.5: 29.6,
+    2.5: 18.1,
+    4: 11.3,
+    6: 7.50,
+    10: 4.40,
+    16: 2.80,
+    25: 1.80,
+    35: 1.30,
+    50: 0.99
+  };
+  const Vnom = phase === 1 ? 230 : 400;
+  for (const s of sizes) {
+    if (!mvPerA[s]) continue;
+    const mv = mvPerA[s] * loadFactor;
+    const vdCalc = (mv * I * L) / 1000;
+    const pct = (vdCalc / Vnom) * 100;
+    if (pct <= 5) return `**${s} mm²** (${pct.toFixed(1)}% drop)`;
+  }
+  return `**50 mm²+** (consult engineer for this one)`;
+}
+
+// ====== MAX DEMAND ======
+function calcMaxD() {
+  const area = parseFloat(document.getElementById('md-area').value) || 0;
+  const circuits = parseInt(document.getElementById('md-circuits').value) || 6;
+  const hwc = parseFloat(document.getElementById('md-hwc').value) || 0;
+  const range = parseFloat(document.getElementById('md-range').value) || 0;
+  const ac = parseFloat(document.getElementById('md-ac').value) || 0;
+  const ev = parseFloat(document.getElementById('md-ev').value) || 0;
+  const box = document.getElementById('md-result');
+
+  if (!area) { box.className = 'result-box fail show'; box.innerHTML = 'Enter floor area'; return; }
+
+  // Simplified residential max demand per Table C1
+  const loadBase = Math.min(area * 10, 4000); // 10W/m² + lighting aux up to 4kVA
+  const loadCircuits = circuits * 10; // 10A per circuit diversity
+  const hwcD = Math.min(hwc * 0.75, 3.0); // 75% diversity or 3kW
+  const rangeD = Math.min(range * 0.5 + 2, 8); // 50% + 2, capped 8kW
+  const acD = ac * 0.75; // 75% diversity
+  const evD = ev > 0 ? (ev <= 3.6 ? 0.8 : 1) * ev : 0; // basic diversity
+
+  // Also add 10A for general purpose
+  const total = (loadBase + loadCircuits + hwcD + rangeD + acD + evD) / 1000;
+
+  box.className = 'result-box show';
+  box.innerHTML = `
+    <div class="big" style="color:var(--accent);">${total.toFixed(1)} kVA</div>
+    <div style="font-size:13px; margin-top:8px;">Estimated max demand</div>
+    <div style="margin-top:10px; font-size:12px; color:var(--text2); border-top:1px solid var(--border); padding-top:8px;">
+      <div>Lighting & general: ${(loadBase/1000).toFixed(1)} kVA</div>
+      <div>Power circuits (×${circuits}): ${(loadCircuits/1000).toFixed(1)} kVA</div>
+      ${hwc > 0 ? '<div>HWC (diversity): ' + hwcD.toFixed(1) + ' kW</div>' : ''}
+      ${range > 0 ? '<div>Cooktop (diversity): ' + rangeD.toFixed(1) + ' kW</div>' : ''}
+      ${ac > 0 ? '<div>Heat pump (75%): ' + acD.toFixed(1) + ' kW</div>' : ''}
+      ${ev > 0 ? '<div>EV charger (diversified): ' + evD.toFixed(1) + ' kW</div>' : ''}
+      <div style="margin-top:6px;"><strong>Suggested main switch: ${total <= 60 ? '63A' : total <= 80 ? '80A' : total <= 100 ? '100A' : '125A+'}</strong></div>
+    </div>
+  `;
+}
+
+// ====== CABLE TAB SWITCH ======
+function switchCableTab(tab) {
+  document.querySelectorAll('#screen-cable .tab-bar button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('cable-table').style.display = tab === 'table' ? 'block' : 'none';
+  document.getElementById('cable-derate').style.display = tab === 'derate' ? 'block' : 'none';
+}
+
+// ====== INIT CHECKLISTS ======
+document.addEventListener('DOMContentLoaded', function() {
+  // RCD
+  makeChecklist([
+    {label: 'All 230V socket outlets ≤20A are RCD protected (≤30mA)', hint: 'Clause 2.6.2.2(a)'},
+    {label: 'All lighting circuits are RCD protected (≤30mA)', hint: 'Clause 2.6.2.2(b)'},
+    {label: 'All mobile equipment supply outlets are RCD protected', hint: 'Clause 2.6.2.2(c)'},
+    {label: 'RCDs trip within 300ms @ rated residual current', hint: 'Clause 2.6.5.1'},
+    {label: 'RCD operates at ½ rated residual current (≤30mA RCD must trip at ≤15mA)', hint: 'Clause 2.6.5.2'},
+    {label: 'RCD test button works (press quarterly, as labelled)', hint: 'Label required'},
+    {label: 'RCDs are Type A or better (no general-purpose Type AC for socket circuits)', hint: 'Clause 2.6.3'},
+    {label: 'Final subcircuits have dedicated RCD or RCBO (not shared across subcircuits unless >30mA)', hint: 'Clause 2.6.2.3'},
+    {label: 'Fridge/freezer on separate RCD or RCD protected socket', hint: 'Clause 2.6.2.5'}
+  ], 'rcd-checklist');
+
+  // Switchboard
+  makeChecklist([
+    {label: 'Main switch isolates all active conductors', hint: 'Clause 2.9.2'},
+    {label: 'Switchboard enclosure is non-combustible or suitably rated', hint: 'Clause 2.9.3'},
+    {label: 'IP rating appropriate for location (IP2X min, IPX4 outdoors)', hint: 'Clause 2.9.4'},
+    {label: 'Cable entry sealed/strain relief provided', hint: 'Clause 2.9.5'},
+    {label: 'Circuit breakers labelled clearly (schedule of circuits on door)', hint: 'Clause 2.9.7'},
+    {label: 'Working space ≥800mm in front of board', hint: 'Clause 2.10.1'},
+    {label: 'Penetrations fire-rated if through fire-rated wall', hint: 'Clause 2.9.8'},
+    {label: 'MEN connection present and correct (neutral to earth link)', hint: 'Clause 5.6.2'},
+    {label: 'Earth bar bonded to enclosure', hint: 'Clause 5.6.3'},
+    {label: 'Cable segregation — ELV and LV not in same compartment unless insulated', hint: 'Clause 2.9.6'}
+  ], 'board-checklist');
+
+  // Outdoor
+  makeChecklist([
+    {label: 'All outdoor socket outlets are RCD protected (≤30mA)', hint: 'Clause 7.3.3'},
+    {label: 'Outdoor outlets have weatherproof cover (IP56 min)', hint: 'Clause 7.3.4'},
+    {label: 'Underground cable buried ≥600mm deep (or in conduit ≥500mm)', hint: 'Clause 3.11.2'},
+    {label: 'Underground cable marked with warning tape', hint: 'Clause 3.11.3'},
+    {label: 'Cable suitable for outdoor/wet conditions (e.g. HO7RN-F, XLPE)', hint: 'Clause 3.5'},
+    {label: 'Outdoor lighting fittings rated IP65 or better', hint: 'Clause 7.3.5'},
+    {label: 'Pool/spa equipment ≥2m from water edge (RCD protected)', hint: 'Clause 7.5'},
+    {label: 'Earth electrode accessible for testing', hint: 'Clause 5.6.5'},
+    {label: 'Switches and controls in wet areas at least IP56', hint: 'Clause 7.3.6'}
+  ], 'outdoor-checklist');
+
+  // EV
+  makeChecklist([
+    {label: 'EV charger on dedicated circuit', hint: 'Clause 7.6.3'},
+    {label: 'RCD Type A (or Type B if DC leakage possible)', hint: 'Clause 7.6.4'},
+    {label: 'Cable sized for continuous load (no diversity — full rated current)', hint: 'Clause 7.6.5'},
+    {label: 'EVSE (charger) compliant with AS/NZS 60335.2.29 or IEC 61851', hint: 'Clause 7.6.2'},
+    {label: 'Socket outlet for portable EVSE is ≥15A rated', hint: 'Clause 7.6.6'},
+    {label: 'Outdoor EVSE weatherproof (IP54 min)', hint: 'Clause 7.6.7'},
+    {label: 'Provisions for load management if >1 EV charger or limited supply', hint: 'Clause 7.6.8'},
+    {label: 'Earth electrode for EVSE if required by manufacturer', hint: 'Clause 7.6.9'}
+  ], 'ev-checklist');
+
+  // Smoke Alarms
+  makeChecklist([
+    {label: 'At least one smoke alarm on every habitable floor level', hint: 'NZBC F7 / AS 3786'},
+    {label: 'Alarms installed within 3m of bedroom doors', hint: 'NZBC F7'},
+    {label: 'Alarms interconnected (hardwired or wireless)', hint: 'NZBC F7 (new/alt builds)'},
+    {label: 'Alarms powered by 230V mains with battery backup', hint: 'Clause 4.6.2'},
+    {label: 'Alarm connected to a lighting circuit or dedicated circuit', hint: 'Clause 4.6.3'},
+    {label: 'Alarms mounted on ceiling, ≥300mm from walls', hint: 'AS 3786'},
+    {label: 'Not installed in kitchens, bathrooms, or garages (false alarm risk)', hint: 'AS 3786'},
+    {label: 'Photoelectric type (not ionisation — NZ standard)', hint: 'NZBC F7'},
+    {label: 'Alarm replacement date visible (≤10 year lifespan)', hint: 'AS 3786'}
+  ], 'smoke-checklist');
+
+  // General
+  makeChecklist([
+    {label: 'Main earth and MEN connection verified', hint: 'Clause 5.6'},
+    {label: 'All exposed metal parts bonded', hint: 'Clause 5.7'},
+    {label: 'Earth fault loop impedance within limits', hint: 'Clause 8.3'},
+    {label: 'Insulation resistance ≥1 MΩ (≥0.5 MΩ for existing)', hint: 'Clause 8.4'},
+    {label: 'Polarity check — all switches on active conductors', hint: 'Clause 8.5'},
+    {label: 'Cable colours correct (brown/black/grey active, light blue neutral, green-yellow earth)', hint: 'Clause 3.8'},
+    {label: 'Cable supports at ≤300mm horizontal, ≤400mm vertical', hint: 'Clause 3.9'},
+    {label: 'No joints hidden in walls or floors (accessible junction boxes)', hint: 'Clause 3.10'},
+    {label: 'Socket outlets at correct heights (≥1200mm in early childhood, etc)', hint: 'Clause 4.5'},
+    {label: 'Test tag / COC completed and issued', hint: 'ESR 2024 requirements'}
+  ], 'general-checklist');
+});
+</script>
+</body>
+</html>
