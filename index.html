@@ -508,40 +508,50 @@
   </div>
   <div id="cable-table">
     <div class="card">
-      <h3>🔌 Min Cable Sizes — Cu 70°C PVC (NZ common)</h3>
-      <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">Current-carrying capacity (A) — ambient 40°C, Method C (clipped direct)</p>
+      <h3>🔌 Cu V-75 PVC Current-Carrying Capacity</h3>
+      <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">AS/NZS 3008.1.1:2017 Tables 10 &amp; 13 — two-core Cu V-75, ambient 40°C. Values in amperes.</p>
       <table class="ref-table">
-        <tr><th>mm²</th><th>A (Method C)</th><th>Typical MCB</th><th>Max Load @230V</th></tr>
-        <tr><td>1.0</td><td>14</td><td>10A</td><td>1.8 kW</td></tr>
-        <tr><td>1.5</td><td>21</td><td>16A</td><td>3.7 kW</td></tr>
-        <tr><td>2.5</td><td>30</td><td>20A / 25A</td><td>5.7 kW</td></tr>
-        <tr><td>4.0</td><td>40</td><td>32A</td><td>7.4 kW</td></tr>
-        <tr><td>6.0</td><td>52</td><td>40A / 50A</td><td>11.5 kW</td></tr>
-        <tr><td>10</td><td>72</td><td>63A</td><td>14.5 kW</td></tr>
-        <tr><td>16</td><td>96</td><td>80A</td><td>18.4 kW</td></tr>
-        <tr><td>25</td><td>125</td><td>100A</td><td>23.0 kW</td></tr>
-        <tr><td>35</td><td>155</td><td>125A</td><td>28.8 kW</td></tr>
+        <tr><th>mm²</th><th>Method C<br>Clipped</th><th>Method B<br>Conduit/Trunk</th><th>Method A1<br>Insul. wall</th><th>Method D<br>Buried</th><th>Typical MCB</th></tr>
+        <tr><td>1.0</td><td>14</td><td>13</td><td>10</td><td>17</td><td>10A</td></tr>
+        <tr><td>1.5</td><td>18</td><td>16</td><td>13</td><td>21</td><td>16A</td></tr>
+        <tr><td>2.5</td><td>26</td><td>23</td><td>19</td><td>30</td><td>20A</td></tr>
+        <tr><td>4.0</td><td>34</td><td>30</td><td>25</td><td>39</td><td>32A</td></tr>
+        <tr><td>6.0</td><td>44</td><td>39</td><td>32</td><td>50</td><td>40A</td></tr>
+        <tr><td>10</td><td>60</td><td>52</td><td>42</td><td>66</td><td>50A</td></tr>
+        <tr><td>16</td><td>80</td><td>68</td><td>54</td><td>86</td><td>63A</td></tr>
+        <tr><td>25</td><td>107</td><td>90</td><td>70</td><td>112</td><td>80A</td></tr>
+        <tr><td>35</td><td>131</td><td>112</td><td>85</td><td>147</td><td>100A</td></tr>
       </table>
+      <p style="font-size:11px; color:var(--text2); margin-top:8px;">Method C = clipped direct. Method B = in conduit/trunking on wall. Method A1 = enclosed in conduit in insulated wall. Method D = buried direct (ref. 25°C ground). V-75 PVC rated 75°C max conductor temp. Derating applies for ambient >40°C, grouping, and thermal insulation.</p>
     </div>
   </div>
   <div id="cable-derate" style="display:none;">
     <div class="card">
-      <h3>🌡️ Derating Factors</h3>
-      <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">Multiply cable current rating by these factors</p>
+      <h3>🌡️ Derating Factors — V-75 PVC (75°C)</h3>
+      <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">Multiply cable current rating by these factors. AS/NZS 3008.1.1 Tables 22 &amp; 27.</p>
       <table class="ref-table">
-        <tr><th colspan="2">Ambient Temperature Derating (70°C cable)</th></tr>
-        <tr><td>40°C (standard)</td><td>1.0</td></tr>
-        <tr><td>45°C</td><td>0.93</td></tr>
-        <tr><td>50°C</td><td>0.86</td></tr>
-        <tr><td>55°C</td><td>0.79</td></tr>
-        <tr><th colspan="2">Grouping (cables bunched)</th></tr>
-        <tr><td>2-4 circuits</td><td>0.80</td></tr>
-        <tr><td>5-8 circuits</td><td>0.70</td></tr>
-        <tr><td>9+ circuits</td><td>0.60</td></tr>
-        <tr><th colspan="2">Installation Method</th></tr>
-        <tr><td>Method C (clipped)</td><td>1.0</td></tr>
-        <tr><td>Method B (enclosed)</td><td>0.80</td></tr>
-        <tr><td>Buried direct</td><td>1.05</td></tr>
+        <tr><th colspan="2">Ambient Temp Derating (V-75 PVC, ref 40°C)</th></tr>
+        <tr><td>30°C</td><td>1.14</td></tr>
+        <tr><td>35°C</td><td>1.07</td></tr>
+        <tr><td>40°C (ref)</td><td>1.00</td></tr>
+        <tr><td>45°C</td><td>0.91</td></tr>
+        <tr><td>50°C</td><td>0.82</td></tr>
+        <tr><td>55°C</td><td>0.72</td></tr>
+        <tr><td>60°C</td><td>0.60</td></tr>
+        <tr><th colspan="2">Grouping (bunched on surface / enclosed)</th></tr>
+        <tr><td>1 circuit</td><td>1.00</td></tr>
+        <tr><td>2 circuits</td><td>0.80</td></tr>
+        <tr><td>3 circuits</td><td>0.70</td></tr>
+        <tr><td>4 circuits</td><td>0.65</td></tr>
+        <tr><td>5 circuits</td><td>0.60</td></tr>
+        <tr><td>6+ circuits</td><td>0.57</td></tr>
+        <tr><th colspan="2">Thermal Insulation (in wiring enclosure)</th></tr>
+        <tr><td>Partially surrounded</td><td>0.77 (× clipped rating)</td></tr>
+        <tr><td>Completely surrounded</td><td>0.46 (× clipped rating)</td></tr>
+        <tr><th colspan="2">Buried Depth Factor (buried direct, up to 50mm²)</th></tr>
+        <tr><td>0.5m (standard)</td><td>1.00</td></tr>
+        <tr><td>0.6m</td><td>0.99</td></tr>
+        <tr><td>1.0m</td><td>0.95</td></tr>
       </table>
     </div>
   </div>
@@ -552,7 +562,7 @@
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>📋 Switchboard Compliance Checklist</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Per Clause 2.9 & 2.10 of AS/NZS 3000:2018</p>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Clause 2.9 (Fire/Arcing) &amp; Clause 2.10 (Location &amp; Construction)</p>
     <div id="board-checklist"></div>
     <div id="board-result" class="result-box"></div>
   </div>
@@ -563,7 +573,7 @@
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>🌿 Outdoor & Wet Area Requirements</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Clause 7.3 — Outdoor installations, IP ratings, RCDs</p>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Section 6 (Damp situations) &amp; related wiring clauses. Outdoor wiring per Clauses 3.11–3.12.</p>
     <div id="outdoor-checklist"></div>
     <div id="outdoor-result" class="result-box"></div>
   </div>
@@ -573,8 +583,8 @@
 <div id="screen-ev" class="screen">
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
-    <h3>🚗 EV Charger Install Checklist</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Clause 7.6 — EV charging requirements</p>
+    <h3>🚗 EV Charger Install — NZ Requirements</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Clause 7.9 (NZ only) &amp; Appendix P — EV charging requirements.</p>
     <div id="ev-checklist"></div>
     <div id="ev-result" class="result-box"></div>
   </div>
@@ -585,36 +595,46 @@
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>🔥 Smoke Alarm Compliance</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS 3786, NZ Building Code Clause F7, Clause 4.6 AS/NZS 3000</p>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS 3786, NZBC Clause F7, AS/NZS 3000:2018 Clause 4.6</p>
     <div id="smoke-checklist"></div>
     <div id="smoke-result" class="result-box"></div>
   </div>
 </div>
 
-<!-- Zs TABLE -->
+
+<!-- GENERAL CHECKLIST -->
+<div id="screen-general" class="screen">
+  <button class="back-btn" onclick="showScreen('home')">← Back</button>
+  <div class="card">
+    <h3>✅ General Installation Checks</h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Section 8 (Verification) — 6 mandatory tests per Clause 8.3.3</p>
+    <div id="general-checklist"></div>
+    <div id="general-result" class="result-box"></div>
+  </div>
+</div>
 <div id="screen-ze" class="screen">
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>📖 Max Earth Fault Loop Impedance (Zs)</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">AS/NZS 3000 Table 8.1 — Max Zs for 0.4s disconnection @230V (Uo=230V, Cmin=0.95)</p>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">AS/NZS 3000:2018 Table 8.1 — Max Zs for instantaneous tripping. Uo=230V, Cmin=0.95. MCB Ia uses mean tripping: B=4×, C=7.5×, D=12.5×.</p>
     <table class="ref-table">
-      <tr><th>Protective Device</th><th>Rating</th><th>Max Zs (Ω)</th></tr>
-      <tr><td>MCB B-curve</td><td>6A</td><td>7.28</td></tr>
-      <tr><td>MCB B-curve</td><td>10A</td><td>4.37</td></tr>
-      <tr><td>MCB B-curve</td><td>16A</td><td>2.73</td></tr>
-      <tr><td>MCB B-curve</td><td>20A</td><td>2.19</td></tr>
-      <tr><td>MCB B-curve</td><td>32A</td><td>1.37</td></tr>
-      <tr><td>MCB B-curve</td><td>40A</td><td>1.09</td></tr>
-      <tr><td>MCB B-curve</td><td>63A</td><td>0.69</td></tr>
-      <tr><td>MCB C-curve</td><td>10A</td><td>2.19</td></tr>
-      <tr><td>MCB C-curve</td><td>16A</td><td>1.37</td></tr>
-      <tr><td>MCB C-curve</td><td>20A</td><td>1.09</td></tr>
-      <tr><td>MCB C-curve</td><td>32A</td><td>0.69</td></tr>
-      <tr><td>MCB C-curve</td><td>40A</td><td>0.55</td></tr>
-      <tr><td>RCBO (B or C)</td><td>—</td><td>Same as MCB of same curve</td></tr>
-      <tr><td>RCD (only)</td><td>30mA</td><td>RTD requirement</td></tr>
+      <tr><th>Rating</th><th>MCB B-curve<br>(Ω)</th><th>MCB C-curve<br>(Ω)</th><th>MCB D-curve<br>(Ω)</th><th>Fuse 0.4s<br>(Ω)</th><th>Fuse 5s<br>(Ω)</th></tr>
+      <tr><td>6A</td><td>9.6</td><td>5.1</td><td>3.1</td><td>11.5</td><td>15.3</td></tr>
+      <tr><td>10A</td><td>5.8</td><td>3.1</td><td>1.8</td><td>6.4</td><td>9.2</td></tr>
+      <tr><td>16A</td><td>3.6</td><td>1.9</td><td>1.2</td><td>3.1</td><td>5.0</td></tr>
+      <tr><td>20A</td><td>2.9</td><td>1.5</td><td>0.9</td><td>2.1</td><td>3.6</td></tr>
+      <tr><td>25A</td><td>2.3</td><td>1.2</td><td>0.7</td><td>1.6</td><td>2.7</td></tr>
+      <tr><td>32A</td><td>1.8</td><td>1.0</td><td>0.6</td><td>1.3</td><td>2.2</td></tr>
+      <tr><td>40A</td><td>1.4</td><td>0.8</td><td>0.5</td><td>1.0</td><td>1.6</td></tr>
+      <tr><td>50A</td><td>1.2</td><td>0.6</td><td>0.4</td><td>0.7</td><td>1.3</td></tr>
+      <tr><td>63A</td><td>0.9</td><td>0.5</td><td>0.3</td><td>0.6</td><td>0.9</td></tr>
+      <tr><td>80A</td><td>0.7</td><td>0.4</td><td>0.2</td><td>0.4</td><td>0.7</td></tr>
+      <tr><td>100A</td><td>0.6</td><td>0.3</td><td>0.2</td><td>0.3</td><td>0.5</td></tr>
+      <tr><td>125A</td><td>0.5</td><td>0.2</td><td>0.1</td><td>0.2</td><td>0.4</td></tr>
+      <tr><td>160A</td><td>0.4</td><td>0.2</td><td>0.1</td><td>0.2</td><td>0.3</td></tr>
+      <tr><td>200A</td><td>0.3</td><td>0.2</td><td>0.1</td><td>0.1</td><td>0.2</td></tr>
     </table>
-    <p style="font-size:11px; color:var(--text2); margin-top:10px;">Zs = (0.95 × 230) / (I_mag × 5) for B-curve, ×10 for C-curve. Actual values depend on temp correction.</p>
+    <p style="font-size:11px; color:var(--text2); margin-top:10px;">MCB values based on instantaneous (0.1s max) mean tripping current per App B4.5: B=4×In, C=7.5×In, D=12.5×In. Fuse values from IEC 60269.1 mean operating characteristics. Disconnection times: 0.4s for socket/lighting circuits, 5s for other circuits.</p>
   </div>
 </div>
 
@@ -1004,68 +1024,88 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Switchboard
   makeChecklist([
-    {label: 'Main switch isolates all active conductors', hint: 'Clause 2.9.2'},
-    {label: 'Switchboard enclosure is non-combustible or suitably rated', hint: 'Clause 2.9.3'},
-    {label: 'IP rating appropriate for location (IP2X min, IPX4 outdoors)', hint: 'Clause 2.9.4'},
-    {label: 'Cable entry sealed/strain relief provided', hint: 'Clause 2.9.5'},
-    {label: 'Circuit breakers labelled clearly (schedule of circuits on door)', hint: 'Clause 2.9.7'},
-    {label: 'Working space ≥800mm in front of board', hint: 'Clause 2.10.1'},
-    {label: 'Penetrations fire-rated if through fire-rated wall', hint: 'Clause 2.9.8'},
-    {label: 'MEN connection present and correct (neutral to earth link)', hint: 'Clause 5.6.2'},
+    {label: 'Main switch isolates all active conductors', hint: 'Clause 2.3.3'},
+    {label: 'Switchboard location: well-ventilated, moisture protected', hint: 'Clause 2.10.2'},
+    {label: 'Working space ≥1.0m in front (≥0.6m domestic)', hint: 'Clause 2.10.3'},
+    {label: 'Clearance ≥0.6m around open doors/panels', hint: 'Clause 2.10.3'},
+    {label: 'Not located in bathrooms, pool zones, fire exits', hint: 'Clause 2.10.2'},
+    {label: 'Enclosure IP rating appropriate (IP2X min, IPX4 outdoors)', hint: 'Clause 2.10.4'},
+    {label: 'Cable entries sealed — vermin and moisture proof', hint: 'Clause 2.10.5.2'},
+    {label: 'Circuit schedule on door — all circuits clearly labelled', hint: 'Clause 2.10.5.5'},
+    {label: 'MEN connection present, accessible for testing, correctly sized', hint: 'Clause 5.3.5'},
     {label: 'Earth bar bonded to enclosure', hint: 'Clause 5.6.3'},
-    {label: 'Cable segregation — ELV and LV not in same compartment unless insulated', hint: 'Clause 2.9.6'}
+    {label: 'Neutral bar identified — associated active conductors marked', hint: 'Clause 2.10.5.5'},
+    {label: 'Penetrations fire-rated if through fire-rated wall', hint: 'Clause 2.9.8'},
+    {label: 'Cable segregation — ELV and LV not in same compartment', hint: 'Clause 2.10.5.4'}
   ], 'board-checklist');
 
   // Outdoor
   makeChecklist([
-    {label: 'All outdoor socket outlets are RCD protected (≤30mA)', hint: 'Clause 7.3.3'},
-    {label: 'Outdoor outlets have weatherproof cover (IP56 min)', hint: 'Clause 7.3.4'},
+    {label: 'All outdoor socket-outlets have 30mA RCD protection (NZ)', hint: 'Clause 2.6.3.3.2(c)'},
+    {label: 'Outdoor socket-outlets have weatherproof cover (IP56 min)', hint: 'Clause 6'},
     {label: 'Underground cable buried ≥600mm deep (or in conduit ≥500mm)', hint: 'Clause 3.11.2'},
-    {label: 'Underground cable marked with warning tape', hint: 'Clause 3.11.3'},
-    {label: 'Cable suitable for outdoor/wet conditions (e.g. HO7RN-F, XLPE)', hint: 'Clause 3.5'},
-    {label: 'Outdoor lighting fittings rated IP65 or better', hint: 'Clause 7.3.5'},
-    {label: 'Pool/spa equipment ≥2m from water edge (RCD protected)', hint: 'Clause 7.5'},
-    {label: 'Earth electrode accessible for testing', hint: 'Clause 5.6.5'},
-    {label: 'Switches and controls in wet areas at least IP56', hint: 'Clause 7.3.6'}
+    {label: 'Underground cable marked with warning tape at ≥300mm depth', hint: 'Clause 3.11.4'},
+    {label: 'Cable suitable for outdoor/wet conditions (HO7RN-F, XLPE, or SWA)', hint: 'Clause 3.3.2'},
+    {label: 'Outdoor lighting fittings rated IP65 (IPX4 min for under eaves)', hint: 'Clause 6.2.4'},
+    {label: 'Bath/shower: no socket-outlets in Zones 0 or 1', hint: 'Section 6.2'},
+    {label: 'Bath/shower Zone 0: only SELV ≤12V AC / 30V DC, IPX7', hint: 'Section 6.2'},
+    {label: 'Pool/spa: switchboard not in classified zones', hint: 'Section 6.3'},
+    {label: 'Switches in wet areas ≥IP56 (or located outside zones)', hint: 'Section 6'},
+    {label: 'Earth electrode accessible for testing', hint: 'Clause 5.3.6.4'},
+    {label: 'Underground wiring: mechanical protection (conduit/armour) in traffic areas', hint: 'Clause 3.11.5'}
   ], 'outdoor-checklist');
 
   // EV
   makeChecklist([
-    {label: 'EV charger on dedicated circuit', hint: 'Clause 7.6.3'},
-    {label: 'RCD Type A (or Type B if DC leakage possible)', hint: 'Clause 7.6.4'},
-    {label: 'Cable sized for continuous load (no diversity — full rated current)', hint: 'Clause 7.6.5'},
-    {label: 'EVSE (charger) compliant with AS/NZS 60335.2.29 or IEC 61851', hint: 'Clause 7.6.2'},
-    {label: 'Socket outlet for portable EVSE is ≥15A rated', hint: 'Clause 7.6.6'},
-    {label: 'Outdoor EVSE weatherproof (IP54 min)', hint: 'Clause 7.6.7'},
-    {label: 'Provisions for load management if >1 EV charger or limited supply', hint: 'Clause 7.6.8'},
-    {label: 'Earth electrode for EVSE if required by manufacturer', hint: 'Clause 7.6.9'}
+    {label: 'New houses with garage: EV charging facility provided per Cl 7.9.3.1', hint: 'Clause 7.9.3.1'},
+    {label: 'No socket-outlets for Mode 1 charging (NZ prohibition)', hint: 'Clause 7.9.2.2'},
+    {label: 'Mode 2: minimum 20A single-phase socket-outlet provided', hint: 'Clause 7.9.3.2'},
+    {label: 'Mode 3/4: minimum 32A dedicated circuit', hint: 'Clause 7.9.3.3'},
+    {label: 'EV circuit on dedicated final subcircuit', hint: 'Clause 7.9.3'},
+    {label: 'RCD: Type B (IEC 62423) 30mA — or Type A + RDC-DD for Mode 3', hint: 'Clause 7.9.3.3 / App P4.1'},
+    {label: 'RCD interrupts all live conductors (active + neutral)', hint: 'Clause 2.6.2.2.3'},
+    {label: 'Isolating switch provided for EVSE', hint: 'Clause 7.9.3.3'},
+    {label: 'Socket-outlet/EVSE installed ≥800mm above floor', hint: 'Clause 7.9.3.2'},
+    {label: 'Cable sized for continuous load (full rated current, no diversity)', hint: 'Table C1(j)(iv)'},
+    {label: 'EVSE compliant with AS/NZS 60335.2.29 or IEC 61851', hint: 'App P'},
+    {label: 'Socket-outlet types: AS/NZS 3112 (20A), IEC 60309, or IEC 62196', hint: 'App P5.1'},
+    {label: 'Outdoor EVSE weatherproof (IP54 min for socket-outlets)', hint: 'App P3.4'},
+    {label: 'Load management considered if >1 EV charger or limited supply', hint: 'Clause 7.9.3.3 Note'},
+    {label: 'Max demand includes EV at full connected load (Table C1)', hint: 'Table C1(j)(iv)'}
   ], 'ev-checklist');
 
   // Smoke Alarms
   makeChecklist([
     {label: 'At least one smoke alarm on every habitable floor level', hint: 'NZBC F7 / AS 3786'},
     {label: 'Alarms installed within 3m of bedroom doors', hint: 'NZBC F7'},
-    {label: 'Alarms interconnected (hardwired or wireless)', hint: 'NZBC F7 (new/alt builds)'},
+    {label: 'Alarms interconnected (hardwired or wireless) — new/alt builds', hint: 'NZBC F7'},
     {label: 'Alarms powered by 230V mains with battery backup', hint: 'Clause 4.6.2'},
-    {label: 'Alarm connected to a lighting circuit or dedicated circuit', hint: 'Clause 4.6.3'},
+    {label: 'Alarm may connect to lighting circuit or be on dedicated circuit', hint: 'Clause 4.6.3'},
     {label: 'Alarms mounted on ceiling, ≥300mm from walls', hint: 'AS 3786'},
-    {label: 'Not installed in kitchens, bathrooms, or garages (false alarm risk)', hint: 'AS 3786'},
+    {label: 'Not in kitchens, bathrooms, or garages (false alarm risk)', hint: 'AS 3786'},
     {label: 'Photoelectric type (not ionisation — NZ standard)', hint: 'NZBC F7'},
-    {label: 'Alarm replacement date visible (≤10 year lifespan)', hint: 'AS 3786'}
+    {label: 'Alarm replacement date visible (≤10 year lifespan)', hint: 'AS 3786'},
+    {label: 'Smoke alarms NOT classified as safety services (Clause 4.6.1)', hint: 'Clause 4.6.1'}
   ], 'smoke-checklist');
 
   // General
   makeChecklist([
-    {label: 'Main earth and MEN connection verified', hint: 'Clause 5.6'},
-    {label: 'All exposed metal parts bonded', hint: 'Clause 5.7'},
-    {label: 'Earth fault loop impedance within limits', hint: 'Clause 8.3'},
-    {label: 'Insulation resistance ≥1 MΩ (≥0.5 MΩ for existing)', hint: 'Clause 8.4'},
-    {label: 'Polarity check — all switches on active conductors', hint: 'Clause 8.5'},
-    {label: 'Cable colours correct (brown/black/grey active, light blue neutral, green-yellow earth)', hint: 'Clause 3.8'},
-    {label: 'Cable supports at ≤300mm horizontal, ≤400mm vertical', hint: 'Clause 3.9'},
-    {label: 'No joints hidden in walls or floors (accessible junction boxes)', hint: 'Clause 3.10'},
-    {label: 'Socket outlets at correct heights (≥1200mm in early childhood, etc)', hint: 'Clause 4.5'},
-    {label: 'Test tag / COC completed and issued', hint: 'ESR 2024 requirements'}
+    {label: 'Main earth continuity ≤0.5Ω (main earthing conductor to electrode)', hint: 'Clause 8.3.5'},
+    {label: 'Insulation resistance ≥1MΩ @500V DC (≥0.5MΩ for existing)', hint: 'Clause 8.3.6'},
+    {label: 'Polarity correct — no transposed active/neutral, switches on active only', hint: 'Clause 8.3.7'},
+    {label: 'Correct circuit connections — no shorts, no interconnections between circuits', hint: 'Clause 8.3.8'},
+    {label: 'Earth fault-loop impedance (Zs) ≤ Table 8.1 for each circuit', hint: 'Clause 8.3.9'},
+    {label: 'RCD operation verified — test button + IΔn tester', hint: 'Clause 8.3.10 / AS 3017'},
+    {label: 'MEN connection present and correctly sized at main switchboard', hint: 'Clause 5.3.5'},
+    {label: 'All exposed metal parts bonded (equipotential bonding)', hint: 'Clause 5.6'},
+    {label: 'Cable colours: brown active, light blue neutral, green-yellow earth', hint: 'Clause 3.8.3'},
+    {label: 'Cable supports at ≤300mm horizontal, ≤400mm vertical — cables not stressed', hint: 'Clause 3.9.3'},
+    {label: 'No joints hidden in walls or floors — all joints in accessible junction boxes', hint: 'Clause 3.10'},
+    {label: 'Cables in walls ≥50mm from surface, or RCD protected, or earthed armour/covering', hint: 'Clause 3.9.4'},
+    {label: 'Socket-outlets accessible per Clause 4.4.2 (not behind fixed appliances)', hint: 'Clause 4.4.2.1'},
+    {label: 'Heating elements: insulation resistance ≥0.01MΩ', hint: 'Clause 8.3.6'},
+    {label: 'Test results recorded (recommended per Clause 8.3.2)', hint: 'Clause 8.3.2.2'},
+    {label: 'COC / ESC completed and issued', hint: 'ESR 2024'}
   ], 'general-checklist');
 });
 </script>
