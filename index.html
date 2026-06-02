@@ -394,25 +394,80 @@
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>⚡ Max Demand Calculator</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Per AS/NZS 3000 Table C1, C2, C3 — quick residential estimate</p>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 — Table C1 (domestic) &amp; Table C2 (non-domestic)</p>
+    
     <label>Type of Installation</label>
-    <select id="md-type">
+    <select id="md-type" onchange="toggleMdFields()">
       <option value="house">House (standard residential)</option>
-      <option value="flat">Flat / Apartment (≤50m²)</option>
-      <option value="shop">Small Shop / Office</option>
+      <option value="flat">Flat / Apartment (individual unit)</option>
+      <option value="shop">Shop / Office (non-domestic)</option>
     </select>
-    <label>Floor Area (m²) — residential</label>
-    <input type="number" id="md-area" placeholder="e.g. 180" step="any">
-    <label>Number of Power Circuits (RCD protected)</label>
-    <input type="number" id="md-circuits" placeholder="e.g. 6" value="6">
-    <label>Hot Water Cylinder? (kW)</label>
-    <input type="number" id="md-hwc" placeholder="e.g. 3.0" value="3" step="0.1">
-    <label>Cooktop / Range (kW)</label>
-    <input type="number" id="md-range" placeholder="e.g. 6" value="6" step="0.1">
-    <label>Air Conditioning / Heat Pump (kW)</label>
-    <input type="number" id="md-ac" placeholder="e.g. 2.5" value="2.5" step="0.1">
-    <label>EV Charger (kW, if applicable)</label>
-    <input type="number" id="md-ev" placeholder="e.g. 7" value="0" step="0.1">
+
+    <div id="md-domestic-fields">
+      <p style="font-size:11px; color:var(--accent); margin:12px 0 4px; font-weight:600;">Lighting &amp; Socket-Outlets (Table C1)</p>
+      
+      <label>Indoor lighting points <span style="color:var(--text2); font-weight:400;">(track = 2 pts/m, fans &le;150W count)</span></label>
+      <input type="number" id="md-lighting-pts" placeholder="e.g. 25" value="25">
+      
+      <label>Outdoor lighting (W) — only if over 1000W total</label>
+      <input type="number" id="md-outdoor-w" placeholder="e.g. 0" value="0" step="any">
+      
+      <label>10A socket-outlet points <span style="color:var(--text2); font-weight:400;">(double = 2 pts, fixed &le;10A count)</span></label>
+      <input type="number" id="md-socket-pts" placeholder="e.g. 25" value="25">
+      
+      <div class="checkbox-item" style="padding:6px 0">
+        <input type="checkbox" id="md-15a-socket">
+        <label for="md-15a-socket">15A socket-outlet present (+10A) <span class="hint">Table C1(b)(ii)</span></label>
+      </div>
+      <div class="checkbox-item" style="padding:6px 0; border-bottom:none;">
+        <input type="checkbox" id="md-20a-socket">
+        <label for="md-20a-socket">20A socket-outlet present (+15A) <span class="hint">Table C1(b)(iii)</span></label>
+      </div>
+      
+      <p style="font-size:11px; color:var(--accent); margin:12px 0 4px; font-weight:600;">Fixed Appliances (Table C1)</p>
+      
+      <div class="inline-row">
+        <div>
+          <label>Water Heater Type</label>
+          <select id="md-hwc-type">
+            <option value="storage">Storage (full-load)</option>
+            <option value="instant">Instantaneous (33.3%)</option>
+          </select>
+        </div>
+        <div>
+          <label>Water Heater (kW)</label>
+          <input type="number" id="md-hwc" placeholder="e.g. 3" value="3" step="0.1">
+        </div>
+      </div>
+      
+      <label>Cooktop / Range (kW) — 50% Table C1(c) <span style="color:var(--text2); font-weight:400;">(also covers laundry equipment)</span></label>
+      <input type="number" id="md-range" placeholder="e.g. 6" value="6" step="0.1">
+      
+      <label>Fixed Heating / Air Conditioning (kW) — 75% Table C1(d)</label>
+      <input type="number" id="md-ac" placeholder="e.g. 2.5" value="2.5" step="0.1">
+      
+      <label>Clothes Dryer (kW) — if separate from range circuit</label>
+      <input type="number" id="md-dryer" placeholder="e.g. 0" value="0" step="0.1">
+      
+      <label>EV Charger (kW) — full connected load Table C1(j)(iv)</label>
+      <input type="number" id="md-ev" placeholder="e.g. 0" value="0" step="0.1">
+      
+      <label>Spa / Pool Heater (kW) — 75% Table C1(g)</label>
+      <input type="number" id="md-spa" placeholder="e.g. 0" value="0" step="0.1">
+    </div>
+
+    <div id="md-nondomestic-fields" style="display:none">
+      <p style="font-size:11px; color:var(--accent); margin:12px 0 4px; font-weight:600;">Non-Domestic (Table C2 Column 3)</p>
+      <label>Lighting connected load (W)</label>
+      <input type="number" id="md-n-lighting" placeholder="e.g. 5000" value="5000" step="any">
+      <label>10A socket-outlet points</label>
+      <input type="number" id="md-n-sockets" placeholder="e.g. 15" value="15">
+      <label>Highest rated appliance (kW) — cooking, heating, cooling</label>
+      <input type="number" id="md-n-highest" placeholder="e.g. 6" value="6" step="0.1">
+      <label>Remaining appliances — total (kW)</label>
+      <input type="number" id="md-n-remainder" placeholder="e.g. 4" value="4" step="0.1">
+    </div>
+    
     <button class="btn" onclick="calcMaxD()">Calculate Max Demand</button>
     <div id="md-result" class="result-box"></div>
   </div>
@@ -695,42 +750,211 @@ function suggestCable(I, L, phase, loadFactor) {
 }
 
 // ====== MAX DEMAND ======
+function toggleMdFields() {
+  const type = document.getElementById('md-type').value;
+  document.getElementById('md-domestic-fields').style.display = (type === 'house' || type === 'flat') ? 'block' : 'none';
+  document.getElementById('md-nondomestic-fields').style.display = type === 'shop' ? 'block' : 'none';
+}
+
 function calcMaxD() {
-  const area = parseFloat(document.getElementById('md-area').value) || 0;
-  const circuits = parseInt(document.getElementById('md-circuits').value) || 6;
-  const hwc = parseFloat(document.getElementById('md-hwc').value) || 0;
-  const range = parseFloat(document.getElementById('md-range').value) || 0;
-  const ac = parseFloat(document.getElementById('md-ac').value) || 0;
-  const ev = parseFloat(document.getElementById('md-ev').value) || 0;
+  const type = document.getElementById('md-type').value;
   const box = document.getElementById('md-result');
 
-  if (!area) { box.className = 'result-box fail show'; box.innerHTML = 'Enter floor area'; return; }
+  if (type === 'house' || type === 'flat') {
+    calcMaxDDomestic(type, box);
+  } else {
+    calcMaxDNonDomestic(box);
+  }
+}
 
-  // Simplified residential max demand per Table C1
-  const loadBase = Math.min(area * 10, 4000); // 10W/m² + lighting aux up to 4kVA
-  const loadCircuits = circuits * 10; // 10A per circuit diversity
-  const hwcD = Math.min(hwc * 0.75, 3.0); // 75% diversity or 3kW
-  const rangeD = Math.min(range * 0.5 + 2, 8); // 50% + 2, capped 8kW
-  const acD = ac * 0.75; // 75% diversity
-  const evD = ev > 0 ? (ev <= 3.6 ? 0.8 : 1) * ev : 0; // basic diversity
+function calcMaxDDomestic(type, box) {
+  const lightingPts = parseInt(document.getElementById('md-lighting-pts').value) || 0;
+  const outdoorW = parseFloat(document.getElementById('md-outdoor-w').value) || 0;
+  const socketPts = parseInt(document.getElementById('md-socket-pts').value) || 0;
+  const has15A = document.getElementById('md-15a-socket').checked;
+  const has20A = document.getElementById('md-20a-socket').checked;
+  const hwcType = document.getElementById('md-hwc-type').value;
+  const hwcKw = parseFloat(document.getElementById('md-hwc').value) || 0;
+  const rangeKw = parseFloat(document.getElementById('md-range').value) || 0;
+  const acKw = parseFloat(document.getElementById('md-ac').value) || 0;
+  const dryerKw = parseFloat(document.getElementById('md-dryer').value) || 0;
+  const evKw = parseFloat(document.getElementById('md-ev').value) || 0;
+  const spaKw = parseFloat(document.getElementById('md-spa').value) || 0;
 
-  // Also add 10A for general purpose
-  const total = (loadBase + loadCircuits + hwcD + rangeD + acD + evD) / 1000;
+  if (lightingPts === 0 && socketPts === 0 && hwcKw === 0 && rangeKw === 0 && acKw === 0 && evKw === 0) {
+    box.className = 'result-box fail show';
+    box.innerHTML = 'Enter at least one load value';
+    return;
+  }
 
-  box.className = 'result-box show';
-  box.innerHTML = `
-    <div class="big" style="color:var(--accent);">${total.toFixed(1)} kVA</div>
-    <div style="font-size:13px; margin-top:8px;">Estimated max demand</div>
+  const V = 230;
+
+  // Load Group (a)(i) — Indoor lighting per Table C1
+  // 3A for 1-20 pts, +2A per additional 20 pts or part thereof
+  let lightingA = 0;
+  if (lightingPts > 0) {
+    if (lightingPts <= 20) lightingA = 3;
+    else lightingA = 3 + 2 * Math.ceil((lightingPts - 20) / 20);
+  }
+
+  // Load Group (a)(ii) — Outdoor lighting >1000W: 75% connected load
+  let outdoorA = 0;
+  if (outdoorW > 1000) outdoorA = (outdoorW * 0.75) / V;
+
+  // Load Group (b)(i) — 10A socket-outlets per Table C1
+  // 10A for 1-20 pts, +5A per additional 20 pts or part thereof
+  let socketA = 0;
+  if (socketPts > 0) {
+    if (socketPts <= 20) socketA = 10;
+    else socketA = 10 + 5 * Math.ceil((socketPts - 20) / 20);
+  }
+
+  // Load Group (b)(ii) — 15A socket: 10A if present
+  // Load Group (b)(iii) — 20A socket: 15A if present
+  // Note 10: if both 15A and 20A, the increase is 15A total
+  let socket15A = 0, socket20A = 0;
+  if (has15A && has20A) {
+    socket20A = 15; // combined = 15A
+  } else {
+    if (has15A) socket15A = 10;
+    if (has20A) socket20A = 15;
+  }
+
+  // Load Group (c) — Range + cooking + laundry: 50% connected load
+  const rangeTotalKw = rangeKw + dryerKw;
+  const rangeA = (rangeTotalKw * 0.5 * 1000) / V;
+
+  // Load Group (d) — Fixed space heating / AC / sauna: 75% connected load
+  const acA = (acKw * 0.75 * 1000) / V;
+
+  // Load Group (e) — Instantaneous water heater: 33.3% connected load
+  // Load Group (f) — Storage water heater: full-load current
+  let hwcA = 0;
+  if (hwcKw > 0) {
+    if (hwcType === 'instant') {
+      hwcA = (hwcKw * 0.333 * 1000) / V;
+    } else {
+      hwcA = (hwcKw * 1000) / V;
+    }
+  }
+
+  // Load Group (g) — Spa/pool heater: 75% of largest + 25% remainder
+  let spaA = (spaKw * 0.75 * 1000) / V;
+
+  // Load Group (j)(iv) — EV charging: full connected load (single domestic)
+  let evA = (evKw * 1000) / V;
+
+  const totalA = lightingA + outdoorA + socketA + socket15A + socket20A + rangeA + acA + hwcA + spaA + evA;
+  const totalKva = totalA * V / 1000;
+
+  // Build result
+  let html = `<div class="big" style="color:var(--accent);">${totalA.toFixed(1)} A</div>
+    <div style="font-size:13px; margin-top:4px;">${totalKva.toFixed(2)} kVA @ ${V}V · Max Demand per Table C1</div>
     <div style="margin-top:10px; font-size:12px; color:var(--text2); border-top:1px solid var(--border); padding-top:8px;">
-      <div>Lighting & general: ${(loadBase/1000).toFixed(1)} kVA</div>
-      <div>Power circuits (×${circuits}): ${(loadCircuits/1000).toFixed(1)} kVA</div>
-      ${hwc > 0 ? '<div>HWC (diversity): ' + hwcD.toFixed(1) + ' kW</div>' : ''}
-      ${range > 0 ? '<div>Cooktop (diversity): ' + rangeD.toFixed(1) + ' kW</div>' : ''}
-      ${ac > 0 ? '<div>Heat pump (75%): ' + acD.toFixed(1) + ' kW</div>' : ''}
-      ${ev > 0 ? '<div>EV charger (diversified): ' + evD.toFixed(1) + ' kW</div>' : ''}
-      <div style="margin-top:6px;"><strong>Suggested main switch: ${total <= 60 ? '63A' : total <= 80 ? '80A' : total <= 100 ? '100A' : '125A+'}</strong></div>
-    </div>
-  `;
+      <div style="font-weight:600; margin-bottom:4px;">Load Group Breakdown:</div>`;
+
+  if (lightingPts > 0) html += `<div>(a)(i) Lighting (${lightingPts} pts): ${lightingA.toFixed(1)} A</div>`;
+  if (outdoorW > 1000) html += `<div>(a)(ii) Outdoor lighting (${outdoorW}W × 75%): ${outdoorA.toFixed(1)} A</div>`;
+  if (socketPts > 0) html += `<div>(b)(i) 10A sockets (${socketPts} pts): ${socketA.toFixed(1)} A</div>`;
+  if (has15A) html += `<div>(b)(ii) 15A socket: 10.0 A</div>`;
+  if (has20A) html += `<div>(b)(iii) 20A socket: 15.0 A</div>`;
+  if (rangeTotalKw > 0) html += `<div>(c) Range/Dryer (${rangeTotalKw.toFixed(1)}kW × 50%): ${rangeA.toFixed(1)} A</div>`;
+  if (acKw > 0) html += `<div>(d) Heat pump/AC (${acKw.toFixed(1)}kW × 75%): ${acA.toFixed(1)} A</div>`;
+  if (hwcKw > 0) {
+    const hwcLabel = hwcType === 'instant' ? `(${hwcKw.toFixed(1)}kW × 33.3%)` : `(${hwcKw.toFixed(1)}kW storage, full)`;
+    html += `<div>(${hwcType === 'instant' ? 'e' : 'f'}) ${hwcType === 'instant' ? 'Instantaneous' : 'Storage'} HWC ${hwcLabel}: ${hwcA.toFixed(1)} A</div>`;
+  }
+  if (spaKw > 0) html += `<div>(g) Spa/pool (${spaKw.toFixed(1)}kW × 75%): ${spaA.toFixed(1)} A</div>`;
+  if (evKw > 0) html += `<div>(j)(iv) EV charger (${evKw.toFixed(1)}kW, full): ${evA.toFixed(1)} A</div>`;
+
+  // Suggested main switch
+  let msRating = '63A';
+  if (totalA > 63) msRating = '80A';
+  if (totalA > 80) msRating = '100A';
+  if (totalA > 100) msRating = '125A';
+  if (totalA > 125) msRating = '160A';
+
+  html += `<div style="margin-top:8px;"><strong>Suggested main switch: ${msRating}</strong></div>`;
+
+  // Table C5 reference for range circuit
+  if (rangeTotalKw > 0) {
+    const totalRangeW = rangeTotalKw * 1000;
+    let c5Rating = '—';
+    if (totalRangeW <= 5000) c5Rating = '16A MCB';
+    else if (totalRangeW <= 8000) c5Rating = '20A MCB';
+    else if (totalRangeW <= 10000) c5Rating = '25A MCB';
+    else if (totalRangeW <= 13000) c5Rating = '32A MCB';
+    else c5Rating = '40A MCB';
+
+    // Also suggest cable from voltage drop table
+    const rangeI = rangeA;
+    let c5Cable = '2.5 mm²';
+    if (totalRangeW > 6000 || rangeI > 25) c5Cable = '4 mm²';
+    if (totalRangeW > 8000 || rangeI > 32) c5Cable = '6 mm²';
+    if (totalRangeW > 10000 || rangeI > 40) c5Cable = '10 mm²';
+
+    html += `<div style="margin-top:6px; font-size:11px; color:var(--text2);">
+      Table C5 — Range circuit: <strong>${c5Rating}</strong> · Min cable <strong>${c5Cable}</strong>
+    </div>`;
+  }
+
+  html += '</div>';
+  box.className = 'result-box show';
+  box.innerHTML = html;
+}
+
+function calcMaxDNonDomestic(box) {
+  const lightingW = parseFloat(document.getElementById('md-n-lighting').value) || 0;
+  const socketPts = parseInt(document.getElementById('md-n-sockets').value) || 0;
+  const highestKw = parseFloat(document.getElementById('md-n-highest').value) || 0;
+  const remainderKw = parseFloat(document.getElementById('md-n-remainder').value) || 0;
+  const V = 230;
+
+  if (lightingW === 0 && socketPts === 0 && highestKw === 0) {
+    box.className = 'result-box fail show';
+    box.innerHTML = 'Enter at least one load value';
+    return;
+  }
+
+  // Table C2 Column 3 — Shops, offices, factories, schools
+  // Lighting (a): Full connected load
+  const lightingA = lightingW / V;
+
+  // Socket-outlets (b)(i): 1000W first + 750W per additional
+  let socketA = 0;
+  if (socketPts > 0) {
+    const socketW = 1000 + (socketPts - 1) * 750;
+    socketA = socketW / V;
+  }
+
+  // Appliances (c)(i): Full load highest + 75% remainder
+  const highestA = (highestKw * 1000) / V;
+  const remainderA = (remainderKw * 1000 * 0.75) / V;
+
+  const totalA = lightingA + socketA + highestA + remainderA;
+  const totalKva = totalA * V / 1000;
+
+  let html = `<div class="big" style="color:var(--accent);">${totalA.toFixed(1)} A</div>
+    <div style="font-size:13px; margin-top:4px;">${totalKva.toFixed(2)} kVA @ ${V}V · Max Demand per Table C2</div>
+    <div style="margin-top:10px; font-size:12px; color:var(--text2); border-top:1px solid var(--border); padding-top:8px;">
+      <div style="font-weight:600; margin-bottom:4px;">Load Group Breakdown (Table C2 Col 3):</div>`;
+
+  if (lightingW > 0) html += `<div>(a) Lighting (full): ${lightingA.toFixed(1)} A</div>`;
+  if (socketPts > 0) html += `<div>(b)(i) 10A sockets (${socketPts} pts): ${socketA.toFixed(1)} A</div>`;
+  if (highestKw > 0) html += `<div>(c)(i) Highest appliance (${highestKw.toFixed(1)}kW, full): ${highestA.toFixed(1)} A</div>`;
+  if (remainderKw > 0) html += `<div>(c)(i) Remainder (${remainderKw.toFixed(1)}kW × 75%): ${remainderA.toFixed(1)} A</div>`;
+
+  let msRating = '63A';
+  if (totalA > 63) msRating = '80A';
+  if (totalA > 80) msRating = '100A';
+  if (totalA > 100) msRating = '125A';
+  if (totalA > 125) msRating = '160A';
+  if (totalA > 160) msRating = '200A';
+
+  html += `<div style="margin-top:8px;"><strong>Suggested main switch: ${msRating}</strong></div>`;
+  html += '</div>';
+  box.className = 'result-box show';
+  box.innerHTML = html;
 }
 
 // ====== CABLE TAB SWITCH ======
