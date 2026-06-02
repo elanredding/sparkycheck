@@ -1,0 +1,456 @@
+{
+  "standard": {
+    "title": "AS/NZS 3008.1.1:2017",
+    "description": "Electrical installations - Selection of cables - Current-carrying capacity, voltage drop and short-circuit temperature rise - Part 1.1: Cables for alternating voltages up to and including 0.6/1 kV",
+    "reference_ambient_air": 40,
+    "reference_ambient_ground": 25,
+    "conductor_temperature_pvc": 75,
+    "conductor_temperature_xlpe": 90
+  },
+  "installation_methods": {
+    "table_3_1_unenclosed_in_air": {
+      "description": "Schedule of installation methods for cables deemed to have the same current-carrying capacity -- Unenclosed in air",
+      "methods": [
+        {
+          "id": "spaced",
+          "description": "Cables with minimum separation in air, spaced from wall/surface, on ladders/racks/trays/cleats",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 2-4",
+            "three_four_core": "Tables 13-15, Columns 2-4"
+          },
+          "derating_tables": ["Table 22", "Table 23", "Table 24"]
+        },
+        {
+          "id": "touching_clipped_direct",
+          "description": "Cables clipped direct to wall/floor/ceiling, in ventilated trench, in open trunking, buried in plaster/render, in switchboard",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 5-7",
+            "three_four_core": "Tables 13-15, Columns 5-7"
+          },
+          "derating_tables": ["Table 22"]
+        }
+      ]
+    },
+    "table_3_2_enclosed": {
+      "description": "Schedule of installation methods for cables deemed to have the same current-carrying capacity -- Enclosed",
+      "methods": [
+        {
+          "id": "wiring_enclosure_in_air",
+          "description": "Cables in wiring enclosures in air, plaster, masonry, concrete, ventilated trench",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 11-13",
+            "three_four_core": "Tables 13-15, Columns 11-13"
+          },
+          "derating_tables": ["Table 22"]
+        },
+        {
+          "id": "partially_surrounded_thermal_insulation",
+          "description": "Enclosed or unenclosed cables partially surrounded by thermal insulation",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 15-18",
+            "three_four_core": "Tables 13-15, Columns 15-18"
+          },
+          "derating_tables": ["Table 22"]
+        },
+        {
+          "id": "completely_surrounded_thermal_insulation",
+          "description": "Enclosed or unenclosed cables completely surrounded by thermal insulation",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 19-22",
+            "three_four_core": "Tables 13-15, Columns 19-22"
+          },
+          "derating_tables": ["Table 22"]
+        }
+      ]
+    },
+    "table_3_3_buried_direct": {
+      "description": "Schedule of installation methods for cables deemed to have the same current-carrying capacity -- Buried direct in the ground",
+      "methods": [
+        {
+          "id": "buried_direct",
+          "description": "Cables buried direct in ground",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 23-24",
+            "three_four_core": "Tables 13-15, Columns 23-24"
+          },
+          "derating_tables": ["Table 25(1)", "Table 25(2)", "Table 28(1)"]
+        }
+      ]
+    },
+    "table_3_4_underground_wiring_enclosure": {
+      "description": "Schedule of installation methods for cables deemed to have the same current-carrying capacity -- Underground wiring enclosures",
+      "methods": [
+        {
+          "id": "underground_enclosure",
+          "description": "Cables in underground wiring enclosures",
+          "tables_and_columns": {
+            "two_core": "Tables 10-12, Columns 25-27",
+            "three_four_core": "Tables 13-15, Columns 25-27"
+          },
+          "derating_tables": ["Table 26(1)", "Table 26(2)", "Table 28(2)"]
+        }
+      ]
+    }
+  },
+  "current_carrying_capacities": {
+    "table_10": {
+      "title": "TABLE 10 -- Two-core sheathed thermoplastic (V-75 PVC) 75°C",
+      "cable_type": "Two-core sheathed, thermoplastic (V-75 / PVC)",
+      "max_conductor_temperature_celsius": 75,
+      "reference_ambient_air_celsius": 40,
+      "reference_ambient_ground_celsius": 25,
+      "columns": {
+        "col_2_4": "Spaced unenclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_5_7": "Touching clipped direct unenclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_8_10": "Exposed to sun unenclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_11_13": "Wiring enclosure in air enclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_14": "Partially surrounded by thermal insulation, unenclosed: Cu",
+        "col_15": "Partially surrounded by thermal insulation, unenclosed: Al",
+        "col_17": "Partially surrounded by thermal insulation, in wiring enclosure: Cu",
+        "col_18": "Partially surrounded by thermal insulation, in wiring enclosure: Al",
+        "col_19": "Completely surrounded by thermal insulation, unenclosed: Cu",
+        "col_20": "Completely surrounded by thermal insulation, unenclosed: Al",
+        "col_21": "Completely surrounded by thermal insulation, in wiring enclosure: Cu",
+        "col_22": "Completely surrounded by thermal insulation, in wiring enclosure: Al",
+        "col_23": "Buried direct: Cu",
+        "col_24": "Buried direct: Al",
+        "col_25": "Underground wiring enclosure: Cu Solid/Stranded",
+        "col_26": "Underground wiring enclosure: Cu Flexible",
+        "col_27": "Underground wiring enclosure: Al"
+      },
+      "data_copper": [
+        {"size_mm2": 1, "col_2_spaced_cu_ss": 15, "col_3_spaced_cu_flex": 16, "col_5_touching_cu_ss": 14, "col_6_touching_cu_flex": 15, "col_8_sun_cu_ss": 11, "col_9_sun_cu_flex": 12, "col_11_enclosed_cu_ss": 13, "col_12_enclosed_cu_flex": 13, "col_14_partial_unencl": 11, "col_17_partial_encl": 10, "col_19_complete_unencl": 7, "col_21_complete_encl": 6, "col_23_buried": 17, "col_25_ug_encl_ss": 17, "col_26_ug_encl_flex": 18},
+        {"size_mm2": 1.5, "col_2_spaced_cu_ss": 19, "col_3_spaced_cu_flex": 20, "col_5_touching_cu_ss": 18, "col_6_touching_cu_flex": 18, "col_8_sun_cu_ss": 14, "col_9_sun_cu_flex": 14, "col_11_enclosed_cu_ss": 16, "col_12_enclosed_cu_flex": 17, "col_14_partial_unencl": 14, "col_17_partial_encl": 13, "col_19_complete_unencl": 9, "col_21_complete_encl": 8, "col_23_buried": 21, "col_25_ug_encl_ss": 21, "col_26_ug_encl_flex": 22},
+        {"size_mm2": 2.5, "col_2_spaced_cu_ss": 27, "col_3_spaced_cu_flex": 26, "col_5_touching_cu_ss": 26, "col_6_touching_cu_flex": 25, "col_8_sun_cu_ss": 20, "col_9_sun_cu_flex": 19, "col_11_enclosed_cu_ss": 23, "col_12_enclosed_cu_flex": 23, "col_14_partial_unencl": 20, "col_17_partial_encl": 19, "col_19_complete_unencl": 13, "col_21_complete_encl": 12, "col_23_buried": 30, "col_25_ug_encl_ss": 30, "col_26_ug_encl_flex": 29},
+        {"size_mm2": 4, "col_2_spaced_cu_ss": 37, "col_3_spaced_cu_flex": 35, "col_5_touching_cu_ss": 34, "col_6_touching_cu_flex": 33, "col_8_sun_cu_ss": 27, "col_9_sun_cu_flex": 26, "col_11_enclosed_cu_ss": 30, "col_12_enclosed_cu_flex": 29, "col_14_partial_unencl": 27, "col_17_partial_encl": 25, "col_19_complete_unencl": 17, "col_21_complete_encl": 15, "col_23_buried": 39, "col_25_ug_encl_ss": 39, "col_26_ug_encl_flex": 38},
+        {"size_mm2": 6, "col_2_spaced_cu_ss": 46, "col_3_spaced_cu_flex": 45, "col_5_touching_cu_ss": 44, "col_6_touching_cu_flex": 42, "col_8_sun_cu_ss": 34, "col_9_sun_cu_flex": 32, "col_11_enclosed_cu_ss": 39, "col_12_enclosed_cu_flex": 38, "col_14_partial_unencl": 37, "col_17_partial_encl": 32, "col_19_complete_unencl": 22, "col_21_complete_encl": 20, "col_23_buried": 50, "col_25_ug_encl_ss": 50, "col_26_ug_encl_flex": 48},
+        {"size_mm2": 10, "col_2_spaced_cu_ss": 64, "col_3_spaced_cu_flex": 63, "col_5_touching_cu_ss": 60, "col_6_touching_cu_flex": 59, "col_8_sun_cu_ss": 46, "col_9_sun_cu_flex": 45, "col_11_enclosed_cu_ss": 52, "col_12_enclosed_cu_flex": 51, "col_14_partial_unencl": 48, "col_17_partial_encl": 42, "col_19_complete_unencl": 27, "col_21_complete_encl": 24, "col_23_buried": 66, "col_25_ug_encl_ss": 66, "col_26_ug_encl_flex": 65},
+        {"size_mm2": 16, "col_2_spaced_cu_ss": 85, "col_3_spaced_cu_flex": 83, "col_4_spaced_al": 66, "col_5_touching_cu_ss": 80, "col_6_touching_cu_flex": 78, "col_7_touching_al": 62, "col_8_sun_cu_ss": 60, "col_9_sun_cu_flex": 59, "col_10_sun_al": 47, "col_11_enclosed_cu_ss": 68, "col_12_enclosed_cu_flex": 68, "col_13_enclosed_al": 52, "col_14_partial_unencl": 64, "col_17_partial_encl": 54, "col_19_complete_unencl": 35, "col_21_complete_encl": 31, "col_23_buried": 114, "col_24_buried_al": 88, "col_25_ug_encl_ss": 86, "col_26_ug_encl_flex": 85, "col_27_ug_encl_al": 66},
+        {"size_mm2": 25, "col_2_spaced_cu_ss": 113, "col_3_spaced_cu_flex": 110, "col_4_spaced_al": 88, "col_5_touching_cu_ss": 107, "col_6_touching_cu_flex": 104, "col_7_touching_al": 83, "col_8_sun_cu_ss": 79, "col_9_sun_cu_flex": 77, "col_10_sun_al": 62, "col_11_enclosed_cu_ss": 90, "col_12_enclosed_cu_flex": 87, "col_13_enclosed_al": 70, "col_14_partial_unencl": 85, "col_17_partial_encl": 72, "col_19_complete_unencl": 53, "col_21_complete_encl": 45, "col_23_buried": 147, "col_24_buried_al": 114, "col_25_ug_encl_ss": 112, "col_26_ug_encl_flex": 108, "col_27_ug_encl_al": 87},
+        {"size_mm2": 35, "col_2_spaced_cu_ss": 139, "col_3_spaced_cu_flex": 137, "col_4_spaced_al": 108, "col_5_touching_cu_ss": 131, "col_6_touching_cu_flex": 128, "col_7_touching_al": 101, "col_8_sun_cu_ss": 97, "col_9_sun_cu_flex": 94, "col_10_sun_al": 75, "col_11_enclosed_cu_ss": 112, "col_12_enclosed_cu_flex": 109, "col_13_enclosed_al": 87, "col_14_partial_unencl": 105, "col_17_partial_encl": 90, "col_19_complete_unencl": 65, "col_21_complete_encl": 56, "col_23_buried": 178, "col_24_buried_al": 138, "col_25_ug_encl_ss": 136, "col_26_ug_encl_flex": 133, "col_27_ug_encl_al": 106},
+        {"size_mm2": 50, "col_2_spaced_cu_ss": 170, "col_3_spaced_cu_flex": 171, "col_4_spaced_al": 132, "col_5_touching_cu_ss": 159, "col_6_touching_cu_flex": 161, "col_7_touching_al": 124, "col_8_sun_cu_ss": 116, "col_9_sun_cu_flex": 117, "col_10_sun_al": 90, "col_11_enclosed_cu_ss": 133, "col_12_enclosed_cu_flex": 134, "col_13_enclosed_al": 103, "col_14_partial_unencl": 127, "col_17_partial_encl": 107, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 211, "col_24_buried_al": 163, "col_25_ug_encl_ss": 162, "col_26_ug_encl_flex": 163, "col_27_ug_encl_al": 126},
+        {"size_mm2": 70, "col_2_spaced_cu_ss": 215, "col_3_spaced_cu_flex": 215, "col_4_spaced_al": 167, "col_5_touching_cu_ss": 201, "col_6_touching_cu_flex": 202, "col_7_touching_al": 156, "col_8_sun_cu_ss": 145, "col_9_sun_cu_flex": 145, "col_10_sun_al": 112, "col_11_enclosed_cu_ss": 170, "col_12_enclosed_cu_flex": 169, "col_13_enclosed_al": 132, "col_14_partial_unencl": 161, "col_15_partial_unencl_al": 125, "col_17_partial_encl": 136, "col_18_partial_encl_al": 105, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 259, "col_24_buried_al": 201, "col_25_ug_encl_ss": 202, "col_26_ug_encl_flex": 202, "col_27_ug_encl_al": 157},
+        {"size_mm2": 95, "col_2_spaced_cu_ss": 265, "col_3_spaced_cu_flex": 257, "col_4_spaced_al": 205, "col_5_touching_cu_ss": 248, "col_6_touching_cu_flex": 241, "col_7_touching_al": 192, "col_8_sun_cu_ss": 175, "col_9_sun_cu_flex": 170, "col_10_sun_al": 136, "col_11_enclosed_cu_ss": 204, "col_12_enclosed_cu_flex": 198, "col_13_enclosed_al": 158, "col_14_partial_unencl": 198, "col_15_partial_unencl_al": 154, "col_17_partial_encl": 163, "col_18_partial_encl_al": 127, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 311, "col_24_buried_al": 241, "col_25_ug_encl_ss": 243, "col_26_ug_encl_flex": 236, "col_27_ug_encl_al": 189},
+        {"size_mm2": 120, "col_2_spaced_cu_ss": 307, "col_3_spaced_cu_flex": 304, "col_4_spaced_al": 239, "col_5_touching_cu_ss": 288, "col_6_touching_cu_flex": 285, "col_7_touching_al": 224, "col_8_sun_cu_ss": 202, "col_9_sun_cu_flex": 199, "col_10_sun_al": 157, "col_11_enclosed_cu_ss": 241, "col_12_enclosed_cu_flex": 236, "col_13_enclosed_al": 187, "col_14_partial_unencl": 230, "col_15_partial_unencl_al": 179, "col_17_partial_encl": 192, "col_18_partial_encl_al": 150, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 355, "col_24_buried_al": 276, "col_25_ug_encl_ss": 282, "col_26_ug_encl_flex": 277, "col_27_ug_encl_al": 220},
+        {"size_mm2": 150, "col_2_spaced_cu_ss": 351, "col_3_spaced_cu_flex": 348, "col_4_spaced_al": 272, "col_5_touching_cu_ss": 328, "col_6_touching_cu_flex": 326, "col_7_touching_al": 255, "col_8_sun_cu_ss": 227, "col_9_sun_cu_flex": 225, "col_10_sun_al": 177, "col_11_enclosed_cu_ss": 271, "col_12_enclosed_cu_flex": 267, "col_13_enclosed_al": 210, "col_14_partial_unencl": 263, "col_15_partial_unencl_al": 204, "col_17_partial_encl": 217, "col_18_partial_encl_al": 168, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 398, "col_24_buried_al": 309, "col_25_ug_encl_ss": 317, "col_26_ug_encl_flex": 313, "col_27_ug_encl_al": 246},
+        {"size_mm2": 185, "col_2_spaced_cu_ss": 403, "col_3_spaced_cu_flex": 395, "col_4_spaced_al": 314, "col_5_touching_cu_ss": 377, "col_6_touching_cu_flex": 370, "col_7_touching_al": 294, "col_8_sun_cu_ss": 258, "col_9_sun_cu_flex": 252, "col_10_sun_al": 201, "col_11_enclosed_cu_ss": 313, "col_12_enclosed_cu_flex": 305, "col_13_enclosed_al": 244, "col_14_partial_unencl": 302, "col_15_partial_unencl_al": 235, "col_17_partial_encl": 250, "col_18_partial_encl_al": 195, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 449, "col_24_buried_al": 350, "col_25_ug_encl_ss": 363, "col_26_ug_encl_flex": 353, "col_27_ug_encl_al": 283},
+        {"size_mm2": 240, "col_2_spaced_cu_ss": 477, "col_3_spaced_cu_flex": 470, "col_4_spaced_al": 373, "col_5_touching_cu_ss": 446, "col_6_touching_cu_flex": 439, "col_7_touching_al": 349, "col_8_sun_cu_ss": 300, "col_9_sun_cu_flex": 294, "col_10_sun_al": 235, "col_11_enclosed_cu_ss": 364, "col_12_enclosed_cu_flex": 368, "col_13_enclosed_al": 285, "col_14_partial_unencl": 357, "col_15_partial_unencl_al": 279, "col_17_partial_encl": 291, "col_18_partial_encl_al": 228, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 520, "col_24_buried_al": 406, "col_25_ug_encl_ss": 421, "col_26_ug_encl_flex": 419, "col_27_ug_encl_al": 329},
+        {"size_mm2": 300, "col_2_spaced_cu_ss": 547, "col_3_spaced_cu_flex": 537, "col_4_spaced_al": 429, "col_5_touching_cu_ss": 511, "col_6_touching_cu_flex": 502, "col_7_touching_al": 401, "col_8_sun_cu_ss": 339, "col_9_sun_cu_flex": 331, "col_10_sun_al": 266, "col_11_enclosed_cu_ss": 424, "col_12_enclosed_cu_flex": 415, "col_13_enclosed_al": 333, "col_14_partial_unencl": 409, "col_15_partial_unencl_al": 321, "col_17_partial_encl": 340, "col_18_partial_encl_al": 266, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 586, "col_24_buried_al": 460, "col_25_ug_encl_ss": 483, "col_26_ug_encl_flex": 472, "col_27_ug_encl_al": 379},
+        {"size_mm2": 400, "col_2_spaced_cu_ss": 631, "col_3_spaced_cu_flex": 636, "col_4_spaced_al": 500, "col_5_touching_cu_ss": 589, "col_6_touching_cu_flex": 593, "col_7_touching_al": 467, "col_8_sun_cu_ss": 384, "col_9_sun_cu_flex": 384, "col_10_sun_al": 305, "col_11_enclosed_cu_ss": 482, "col_12_enclosed_cu_flex": 500, "col_13_enclosed_al": 383, "col_14_partial_unencl": 471, "col_15_partial_unencl_al": 373, "col_17_partial_encl": 386, "col_18_partial_encl_al": 306, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 663, "col_24_buried_al": 526, "col_25_ug_encl_ss": 548, "col_26_ug_encl_flex": 560, "col_27_ug_encl_al": 434},
+        {"size_mm2": 500, "col_2_spaced_cu_ss": 716, "col_3_spaced_cu_flex": 728, "col_4_spaced_al": 575, "col_5_touching_cu_ss": 668, "col_6_touching_cu_flex": 678, "col_7_touching_al": 536, "col_8_sun_cu_ss": 429, "col_9_sun_cu_flex": 431, "col_10_sun_al": 345, "col_11_enclosed_cu_ss": 561, "col_12_enclosed_cu_flex": 564, "col_13_enclosed_al": 451, "col_14_partial_unencl": 534, "col_15_partial_unencl_al": 429, "col_17_partial_encl": 449, "col_18_partial_encl_al": 360, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 741, "col_24_buried_al": 595, "col_25_ug_encl_ss": 628, "col_26_ug_encl_flex": 629, "col_27_ug_encl_al": 504}
+      ]
+    },
+    "table_13": {
+      "title": "TABLE 13 -- Three-core and four-core sheathed thermoplastic (V-75 PVC) 75°C",
+      "cable_type": "Three-core and four-core sheathed, thermoplastic (V-75 / PVC)",
+      "max_conductor_temperature_celsius": 75,
+      "reference_ambient_air_celsius": 40,
+      "reference_ambient_ground_celsius": 25,
+      "columns": {
+        "col_2_4": "Spaced unenclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_5_7": "Touching clipped direct unenclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_8_10": "Exposed to sun unenclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_11_13": "Wiring enclosure in air enclosed: Cu Solid/Stranded / Cu Flexible / Al",
+        "col_14": "Partially surrounded by thermal insulation, unenclosed: Cu",
+        "col_15": "Partially surrounded by thermal insulation, unenclosed: Al",
+        "col_17": "Partially surrounded by thermal insulation, in wiring enclosure: Cu",
+        "col_18": "Partially surrounded by thermal insulation, in wiring enclosure: Al",
+        "col_19": "Completely surrounded by thermal insulation, unenclosed: Cu",
+        "col_20": "Completely surrounded by thermal insulation, unenclosed: Al",
+        "col_21": "Completely surrounded by thermal insulation, in wiring enclosure: Cu",
+        "col_22": "Completely surrounded by thermal insulation, in wiring enclosure: Al",
+        "col_23": "Buried direct: Cu",
+        "col_24": "Buried direct: Al",
+        "col_25": "Underground wiring enclosure: Cu Solid/Stranded",
+        "col_26": "Underground wiring enclosure: Cu Flexible",
+        "col_27": "Underground wiring enclosure: Al"
+      },
+      "data_copper": [
+        {"size_mm2": 1, "col_2_spaced_cu_ss": 13, "col_3_spaced_cu_flex": 13, "col_5_touching_cu_ss": 12, "col_6_touching_cu_flex": 13, "col_8_sun_cu_ss": 9, "col_9_sun_cu_flex": 10, "col_11_enclosed_cu_ss": 11, "col_12_enclosed_cu_flex": 11, "col_14_partial_unencl": 9, "col_17_partial_encl": 9, "col_19_complete_unencl": 6, "col_21_complete_encl": 5, "col_23_buried": 14, "col_25_ug_encl_ss": 14, "col_26_ug_encl_flex": 15},
+        {"size_mm2": 1.5, "col_2_spaced_cu_ss": 16, "col_3_spaced_cu_flex": 17, "col_5_touching_cu_ss": 15, "col_6_touching_cu_flex": 16, "col_8_sun_cu_ss": 12, "col_9_sun_cu_flex": 12, "col_11_enclosed_cu_ss": 14, "col_12_enclosed_cu_flex": 14, "col_14_partial_unencl": 12, "col_17_partial_encl": 11, "col_19_complete_unencl": 8, "col_21_complete_encl": 7, "col_23_buried": 18, "col_25_ug_encl_ss": 18, "col_26_ug_encl_flex": 18},
+        {"size_mm2": 2.5, "col_2_spaced_cu_ss": 23, "col_3_spaced_cu_flex": 22, "col_5_touching_cu_ss": 22, "col_6_touching_cu_flex": 21, "col_8_sun_cu_ss": 17, "col_9_sun_cu_flex": 16, "col_11_enclosed_cu_ss": 20, "col_12_enclosed_cu_flex": 19, "col_14_partial_unencl": 17, "col_17_partial_encl": 16, "col_19_complete_unencl": 11, "col_21_complete_encl": 10, "col_23_buried": 25, "col_25_ug_encl_ss": 25, "col_26_ug_encl_flex": 24},
+        {"size_mm2": 4, "col_2_spaced_cu_ss": 31, "col_3_spaced_cu_flex": 30, "col_5_touching_cu_ss": 29, "col_6_touching_cu_flex": 28, "col_8_sun_cu_ss": 23, "col_9_sun_cu_flex": 22, "col_11_enclosed_cu_ss": 25, "col_12_enclosed_cu_flex": 24, "col_14_partial_unencl": 23, "col_17_partial_encl": 20, "col_19_complete_unencl": 15, "col_21_complete_encl": 13, "col_23_buried": 33, "col_25_ug_encl_ss": 33, "col_26_ug_encl_flex": 32},
+        {"size_mm2": 6, "col_2_spaced_cu_ss": 40, "col_3_spaced_cu_flex": 38, "col_5_touching_cu_ss": 37, "col_6_touching_cu_flex": 36, "col_8_sun_cu_ss": 29, "col_9_sun_cu_flex": 28, "col_11_enclosed_cu_ss": 33, "col_12_enclosed_cu_flex": 32, "col_14_partial_unencl": 30, "col_17_partial_encl": 26, "col_19_complete_unencl": 19, "col_21_complete_encl": 17, "col_23_buried": 42, "col_25_ug_encl_ss": 42, "col_26_ug_encl_flex": 40},
+        {"size_mm2": 10, "col_2_spaced_cu_ss": 54, "col_3_spaced_cu_flex": 54, "col_5_touching_cu_ss": 51, "col_6_touching_cu_flex": 51, "col_8_sun_cu_ss": 39, "col_9_sun_cu_flex": 38, "col_11_enclosed_cu_ss": 44, "col_12_enclosed_cu_flex": 43, "col_14_partial_unencl": 41, "col_17_partial_encl": 35, "col_19_complete_unencl": 25, "col_21_complete_encl": 22, "col_23_buried": 55, "col_25_ug_encl_ss": 55, "col_26_ug_encl_flex": 54},
+        {"size_mm2": 16, "col_2_spaced_cu_ss": 72, "col_3_spaced_cu_flex": 71, "col_4_spaced_al": 56, "col_5_touching_cu_ss": 68, "col_6_touching_cu_flex": 67, "col_7_touching_al": 53, "col_8_sun_cu_ss": 51, "col_9_sun_cu_flex": 50, "col_10_sun_al": 40, "col_11_enclosed_cu_ss": 58, "col_12_enclosed_cu_flex": 57, "col_13_enclosed_al": 45, "col_14_partial_unencl": 54, "col_17_partial_encl": 47, "col_19_complete_unencl": 34, "col_21_complete_encl": 29, "col_23_buried": 96, "col_24_buried_al": 75, "col_25_ug_encl_ss": 73, "col_26_ug_encl_flex": 71, "col_27_ug_encl_al": 56},
+        {"size_mm2": 25, "col_2_spaced_cu_ss": 97, "col_3_spaced_cu_flex": 94, "col_4_spaced_al": 75, "col_5_touching_cu_ss": 91, "col_6_touching_cu_flex": 89, "col_7_touching_al": 71, "col_8_sun_cu_ss": 67, "col_9_sun_cu_flex": 65, "col_10_sun_al": 52, "col_11_enclosed_cu_ss": 76, "col_12_enclosed_cu_flex": 73, "col_13_enclosed_al": 59, "col_14_partial_unencl": 73, "col_17_partial_encl": 60, "col_19_complete_unencl": 46, "col_21_complete_encl": 38, "col_23_buried": 125, "col_24_buried_al": 97, "col_25_ug_encl_ss": 94, "col_26_ug_encl_flex": 91, "col_27_ug_encl_al": 73},
+        {"size_mm2": 35, "col_2_spaced_cu_ss": 120, "col_3_spaced_cu_flex": 117, "col_4_spaced_al": 93, "col_5_touching_cu_ss": 112, "col_6_touching_cu_flex": 110, "col_7_touching_al": 87, "col_8_sun_cu_ss": 82, "col_9_sun_cu_flex": 80, "col_10_sun_al": 64, "col_11_enclosed_cu_ss": 94, "col_12_enclosed_cu_flex": 92, "col_13_enclosed_al": 73, "col_14_partial_unencl": 90, "col_17_partial_encl": 75, "col_19_complete_unencl": 56, "col_21_complete_encl": 47, "col_23_buried": 150, "col_24_buried_al": 117, "col_25_ug_encl_ss": 114, "col_26_ug_encl_flex": 112, "col_27_ug_encl_al": 89},
+        {"size_mm2": 50, "col_2_spaced_cu_ss": 146, "col_3_spaced_cu_flex": 148, "col_4_spaced_al": 113, "col_5_touching_cu_ss": 137, "col_6_touching_cu_flex": 138, "col_7_touching_al": 106, "col_8_sun_cu_ss": 99, "col_9_sun_cu_flex": 100, "col_10_sun_al": 77, "col_11_enclosed_cu_ss": 112, "col_12_enclosed_cu_flex": 112, "col_13_enclosed_al": 87, "col_14_partial_unencl": 109, "col_17_partial_encl": 89, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 178, "col_24_buried_al": 138, "col_25_ug_encl_ss": 136, "col_26_ug_encl_flex": 137, "col_27_ug_encl_al": 105},
+        {"size_mm2": 70, "col_2_spaced_cu_ss": 185, "col_3_spaced_cu_flex": 185, "col_4_spaced_al": 143, "col_5_touching_cu_ss": 172, "col_6_touching_cu_flex": 173, "col_7_touching_al": 134, "col_8_sun_cu_ss": 123, "col_9_sun_cu_flex": 123, "col_10_sun_al": 96, "col_11_enclosed_cu_ss": 142, "col_12_enclosed_cu_flex": 142, "col_13_enclosed_al": 111, "col_14_partial_unencl": 138, "col_15_partial_unencl_al": 107, "col_17_partial_encl": 114, "col_18_partial_encl_al": 88, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 219, "col_24_buried_al": 170, "col_25_ug_encl_ss": 170, "col_26_ug_encl_flex": 172, "col_27_ug_encl_al": 137},
+        {"size_mm2": 95, "col_2_spaced_cu_ss": 228, "col_3_spaced_cu_flex": 222, "col_4_spaced_al": 177, "col_5_touching_cu_ss": 213, "col_6_touching_cu_flex": 207, "col_7_touching_al": 165, "col_8_sun_cu_ss": 150, "col_9_sun_cu_flex": 145, "col_10_sun_al": 116, "col_11_enclosed_cu_ss": 177, "col_12_enclosed_cu_flex": 172, "col_13_enclosed_al": 137, "col_14_partial_unencl": 170, "col_15_partial_unencl_al": 132, "col_17_partial_encl": 142, "col_18_partial_encl_al": 110, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 263, "col_24_buried_al": 204, "col_25_ug_encl_ss": 208, "col_26_ug_encl_flex": 199, "col_27_ug_encl_al": 157},
+        {"size_mm2": 120, "col_2_spaced_cu_ss": 265, "col_3_spaced_cu_flex": 262, "col_4_spaced_al": 206, "col_5_touching_cu_ss": 247, "col_6_touching_cu_flex": 244, "col_7_touching_al": 192, "col_8_sun_cu_ss": 172, "col_9_sun_cu_flex": 169, "col_10_sun_al": 134, "col_11_enclosed_cu_ss": 202, "col_12_enclosed_cu_flex": 199, "col_13_enclosed_al": 157, "col_14_partial_unencl": 198, "col_15_partial_unencl_al": 154, "col_17_partial_encl": 162, "col_18_partial_encl_al": 126, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 300, "col_24_buried_al": 233, "col_25_ug_encl_ss": 237, "col_26_ug_encl_flex": 229, "col_27_ug_encl_al": 177},
+        {"size_mm2": 150, "col_2_spaced_cu_ss": 303, "col_3_spaced_cu_flex": 301, "col_4_spaced_al": 235, "col_5_touching_cu_ss": 282, "col_6_touching_cu_flex": 280, "col_7_touching_al": 219, "col_8_sun_cu_ss": 194, "col_9_sun_cu_flex": 192, "col_10_sun_al": 151, "col_11_enclosed_cu_ss": 228, "col_12_enclosed_cu_flex": 229, "col_13_enclosed_al": 177, "col_14_partial_unencl": 226, "col_15_partial_unencl_al": 175, "col_17_partial_encl": 182, "col_18_partial_encl_al": 142, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 336, "col_24_buried_al": 261, "col_25_ug_encl_ss": 266, "col_26_ug_encl_flex": 257, "col_27_ug_encl_al": 206},
+        {"size_mm2": 185, "col_2_spaced_cu_ss": 348, "col_3_spaced_cu_flex": 342, "col_4_spaced_al": 272, "col_5_touching_cu_ss": 324, "col_6_touching_cu_flex": 318, "col_7_touching_al": 253, "col_8_sun_cu_ss": 220, "col_9_sun_cu_flex": 215, "col_10_sun_al": 172, "col_11_enclosed_cu_ss": 263, "col_12_enclosed_cu_flex": 257, "col_13_enclosed_al": 206, "col_14_partial_unencl": 259, "col_15_partial_unencl_al": 203, "col_17_partial_encl": 211, "col_18_partial_encl_al": 165, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 379, "col_24_buried_al": 296, "col_25_ug_encl_ss": 304, "col_26_ug_encl_flex": 296, "col_27_ug_encl_al": 237},
+        {"size_mm2": 240, "col_2_spaced_cu_ss": 412, "col_3_spaced_cu_flex": 407, "col_4_spaced_al": 323, "col_5_touching_cu_ss": 383, "col_6_touching_cu_flex": 378, "col_7_touching_al": 301, "col_8_sun_cu_ss": 256, "col_9_sun_cu_flex": 251, "col_10_sun_al": 200, "col_11_enclosed_cu_ss": 316, "col_12_enclosed_cu_flex": 309, "col_13_enclosed_al": 248, "col_14_partial_unencl": 307, "col_15_partial_unencl_al": 240, "col_17_partial_encl": 253, "col_18_partial_encl_al": 198, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 438, "col_24_buried_al": 344, "col_25_ug_encl_ss": 359, "col_26_ug_encl_flex": 351, "col_27_ug_encl_al": 281},
+        {"size_mm2": 300, "col_2_spaced_cu_ss": 472, "col_3_spaced_cu_flex": 464, "col_4_spaced_al": 372, "col_5_touching_cu_ss": 438, "col_6_touching_cu_flex": 430, "col_7_touching_al": 345, "col_8_sun_cu_ss": 288, "col_9_sun_cu_flex": 282, "col_10_sun_al": 227, "col_11_enclosed_cu_ss": null, "col_12_enclosed_cu_flex": null, "col_13_enclosed_al": null, "col_14_partial_unencl": null, "col_15_partial_unencl_al": null, "col_17_partial_encl": null, "col_18_partial_encl_al": null, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 493, "col_24_buried_al": 388, "col_25_ug_encl_ss": 404, "col_26_ug_encl_flex": null, "col_27_ug_encl_al": null},
+        {"size_mm2": 400, "col_2_spaced_cu_ss": 544, "col_3_spaced_cu_flex": 549, "col_4_spaced_al": 434, "col_5_touching_cu_ss": 504, "col_6_touching_cu_flex": 508, "col_7_touching_al": 402, "col_8_sun_cu_ss": 326, "col_9_sun_cu_flex": 326, "col_10_sun_al": 260, "col_11_enclosed_cu_ss": null, "col_12_enclosed_cu_flex": null, "col_13_enclosed_al": null, "col_14_partial_unencl": null, "col_15_partial_unencl_al": null, "col_17_partial_encl": null, "col_18_partial_encl_al": null, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 557, "col_24_buried_al": 444, "col_25_ug_encl_ss": 468, "col_26_ug_encl_flex": null, "col_27_ug_encl_al": null},
+        {"size_mm2": 500, "col_2_spaced_cu_ss": 616, "col_3_spaced_cu_flex": 627, "col_4_spaced_al": 498, "col_5_touching_cu_ss": 571, "col_6_touching_cu_flex": 580, "col_7_touching_al": 461, "col_8_sun_cu_ss": 363, "col_9_sun_cu_flex": 365, "col_10_sun_al": 294, "col_11_enclosed_cu_ss": null, "col_12_enclosed_cu_flex": null, "col_13_enclosed_al": null, "col_14_partial_unencl": null, "col_15_partial_unencl_al": null, "col_17_partial_encl": null, "col_18_partial_encl_al": null, "col_19_complete_unencl": null, "col_21_complete_encl": null, "col_23_buried": 620, "col_24_buried_al": 501, "col_25_ug_encl_ss": 522, "col_26_ug_encl_flex": 523, "col_27_ug_encl_al": 422}
+      ]
+    }
+  },
+  "voltage_drop": {
+    "table_42": {
+      "title": "TABLE 42 -- Three-phase voltage drop (Vc) at 50 Hz, Two-core sheathed copper conductors",
+      "description": "Single-phase voltage drop = three-phase value x 1.155. Values apply to balanced three-phase circuits with no neutral current.",
+      "cable_type": "Two-core sheathed copper conductors",
+      "columns": {
+        "45_max": "mV/A.m at 45°C, unity power factor (Max.)",
+        "45_08pf": "mV/A.m at 45°C, 0.8 power factor",
+        "60_max": "mV/A.m at 60°C, unity power factor (Max.)",
+        "60_08pf": "mV/A.m at 60°C, 0.8 power factor",
+        "75_max": "mV/A.m at 75°C, unity power factor (Max.)",
+        "75_08pf": "mV/A.m at 75°C, 0.8 power factor",
+        "90_max": "mV/A.m at 90°C, unity power factor (Max.)",
+        "90_08pf": "mV/A.m at 90°C, 0.8 power factor",
+        "110_max": "mV/A.m at 110°C, unity power factor (Max.)",
+        "110_08pf": "mV/A.m at 110°C, 0.8 power factor"
+      },
+      "data": [
+        {"size_mm2": 1, "45_max": 40.3, "45_08pf": 40.3, "60_max": 42.5, "60_08pf": 42.5, "75_max": 44.7, "75_08pf": 44.7, "90_max": 46.8, "90_08pf": 46.8, "110_max": 49.7, "110_08pf": 49.7},
+        {"size_mm2": 1.5, "45_max": 25.9, "45_08pf": 25.9, "60_max": 27.3, "60_08pf": 27.3, "75_max": 28.6, "75_08pf": 28.6, "90_max": 30.0, "90_08pf": 30.0, "110_max": 31.9, "110_08pf": 31.9},
+        {"size_mm2": 2.5, "45_max": 14.1, "45_08pf": 14.1, "60_max": 14.9, "60_08pf": 14.9, "75_max": 15.6, "75_08pf": 15.6, "90_max": 16.4, "90_08pf": 16.4, "110_max": 17.4, "110_08pf": 17.4},
+        {"size_mm2": 4, "45_max": 8.77, "45_08pf": 8.77, "60_max": 9.24, "60_08pf": 9.24, "75_max": 9.71, "75_08pf": 9.71, "90_max": 10.2, "90_08pf": 10.2, "110_max": 10.8, "110_08pf": 10.8},
+        {"size_mm2": 6, "45_max": 5.86, "45_08pf": 5.86, "60_max": 6.18, "60_08pf": 6.18, "75_max": 6.49, "75_08pf": 6.49, "90_max": 6.80, "90_08pf": 6.80, "110_max": 7.22, "110_08pf": 7.22},
+        {"size_mm2": 10, "45_max": 3.49, "45_08pf": 3.49, "60_max": 3.67, "60_08pf": 3.67, "75_max": 3.86, "75_08pf": 3.86, "90_max": 4.05, "90_08pf": 4.05, "110_max": 4.29, "110_08pf": 4.29},
+        {"size_mm2": 16, "45_max": 2.19, "45_08pf": 2.19, "60_max": 2.31, "60_08pf": 2.31, "75_max": 2.43, "75_08pf": 2.43, "90_max": 2.55, "90_08pf": 2.55, "110_max": 2.70, "110_08pf": 2.70},
+        {"size_mm2": 25, "45_max": 1.39, "45_08pf": 1.39, "60_max": 1.47, "60_08pf": 1.47, "75_max": 1.54, "75_08pf": 1.54, "90_max": 1.61, "90_08pf": 1.61, "110_max": 1.71, "110_08pf": 1.71},
+        {"size_mm2": 35, "45_max": 1.01, "45_08pf": 1.01, "60_max": 1.06, "60_08pf": 1.06, "75_max": 1.11, "75_08pf": 1.11, "90_max": 1.17, "90_08pf": 1.17, "110_max": 1.24, "110_08pf": 1.24},
+        {"size_mm2": 50, "45_max": 0.751, "45_08pf": 0.751, "60_max": 0.790, "60_08pf": 0.790, "75_max": 0.829, "75_08pf": 0.829, "90_max": 0.868, "90_08pf": 0.868, "110_max": 0.920, "110_08pf": 0.920},
+        {"size_mm2": 70, "45_max": 0.530, "45_08pf": 0.530, "60_max": 0.556, "60_08pf": 0.556, "75_max": 0.583, "75_08pf": 0.583, "90_max": 0.609, "90_08pf": 0.609, "110_max": 0.645, "110_08pf": 0.645},
+        {"size_mm2": 95, "45_max": 0.394, "45_08pf": 0.394, "60_max": 0.413, "60_08pf": 0.413, "75_max": 0.431, "75_08pf": 0.431, "90_max": 0.450, "90_08pf": 0.450, "110_max": 0.475, "110_08pf": 0.475},
+        {"size_mm2": 120, "45_max": 0.323, "45_08pf": 0.323, "60_max": 0.337, "60_08pf": 0.337, "75_max": 0.351, "75_08pf": 0.351, "90_max": 0.366, "90_08pf": 0.366, "110_max": 0.385, "110_08pf": 0.385},
+        {"size_mm2": 150, "45_max": 0.274, "45_08pf": 0.274, "60_max": 0.285, "60_08pf": 0.285, "75_max": 0.296, "75_08pf": 0.296, "90_max": 0.307, "90_08pf": 0.307, "110_max": 0.322, "110_08pf": 0.322},
+        {"size_mm2": 185, "45_max": 0.234, "45_08pf": 0.234, "60_max": 0.242, "60_08pf": 0.242, "75_max": 0.251, "75_08pf": 0.251, "90_max": 0.259, "90_08pf": 0.259, "110_max": 0.271, "110_08pf": 0.271},
+        {"size_mm2": 240, "45_max": 0.198, "45_08pf": 0.198, "60_max": 0.204, "60_08pf": 0.204, "75_max": 0.210, "75_08pf": 0.210, "90_max": 0.216, "90_08pf": 0.216, "110_max": 0.224, "110_08pf": 0.224},
+        {"size_mm2": 300, "45_max": 0.178, "45_08pf": 0.175, "60_max": 0.182, "60_08pf": 0.180, "75_max": 0.186, "75_08pf": 0.185, "90_max": 0.190, "90_08pf": 0.189, "110_max": 0.196, "110_08pf": 0.196},
+        {"size_mm2": 400, "45_max": 0.162, "45_08pf": 0.157, "60_max": 0.165, "60_08pf": 0.160, "75_max": 0.168, "75_08pf": 0.164, "90_max": 0.171, "90_08pf": 0.167, "110_max": 0.175, "110_08pf": 0.172},
+        {"size_mm2": 500, "45_max": 0.152, "45_08pf": 0.143, "60_max": 0.154, "60_08pf": 0.146, "75_max": 0.156, "75_08pf": 0.148, "90_max": 0.158, "90_08pf": 0.151, "110_max": 0.160, "110_08pf": 0.155}
+      ]
+    }
+  },
+  "ambient_temperature_derating": {
+    "table_27_1_air": {
+      "title": "TABLE 27(1) -- Rating factors for air and concrete slab ambient temperatures",
+      "description": "Cables in air or heated concrete slabs. Reference ambient: 40°C. Multiply current-carrying capacity by these factors.",
+      "reference_ambient_celsius": 40,
+      "data": [
+        {"conductor_temp_celsius": 75, "insulation": "PVC (V-75)", "factors": {"15": 1.35, "20": 1.28, "25": 1.21, "30": 1.14, "35": 1.07, "40": 1.00, "45": 0.91, "50": 0.82, "55": 0.72, "60": 0.60, "65": 0.49, "70": 0.37, "75": null, "80": null}},
+        {"conductor_temp_celsius": 80, "insulation": "V-90", "factors": {"15": 1.31, "20": 1.25, "25": 1.19, "30": 1.12, "35": 1.06, "40": 1.00, "45": 0.92, "50": 0.84, "55": 0.76, "60": 0.66, "65": 0.56, "70": 0.45, "75": 0.27, "80": null}},
+        {"conductor_temp_celsius": 90, "insulation": "XLPE", "factors": {"15": 1.26, "20": 1.20, "25": 1.15, "30": 1.10, "35": 1.05, "40": 1.00, "45": 0.94, "50": 0.88, "55": 0.81, "60": 0.73, "65": 0.65, "70": 0.57, "75": 0.47, "80": 0.34}},
+        {"conductor_temp_celsius": 110, "insulation": "EPR/SiR", "factors": {"15": 1.16, "20": 1.13, "25": 1.10, "30": 1.07, "35": 1.04, "40": 1.00, "45": 0.96, "50": 0.93, "55": 0.89, "60": 0.85, "65": 0.80, "70": 0.76, "75": 0.71, "80": 0.65}},
+        {"conductor_temp_celsius": 150, "insulation": "Mineral", "factors": {"15": 1.11, "20": 1.09, "25": 1.07, "30": 1.04, "35": 1.02, "40": 1.00, "45": 0.98, "50": 0.95, "55": 0.93, "60": 0.90, "65": 0.88, "70": 0.85, "75": 0.83, "80": 0.80}}
+      ]
+    },
+    "table_27_2_soil": {
+      "title": "TABLE 27(2) -- Rating factors for soil ambient temperature",
+      "description": "Cables buried direct in ground or in underground wiring enclosures. Reference ambient: 25°C.",
+      "reference_ambient_celsius": 25,
+      "data": [
+        {"conductor_temp_celsius": 75, "insulation": "PVC (V-75)", "factors": {"10": 1.14, "15": 1.10, "20": 1.05, "25": 1.00, "30": 0.95, "35": 0.89, "40": 0.83}},
+        {"conductor_temp_celsius": 80, "insulation": "V-90", "factors": {"10": 1.13, "15": 1.09, "20": 1.04, "25": 1.00, "30": 0.96, "35": 0.91, "40": 0.85}},
+        {"conductor_temp_celsius": 90, "insulation": "XLPE", "factors": {"10": 1.11, "15": 1.07, "20": 1.03, "25": 1.00, "30": 0.97, "35": 0.93, "40": 0.89}},
+        {"conductor_temp_celsius": 110, "insulation": "EPR/SiR", "factors": {"10": 1.08, "15": 1.06, "20": 1.03, "25": 1.00, "30": 0.97, "35": 0.94, "40": 0.91}}
+      ]
+    }
+  },
+  "depth_of_laying_derating": {
+    "table_28_1_buried_direct": {
+      "title": "TABLE 28(1) -- Depth of laying rating factors for cables buried direct in ground",
+      "description": "Multiply current-carrying capacity by these factors based on depth of laying.",
+      "data": [
+        {"depth_m": 0.5, "up_to_50_mm2": 1.00, "50_to_300_mm2": 1.00, "above_300_mm2": 1.00},
+        {"depth_m": 0.6, "up_to_50_mm2": 0.99, "50_to_300_mm2": 0.98, "above_300_mm2": 0.97},
+        {"depth_m": 0.8, "up_to_50_mm2": 0.97, "50_to_300_mm2": 0.96, "above_300_mm2": 0.94},
+        {"depth_m": 1.0, "up_to_50_mm2": 0.95, "50_to_300_mm2": 0.94, "above_300_mm2": 0.92},
+        {"depth_m": 1.25, "up_to_50_mm2": 0.94, "50_to_300_mm2": 0.92, "above_300_mm2": 0.90},
+        {"depth_m": 1.5, "up_to_50_mm2": 0.93, "50_to_300_mm2": 0.91, "above_300_mm2": 0.89},
+        {"depth_m": 2.0, "up_to_50_mm2": 0.91, "50_to_300_mm2": 0.88, "above_300_mm2": 0.86},
+        {"depth_m": 3.0, "up_to_50_mm2": 0.89, "50_to_300_mm2": 0.86, "above_300_mm2": 0.83}
+      ]
+    },
+    "table_28_2_ug_enclosure": {
+      "title": "TABLE 28(2) -- Depth of laying rating factors for cables in underground wiring enclosures",
+      "description": "Ambient temperature at surface is 40°C (not 25°C). For depth less than 0.5m, see Table 3(4).",
+      "data": [
+        {"depth_m": 0.5, "single_core": 1.00, "multicore": 1.00},
+        {"depth_m": 0.6, "single_core": 0.98, "multicore": 0.99},
+        {"depth_m": 0.8, "single_core": 0.95, "multicore": 0.97},
+        {"depth_m": 1.0, "single_core": 0.93, "multicore": 0.96},
+        {"depth_m": 1.25, "single_core": 0.90, "multicore": 0.95},
+        {"depth_m": 1.5, "single_core": 0.89, "multicore": 0.94},
+        {"depth_m": 1.75, "single_core": 0.88, "multicore": 0.94},
+        {"depth_m": 2.0, "single_core": 0.87, "multicore": 0.93},
+        {"depth_m": 2.5, "single_core": 0.86, "multicore": 0.93},
+        {"depth_m": 3.0, "single_core": 0.85, "multicore": 0.92}
+      ]
+    }
+  },
+  "grouping_derating": {
+    "table_22_bunched_circuits": {
+      "title": "TABLE 22 -- Derating factors for bunched circuits (single-core and multicore in air or in wiring enclosures)",
+      "description": "Multiply current-carrying capacity by these factors based on number of circuits and arrangement.",
+      "arrangements": [
+        {
+          "id": "bunched_in_air",
+          "description": "Bunched in air",
+          "factors": {"1": 1.00, "2": 0.87, "3": 0.75, "4": 0.72, "5": 0.70, "6": 0.67}
+        },
+        {
+          "id": "bunched_on_surface_or_enclosed",
+          "description": "Bunched on a surface or enclosed",
+          "factors": {"1": 1.00, "2": 0.80, "3": 0.70, "4": 0.65, "5": 0.60, "6": 0.57, "7": 0.54, "8": 0.52, "9": 0.50, "10": 0.48, "12": 0.45, "14": 0.43, "16": 0.41, "18": 0.39, "20": 0.38}
+        },
+        {
+          "id": "single_layer_wall_touching",
+          "description": "Single layer on wall or floor - Touching",
+          "factors": {"1": 1.00, "2": 0.85, "3": 0.79, "4": 0.75, "5": 0.73, "6": 0.72, "7": 0.72, "8": 0.71, "9": 0.70, "10": 0.70, "12": 0.70, "14": 0.70, "16": 0.70, "18": 0.70, "20": 0.70}
+        },
+        {
+          "id": "single_layer_wall_spaced",
+          "description": "Single layer on wall or floor - Spaced (one cable diameter clearance)",
+          "factors": {"1": 1.00, "2": 0.94, "3": 0.90, "4": 0.90, "5": 0.90, "6": 0.90, "7": 0.90, "8": 0.90, "9": 0.90, "10": 0.90, "12": 0.90, "14": 0.90, "16": 0.90, "18": 0.90, "20": 0.90}
+        },
+        {
+          "id": "single_layer_ceiling_touching",
+          "description": "Single layer under ceiling - Touching",
+          "factors": {"1": 0.95, "2": 0.81, "3": 0.72, "4": 0.68, "5": 0.66, "6": 0.64, "7": 0.63, "8": 0.62, "9": 0.61, "10": 0.61, "12": 0.61, "14": 0.61, "16": 0.61, "18": 0.61, "20": 0.61}
+        },
+        {
+          "id": "single_layer_ceiling_spaced",
+          "description": "Single layer under ceiling - Spaced (one cable diameter clearance)",
+          "factors": {"1": 0.95, "2": 0.85, "3": 0.85, "4": 0.85, "5": 0.85, "6": 0.85, "7": 0.85, "8": 0.85, "9": 0.85, "10": 0.85, "12": 0.85, "14": 0.85, "16": 0.85, "18": 0.85, "20": 0.85}
+        }
+      ]
+    },
+    "table_24_multicore_trays": {
+      "title": "TABLE 24 -- Derating factors for multicore cables in trays, racks, cleats or other supports in air",
+      "description": "Multiply current-carrying capacity by these factors based on tray type, spacing, tiers, and number of cables.",
+      "arrangements": [
+        {
+          "id": "unperforated_tray_touching_1_tier",
+          "description": "Unperforated tray, Touching, 1 tier",
+          "factors": {"1": 0.97, "2": 0.85, "3": 0.78, "4": 0.75, "6": 0.71, "9": 0.68}
+        },
+        {
+          "id": "unperforated_tray_touching_2_tiers",
+          "description": "Unperforated tray, Touching, 2 tiers",
+          "factors": {"1": 0.97, "2": 0.84, "3": 0.76, "4": 0.73, "6": 0.68, "9": 0.63}
+        },
+        {
+          "id": "unperforated_tray_touching_3_tiers",
+          "description": "Unperforated tray, Touching, 3 tiers",
+          "factors": {"1": 0.97, "2": 0.83, "3": 0.75, "4": 0.72, "6": 0.66, "9": 0.61}
+        },
+        {
+          "id": "unperforated_tray_spaced_1_tier",
+          "description": "Unperforated tray, Spaced, 1 tier",
+          "factors": {"1": 0.97, "2": 0.96, "3": 0.94, "4": 0.93, "6": 0.90}
+        },
+        {
+          "id": "unperforated_tray_spaced_2_tiers",
+          "description": "Unperforated tray, Spaced, 2 tiers",
+          "factors": {"1": 0.97, "2": 0.95, "3": 0.92, "4": 0.90, "6": 0.86}
+        },
+        {
+          "id": "unperforated_tray_spaced_3_tiers",
+          "description": "Unperforated tray, Spaced, 3 tiers",
+          "factors": {"1": 0.97, "2": 0.94, "3": 0.91, "4": 0.89, "6": 0.84}
+        },
+        {
+          "id": "perforated_tray_touching_1_tier",
+          "description": "Perforated tray, Touching, 1 tier",
+          "factors": {"1": 1.00, "2": 0.88, "3": 0.82, "4": 0.78, "6": 0.76, "9": 0.73}
+        },
+        {
+          "id": "perforated_tray_touching_2_tiers",
+          "description": "Perforated tray, Touching, 2 tiers",
+          "factors": {"1": 1.00, "2": 0.87, "3": 0.80, "4": 0.76, "6": 0.73, "9": 0.68}
+        },
+        {
+          "id": "perforated_tray_touching_3_tiers",
+          "description": "Perforated tray, Touching, 3 tiers",
+          "factors": {"1": 1.00, "2": 0.86, "3": 0.79, "4": 0.75, "6": 0.71, "9": 0.66}
+        },
+        {
+          "id": "perforated_tray_spaced_1_tier",
+          "description": "Perforated tray, Spaced, 1 tier",
+          "factors": {"1": 1.00, "2": 1.00, "3": 0.98, "4": 0.95, "6": 0.91}
+        },
+        {
+          "id": "perforated_tray_spaced_2_tiers",
+          "description": "Perforated tray, Spaced, 2 tiers",
+          "factors": {"1": 1.00, "2": 0.99, "3": 0.96, "4": 0.92, "6": 0.87}
+        },
+        {
+          "id": "perforated_tray_spaced_3_tiers",
+          "description": "Perforated tray, Spaced, 3 tiers",
+          "factors": {"1": 1.00, "2": 0.98, "3": 0.95, "4": 0.91, "6": 0.85}
+        },
+        {
+          "id": "ladder_rack_touching_1_tier",
+          "description": "Ladder supports/racks/cleats, Touching, 1 tier",
+          "factors": {"1": 1.00, "2": 0.87, "3": 0.82, "4": 0.80, "6": 0.79, "9": 0.78}
+        },
+        {
+          "id": "ladder_rack_touching_2_tiers",
+          "description": "Ladder supports/racks/cleats, Touching, 2 tiers",
+          "factors": {"1": 1.00, "2": 0.86, "3": 0.80, "4": 0.78, "6": 0.76, "9": 0.73}
+        },
+        {
+          "id": "ladder_rack_touching_3_tiers",
+          "description": "Ladder supports/racks/cleats, Touching, 3 tiers",
+          "factors": {"1": 1.00, "2": 0.85, "3": 0.79, "4": 0.76, "6": 0.73, "9": 0.70}
+        },
+        {
+          "id": "ladder_rack_spaced_1_tier",
+          "description": "Ladder supports/racks/cleats, Spaced, 1 tier",
+          "factors": {"1": 1.00, "2": 1.00, "3": 1.00, "4": 1.00, "6": 1.00}
+        },
+        {
+          "id": "ladder_rack_spaced_2_tiers",
+          "description": "Ladder supports/racks/cleats, Spaced, 2 tiers",
+          "factors": {"1": 1.00, "2": 0.99, "3": 0.98, "4": 0.97, "6": 0.96}
+        },
+        {
+          "id": "ladder_rack_spaced_3_tiers",
+          "description": "Ladder supports/racks/cleats, Spaced, 3 tiers",
+          "factors": {"1": 1.00, "2": 0.98, "3": 0.97, "4": 0.96, "6": 0.93}
+        }
+      ]
+    },
+    "table_25_2_multicore_buried": {
+      "title": "TABLE 25(2) -- Derating factors for groups of multicore cables buried direct in ground",
+      "description": "Multiply current-carrying capacity by these factors based on number of cables and spacing.",
+      "data": [
+        {"num_cables": 2, "touching": 0.81, "spacing_0_15m": 0.87, "spacing_0_30m": 0.91, "spacing_0_45m": 0.93, "spacing_0_60m": 0.95},
+        {"num_cables": 3, "touching": 0.70, "spacing_0_15m": 0.78, "spacing_0_30m": 0.84, "spacing_0_45m": 0.88, "spacing_0_60m": 0.90},
+        {"num_cables": 4, "touching": 0.63, "spacing_0_15m": 0.74, "spacing_0_30m": 0.81, "spacing_0_45m": 0.86, "spacing_0_60m": 0.89},
+        {"num_cables": 5, "touching": 0.59, "spacing_0_15m": 0.70, "spacing_0_30m": 0.78, "spacing_0_45m": 0.84, "spacing_0_60m": 0.87},
+        {"num_cables": 6, "touching": 0.55, "spacing_0_15m": 0.68, "spacing_0_30m": 0.77, "spacing_0_45m": 0.83, "spacing_0_60m": 0.87}
+      ]
+    },
+    "table_25_1_single_core_buried": {
+      "title": "TABLE 25(1) -- Derating factors for groups of single-core cables buried direct in ground",
+      "description": "Multiply current-carrying capacity by these factors based on number of circuits, arrangement and spacing.",
+      "data": [
+        {"num_circuits": 2, "trefoil": 0.78, "flat_touching": 0.81, "spacing_0_15m": 0.83, "spacing_0_30m": 0.88, "spacing_0_45m": 0.91, "spacing_0_60m": 0.93},
+        {"num_circuits": 3, "trefoil": 0.66, "flat_touching": 0.70, "spacing_0_15m": 0.73, "spacing_0_30m": 0.79, "spacing_0_45m": 0.84, "spacing_0_60m": 0.87},
+        {"num_circuits": 4, "trefoil": 0.61, "flat_touching": 0.64, "spacing_0_15m": 0.68, "spacing_0_30m": 0.74, "spacing_0_45m": 0.81, "spacing_0_60m": 0.85},
+        {"num_circuits": 5, "trefoil": 0.56, "flat_touching": 0.60, "spacing_0_15m": 0.64, "spacing_0_30m": 0.73, "spacing_0_45m": 0.79, "spacing_0_60m": 0.83},
+        {"num_circuits": 6, "trefoil": 0.53, "flat_touching": 0.57, "spacing_0_15m": 0.61, "spacing_0_30m": 0.71, "spacing_0_45m": 0.78, "spacing_0_60m": 0.82}
+      ]
+    }
+  },
+  "thermal_insulation": {
+    "description": "Current-carrying capacities for cables partially or completely surrounded by thermal insulation are embedded in Tables 10 and 13 (columns 14-22). The standard defines these conditions in Clause 3.4.3.",
+    "partial_insulation_unenclosed_tables": "Tables 10-12/13-15, Columns 14-15 (partial, unenclosed) and Columns 17-18 (partial, in wiring enclosure)",
+    "complete_insulation_unenclosed_tables": "Tables 10-12/13-15, Columns 19-20 (complete, unenclosed) and Columns 21-22 (complete, in wiring enclosure)",
+    "clause_3_4_3": {
+      "description": "Cables installed in thermal insulation - current-carrying capacities based on ambient temperature of the air surrounding the insulation, not within it",
+      "conditions": [
+        "Partially surrounded: cable less than 150mm from insulation surface or up to 150mm surrounded",
+        "Completely surrounded: cable more than 150mm surrounded by bulk thermal insulation"
+      ]
+    }
+  }
+}

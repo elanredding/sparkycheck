@@ -1,0 +1,1157 @@
+{
+  "meta": {
+    "standard": "AS/NZS 3000:2018 (AS 3000-2023)",
+    "title": "Wiring Rules — Electrical Installations",
+    "extracted": "2026-06-02",
+    "note": "This knowledge base contains structured extracts from the AS/NZS 3000 standard. Always refer to the official published standard for legal compliance."
+  },
+  "clauses": [
+    {
+      "id": "1.4.56",
+      "clause": "1.4.56",
+      "title": "Electric Vehicle (EV) — Definition",
+      "category": "Definitions",
+      "jurisdiction": "AU+NZ",
+      "summary": "Definition of electric vehicle for the purposes of the standard.",
+      "requirements": [
+        "Any vehicle propelled by an electric motor drawing current from a rechargeable storage battery, manufactured primarily for use on public or private streets, roads or highways.",
+        "Includes plug-in hybrid road vehicles (PHEV) that derive all or part of their energy from on-board batteries."
+      ],
+      "references": ["AS IEC 62196.2"],
+      "tags": ["EV", "definition", "electric vehicle", "PHEV"]
+    },
+    {
+      "id": "1.4.121",
+      "clause": "1.4.121",
+      "title": "Switchboard — Definition",
+      "category": "Definitions",
+      "jurisdiction": "AU+NZ",
+      "summary": "Definition of a switchboard as an assembly of circuit protective devices.",
+      "requirements": [
+        "An assembly of circuit protective devices, with or without switchgear, instruments or connecting devices, suitably arranged and mounted for distribution to, and protection of, one or more submains or final subcircuits, or a combination of both."
+      ],
+      "tags": ["switchboard", "definition"]
+    },
+    {
+      "id": "1.4.122",
+      "clause": "1.4.122",
+      "title": "Main Switchboard — Definition",
+      "category": "Definitions",
+      "jurisdiction": "AU+NZ",
+      "summary": "A switchboard from which the supply to the whole electrical installation can be controlled.",
+      "requirements": [
+        "A switchboard from which the supply to the whole electrical installation can be controlled."
+      ],
+      "tags": ["main switchboard", "definition"]
+    },
+    {
+      "id": "2.2.1.4",
+      "clause": "2.2.1.4",
+      "title": "Electric Vehicle Charging Circuits",
+      "category": "General Arrangement",
+      "jurisdiction": "AU+NZ",
+      "summary": "Cross-reference clause for EV charging circuits.",
+      "requirements": [
+        "Guidance for installations for electric vehicle charging circuits is provided in Appendix P.",
+        "In New Zealand only, requirements for circuits supplying electric vehicle charging are in Clause 7.9."
+      ],
+      "references": ["Appendix P", "Clause 7.9"],
+      "tags": ["EV", "charging", "circuits"]
+    },
+    {
+      "id": "2.6.3.3.2",
+      "clause": "2.6.3.3.2",
+      "title": "RCD Requirements — Outdoor and Specific Locations",
+      "category": "Protection — RCD",
+      "jurisdiction": "AU+NZ",
+      "summary": "Socket-outlets ≤30 A and supplies to directly connected hand-held equipment in specified locations must be protected by 30 mA RCDs.",
+      "requirements": [
+        "Socket-outlets with rating ≤30 A, and supplies to directly connected hand-held equipment in the following locations shall be protected by RCDs with a maximum rated residual current of 30 mA:",
+        "(i) Outdoor locations",
+        "(ii) Locations with easy or unsupervised public access",
+        "(iii) Amusement arcades",
+        "(iv) Sockets in damp situation zones (Clause 6.6 or 6.7)",
+        "(v) Marinas",
+        "(vi) Camping and caravan parks",
+        "(vii) Construction and demolition sites",
+        "(viii) Agricultural and horticultural installations",
+        "(ix) Swimming pools",
+        "(x) Fountains"
+      ],
+      "references": ["Clause 6.6", "Clause 6.7"],
+      "tags": ["RCD", "outdoor", "30mA", "public access", "damp situations"]
+    },
+    {
+      "id": "2.9",
+      "clause": "2.9",
+      "title": "Protection Against Fire Hazard Due to Arcing Faults (AFDDs)",
+      "category": "Protection — Fire",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for arc fault detection devices (AFDDs).",
+      "requirements": [
+        "2.9.1 General — Requirements for arc fault detection devices (AFDDs)",
+        "2.9.2 Type",
+        "2.9.3 Rating",
+        "2.9.4 Arrangement",
+        "2.9.5 Alterations",
+        "2.9.6 Final subcircuits in Australia",
+        "2.9.7 Final subcircuits in New Zealand"
+      ],
+      "tags": ["AFDD", "arc fault", "fire protection"]
+    },
+    {
+      "id": "2.10.1",
+      "clause": "2.10.1",
+      "title": "Switchboards — General",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "A switchboard shall be provided for mounting or enclosure of switchgear and protective devices. A main switchboard shall be provided for each installation.",
+      "requirements": [
+        "A switchboard or switchboards shall be provided in an electrical installation for the mounting or enclosure of switchgear and protective devices.",
+        "A main switchboard shall be provided for each electrical installation for the primary control and protective devices including the main switch or switches.",
+        "Exception A3.1: Not required for ground-mounted cable-distribution cabinets per AS/NZS IEC 61439.5 protecting small submains teed off larger submains.",
+        "Exception A3.2: Short branch (max 3 m) from submain to switchboard may use smaller conductors per Clause 2.4."
+      ],
+      "references": ["AS/NZS IEC 61439.5", "Clause 2.4"],
+      "tags": ["switchboard", "main switchboard", "general"]
+    },
+    {
+      "id": "2.10.2.1",
+      "clause": "2.10.2.1",
+      "title": "Switchboards — Location General",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Switchboards shall be in suitable well-ventilated places, protected against moisture, with sufficient space for all operations.",
+      "requirements": [
+        "Installed in suitable well-ventilated places",
+        "Protected against moisture effects",
+        "Arranged with sufficient space for installation, replacement, operation, testing, inspection, maintenance and repair"
+      ],
+      "tags": ["switchboard", "location", "ventilation", "space"]
+    },
+    {
+      "id": "2.10.2.2.1",
+      "clause": "2.10.2.2.1",
+      "title": "Switchboards — Accessibility and Emergency Exit",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Access space requirements around switchboards including minimum distances and emergency exit provisions.",
+      "requirements": [
+        "Located so that switchboard and access is not obstructed",
+        "1.0 m minimum distance from all faces of a closed switchboard that need to be accessed",
+        "EXCEPTION: Domestic installations — 1.0 m may be reduced to 0.6 m",
+        "0.6 m unimpeded space around switchboards with switchgear doors in any position and with switchgear fully racked out",
+        "Sufficient exit paths for emergency conditions"
+      ],
+      "tags": ["switchboard", "accessibility", "clearance", "emergency exit"]
+    },
+    {
+      "id": "2.10.2.2.2",
+      "clause": "2.10.2.2.2",
+      "title": "Switchboard Rooms — Emergency Exit Requirements",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Emergency exit requirements for switchboard rooms.",
+      "requirements": [
+        "Doors open in direction of egress without key or tool on switchboard side (exception: domestic installations)",
+        "For switchboards ≥800 A per phase or >3.0 m length:",
+        "(a) Minimum two emergency exit paths (exception: 3.0 m clear space in front allows one exit)",
+        "(b) Openings/doorways: ≥2.0 m height, ≥0.9 m width"
+      ],
+      "tags": ["switchboard", "emergency exit", "egress"]
+    },
+    {
+      "id": "2.10.2.3",
+      "clause": "2.10.2.3",
+      "title": "Main Switchboard — Location",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "The main switchboard must be readily accessible and located within easy access of an entrance to the building.",
+      "requirements": [
+        "Readily accessible",
+        "Located within easy access of an entrance to the building",
+        "In multiple installations, not within any tenancy or single installation"
+      ],
+      "tags": ["main switchboard", "location", "accessibility"]
+    },
+    {
+      "id": "2.10.2.4",
+      "clause": "2.10.2.4",
+      "title": "Main Switchboard — Identification",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Main switchboard must be legibly marked and its location indicated for emergency services.",
+      "requirements": [
+        "Legibly and permanently marked 'MAIN SWITCHBOARD'",
+        "Location indicated by conspicuous notice at each building entry for emergency services",
+        "Notices of permanent construction with contrasting colours",
+        "Exceptions: single domestic installation; when clearly visible from main entrance; when indicated at fire indicator panel"
+      ],
+      "tags": ["main switchboard", "identification", "emergency services", "signage"]
+    },
+    {
+      "id": "2.10.2.5",
+      "clause": "2.10.2.5",
+      "title": "Switchboards — Restricted Locations",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Locations where switchboards are restricted or prohibited.",
+      "requirements": [
+        "(a) Height: Not within 1.2 m of ground, floor or platform (exception: if access to live parts is arranged per Clause 2.10.3.1)",
+        "(b) Not above open water containers or fixed/stationary cooking appliances",
+        "(c) In cupboards: installed in separate section, at front, facing door, no storage space in front, no projections below",
+        "(d) Not within any zone classified per Clause 6.2.2 (baths/showers)",
+        "(e) Not within/above zones per Clause 6.3.2 (pools/spas); not in saunas",
+        "(f) Not in refrigeration rooms",
+        "(g) In sanitization/hosing-down zones: minimum IPX6",
+        "(h) Fire exits/egress: minimize impact of smoke; not in fire-isolated stairways/passageways/ramps; may be in cupboards with smoke seal (IP5X)",
+        "(i) Not in cupboards containing fire-hose reels",
+        "(j) Near sprinklers: main switchboards and safety service switchboards not in vicinity unless IPX4, shield, deflectors, or dry-type sprinklers",
+        "(k) Not in hazardous areas (AS/NZS 60079.10) unless specifically designed"
+      ],
+      "references": ["Clause 2.10.3.1", "Clause 6.2.2", "Clause 6.3.2", "AS/NZS 60079.10"],
+      "tags": ["switchboard", "restricted locations", "prohibited", "clearance"]
+    },
+    {
+      "id": "2.10.3",
+      "clause": "2.10.3",
+      "title": "Switchboards — Construction",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Construction requirements for switchboards including basic protection by enclosures.",
+      "requirements": [
+        "Live parts arranged for basic protection by enclosures per Clause 1.5.4",
+        "Exceptions for non-domestic with barriers or restricted access",
+        "Covers exposing live parts identified per AS/NZS 61439.1"
+      ],
+      "references": ["Clause 1.5.4", "AS/NZS 61439.1"],
+      "tags": ["switchboard", "construction", "enclosure", "protection"]
+    },
+    {
+      "id": "2.10.3.2",
+      "clause": "2.10.3.2",
+      "title": "Switchboards — Suitability",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Switchboards must be suitable for mechanical, electrical and thermal stresses and may need compliance with AS/NZS 61439.",
+      "requirements": [
+        "Switchboards suitable for mechanical, electrical and thermal stresses",
+        "Compliance with AS/NZS 61439 series or AS/NZS 3439 series",
+        "Mandatory compliance if: connected load >125 A r.m.s. per phase, OR prospective short-circuit current >10 kA r.m.s."
+      ],
+      "references": ["AS/NZS 61439", "AS/NZS 3439"],
+      "tags": ["switchboard", "suitability", "compliance", "short-circuit"]
+    },
+    {
+      "id": "2.10.3.3",
+      "clause": "2.10.3.3",
+      "title": "Switchboards — Clearances and Creepage",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Minimum clearances and creepage distances per AS/NZS 61439 series.",
+      "requirements": [
+        "Minimum clearances and creepage distances per AS/NZS 61439 series"
+      ],
+      "references": ["AS/NZS 61439"],
+      "tags": ["switchboard", "clearance", "creepage"]
+    },
+    {
+      "id": "2.10.3.4",
+      "clause": "2.10.3.4",
+      "title": "Switchboards — Orientation and Location of Devices",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for orientation and grouping of circuit-breakers, fuses, and other devices within switchboards.",
+      "requirements": [
+        "Circuit-breakers: operating mechanism oriented in one general direction",
+        "Fuses/CBs: grouped to show relationship; not on back of panels (exceptions for fault-current limiters, instrument protection)",
+        "Screw-in fuses: centre contact on supply side"
+      ],
+      "tags": ["switchboard", "orientation", "circuit-breakers", "fuses"]
+    },
+    {
+      "id": "2.10.4",
+      "clause": "2.10.4",
+      "title": "Switchboards — Bars (Busbars)",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for busbars in switchboards including neutral and MEN connections.",
+      "requirements": [
+        "Securely terminating conductors per Clause 3.7",
+        "Tunnel-type terminals: screws not cutting conductor; for main neutral, earthing, MEN: two screws or one screw ≥80% tunnel diameter",
+        "Neutral bar: adequate capacity, accessible position, incoming neutral not inadvertently disconnected, separate terminal for incoming and each outgoing"
+      ],
+      "references": ["Clause 3.7"],
+      "tags": ["switchboard", "busbars", "neutral bar", "terminals"]
+    },
+    {
+      "id": "2.10.5",
+      "clause": "2.10.5",
+      "title": "Switchboards — Equipment Identification",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "All equipment in switchboards must be legibly and indelibly identified in English.",
+      "requirements": [
+        "All equipment legibly and indelibly identified in English",
+        "Relationship of switches/CBs/fuses/RCDs marked on or adjacent to switchboard",
+        "Bars identified as active, neutral or earth",
+        "Terminals marked to identify active/neutral connections",
+        "MEN connection and main neutral terminals marked at main neutral bar"
+      ],
+      "tags": ["switchboard", "identification", "labelling"]
+    },
+    {
+      "id": "2.10.6",
+      "clause": "2.10.6",
+      "title": "Switchboards — Wiring",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Wiring within switchboards must be designed for thermal and magnetic effects.",
+      "requirements": [
+        "Designed for thermal and magnetic effects",
+        "Sufficient free length for hinged/removable panels",
+        "Fixed to avoid stress at terminals"
+      ],
+      "tags": ["switchboard", "wiring", "thermal", "magnetic"]
+    },
+    {
+      "id": "2.10.7",
+      "clause": "2.10.7",
+      "title": "Switchboards — Fire-Protective Measures",
+      "category": "Switchboards",
+      "jurisdiction": "AU+NZ",
+      "summary": "Wiring entering switchboards must minimize fire spread.",
+      "requirements": [
+        "Wiring installed to minimize fire spread from switchboard",
+        "Wiring systems entering switchboard enclosure through close-fitting openings",
+        "Openings ≥5 mm diameter require sealing with fire-retardant sealant"
+      ],
+      "tags": ["switchboard", "fire protection", "sealing", "penetrations"]
+    },
+    {
+      "id": "3.8",
+      "clause": "3.8",
+      "title": "Identification of Conductors (Cable Colours)",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Mandated conductor identification colours per Table 3.4.",
+      "requirements": [
+        "Protective earth: Green/yellow",
+        "Equipotential bonding: Green/yellow",
+        "Neutral: Black or light blue",
+        "Active: Any colour other than green, yellow, green/yellow, black or light blue",
+        "Green/yellow: one colour covers 30-70% of surface area",
+        "Recommended active colours: Red or brown (single-phase); Red, white or blue (multiphase)",
+        "Australian/NZ and European colours shall not be combined in same enclosure",
+        "NZ domestic installations: neutral conductors must be black only",
+        "Conductors with green/yellow/green-yellow shall not be used as active or neutral",
+        "Colour identification by sleeving permitted at terminations",
+        "Single-core cables used as earthing conductors: identified continuously along entire length"
+      ],
+      "references": ["Table 3.4", "Clause 3.8"],
+      "tags": ["identification", "colours", "cable", "active", "neutral", "earth"]
+    },
+    {
+      "id": "3.9",
+      "clause": "3.9",
+      "title": "Installation of Wiring Systems",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "General requirements for installation of wiring systems.",
+      "requirements": [
+        "3.9.1 General: Installed per safe and sound practice, protecting against mechanical/electrical failure under ordinary use, wear and tear, and abnormal conditions.",
+        "3.9.2 Methods: Per Table 3.1; external influences considered"
+      ],
+      "tags": ["wiring", "installation", "general"]
+    },
+    {
+      "id": "3.9.3",
+      "clause": "3.9.3",
+      "title": "Wiring Systems — Support and Fixing",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for supporting and fixing wiring systems.",
+      "requirements": [
+        "Suitable clips, saddles, clamps not damaging wiring system",
+        "Through metallic structural members: apertures bushed/shaped",
+        "Suspended ceilings: may be supported unless manufacturer prohibits; additional protection against mechanical damage on conductive runners",
+        "Wiring systems likely to be disturbed (surface walls, ceiling spaces >0.6 m height, within 2.0 m of access): supported and protected"
+      ],
+      "tags": ["wiring", "support", "fixing", "clips"]
+    },
+    {
+      "id": "3.9.4",
+      "clause": "3.9.4",
+      "title": "Wiring — Protection Against Mechanical Damage",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for protecting concealed cables from mechanical damage.",
+      "requirements": [
+        "Concealed within 50 mm from surface of wall/floor/ceiling/roof: require mechanical protection (WSX3 minimum), earthed metallic covering, or RCD ≤30 mA",
+        "Not installed between roofing/wall lining and supporting member"
+      ],
+      "tags": ["wiring", "mechanical damage", "concealed", "50mm", "RCD"]
+    },
+    {
+      "id": "3.9.5",
+      "clause": "3.9.5",
+      "title": "Vertical Cable Installation",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Vertical cable supports at intervals ≤8 m.",
+      "requirements": [
+        "Cable supports at intervals ≤8 m"
+      ],
+      "tags": ["wiring", "vertical", "support"]
+    },
+    {
+      "id": "3.9.6",
+      "clause": "3.9.6",
+      "title": "Cable Bending Radius (Change of Direction)",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Minimum bending radii for cables at changes of direction.",
+      "requirements": [
+        "Unarmoured cables: min 6x cable diameter internal radius",
+        "Armoured cables: min 12x cable diameter internal radius"
+      ],
+      "tags": ["wiring", "bending radius", "cable"]
+    },
+    {
+      "id": "3.9.7",
+      "clause": "3.9.7",
+      "title": "Particular Wiring Requirements",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Particular requirements for consumer mains, submains, final subcircuits, concealed cables, cables in thermal insulation.",
+      "requirements": [
+        "Particular requirements for consumer mains, submains, final subcircuits, concealed cables, cables in thermal insulation, etc."
+      ],
+      "tags": ["wiring", "consumer mains", "submains", "concealed", "insulation"]
+    },
+    {
+      "id": "3.10.1.1",
+      "clause": "3.10.1.1",
+      "title": "Enclosure of Insulated Unsheathed Cables",
+      "category": "Wiring — Enclosures",
+      "jurisdiction": "AU+NZ",
+      "summary": "Insulated unsheathed cables must be enclosed in a wiring enclosure throughout their entire length.",
+      "requirements": [
+        "Insulated, unsheathed cables: Enclosed in wiring enclosure throughout entire length.",
+        "Exceptions: aerial conductors, within 100 mm of accessory in wall cavity, within switchboards/metering enclosures, earthing/bonding conductors (Sec 5), ELV circuits (Clause 7.5)"
+      ],
+      "tags": ["cable", "enclosure", "unsheathed", "conduit"]
+    },
+    {
+      "id": "3.10.1.2",
+      "clause": "3.10.1.2",
+      "title": "Enclosure of Insulated and Sheathed Cables",
+      "category": "Wiring — Enclosures",
+      "jurisdiction": "AU+NZ",
+      "summary": "Insulated and sheathed cables need not be in a wiring enclosure except where combustion propagation requirements apply.",
+      "requirements": [
+        "Insulated and sheathed cables: Need not be in wiring enclosure.",
+        "Exception: cables not meeting AS/NZS 5000 series combustion propagation requirements in fire-rated enclosures.",
+        "Where sheath removed: exposed cores enclosed per Clause 3.10.1.1."
+      ],
+      "tags": ["cable", "enclosure", "sheathed", "combustion"]
+    },
+    {
+      "id": "3.10.2",
+      "clause": "3.10.2",
+      "title": "Wiring Enclosures — Requirements",
+      "category": "Wiring — Enclosures",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for conduits, cable trunking, and wiring enclosures.",
+      "requirements": [
+        "Conduits (AS/NZS 2053 or AS/NZS 61386), cable trunking (AS/NZS 4296)",
+        "Covers not removable without tools in readily accessible positions",
+        "Change of wiring enclosure: at switchboard or by suitable device",
+        "Entry of water: prevent water entering equipment; exposed to weather: prevent rain entry"
+      ],
+      "references": ["AS/NZS 2053", "AS/NZS 61386", "AS/NZS 4296"],
+      "tags": ["conduit", "trunking", "enclosure", "water ingress"]
+    },
+    {
+      "id": "3.7.3",
+      "clause": "3.7.3",
+      "title": "Joints in Cables",
+      "category": "Wiring",
+      "jurisdiction": "AU+NZ",
+      "summary": "Cable joints must be mechanically sound with adequate electrical continuity and insulation.",
+      "requirements": [
+        "Joints shall be mechanically sound and provide adequate electrical continuity and insulation."
+      ],
+      "tags": ["cable", "joints", "continuity", "insulation"]
+    },
+    {
+      "id": "3.4.4",
+      "clause": "3.4.4",
+      "title": "Coordination of Conductors and Protective Devices",
+      "category": "Protection",
+      "jurisdiction": "AU+NZ",
+      "summary": "The continuous current-carrying capacity of cables shall be coordinated with the circuit design current and protective device rating.",
+      "requirements": [
+        "The continuous current-carrying capacity of cables shall be coordinated with the circuit design current and protective device rating.",
+        "Cable sizing determined per AS/NZS 3008.1 series."
+      ],
+      "references": ["AS/NZS 3008.1"],
+      "tags": ["cable sizing", "coordination", "protection"]
+    },
+    {
+      "id": "4.4.1.3",
+      "clause": "4.4.1.3",
+      "title": "Socket-Outlets for Electric Vehicle Charging",
+      "category": "Socket-Outlets",
+      "jurisdiction": "AU+NZ",
+      "summary": "Cross-reference for socket-outlets used for EV charging.",
+      "requirements": [
+        "Information for the installation and location of socket-outlets for electric vehicle charging stations is provided in Appendix P.",
+        "In New Zealand only, requirements for the installation and location of socket-outlets for electric vehicle charging stations are provided in Clause 7.9."
+      ],
+      "references": ["Appendix P", "Clause 7.9"],
+      "tags": ["socket-outlet", "EV", "charging"]
+    },
+    {
+      "id": "4.4.2.1",
+      "clause": "4.4.2.1",
+      "title": "Socket-Outlets — Accessibility",
+      "category": "Socket-Outlets",
+      "jurisdiction": "AU+NZ",
+      "summary": "Socket-outlets must be positioned so plugs can be conveniently inserted and withdrawn.",
+      "requirements": [
+        "Each socket-outlet installed so plug can be conveniently inserted/withdrawn without damaging flexible cord/cable",
+        "Not installed where plug withdrawal is restricted by permanent fixture"
+      ],
+      "tags": ["socket-outlet", "accessibility"]
+    },
+    {
+      "id": "4.4.2.2",
+      "clause": "4.4.2.2",
+      "title": "Socket-Outlets — Protection from Damage",
+      "category": "Socket-Outlets",
+      "jurisdiction": "AU+NZ",
+      "summary": "Socket-outlets must not be subject to undue mechanical stress or damage.",
+      "requirements": [
+        "(a) In floors/horizontal surfaces: designed to prevent accumulation of dust or water",
+        "(b) Near floor: If within 75 mm of floor, plug withdrawn in horizontal plane",
+        "(c) Not likely to become loose from gravity/vibration/cord weight",
+        "(d) Not readily accessible locations: securely fixed to structure",
+        "(e) Restricted in damp situations (Section 6) and hazardous areas (Section 7)",
+        "(f) In fire-resistance/acoustic surfaces: maintain those properties"
+      ],
+      "tags": ["socket-outlet", "mechanical damage", "floor", "damp"]
+    },
+    {
+      "id": "4.6",
+      "clause": "4.6",
+      "title": "Smoke Alarms",
+      "category": "General",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for mains-powered smoke alarms.",
+      "requirements": [
+        "National building codes and state legislation have requirements for installation of smoke alarms including location, number required and interconnection for alarm purposes.",
+        "Where mains-powered smoke alarms are fitted, they may be directly connected to the lighting final subcircuit or to an individual final subcircuit.",
+        "Use of lighting final subcircuit provides indication that mains power is available (non-operation of lighting indicates power loss).",
+        "Smoke alarms are NOT considered to be safety services for the purposes of this Standard."
+      ],
+      "tags": ["smoke alarm", "lighting circuit", "safety services"]
+    },
+    {
+      "id": "4.7.3",
+      "clause": "4.7.3",
+      "title": "Clearance from Open Cooking Surfaces",
+      "category": "General",
+      "jurisdiction": "AU+NZ",
+      "summary": "Socket-outlets and switches must not be installed within 150 mm of the edge of an open cooking surface.",
+      "requirements": [
+        "Socket-outlets and switches shall not be installed within 150 mm of the edge of an open gas or electric cooking surface.",
+        "This restriction extends from top of cooking surface to range hood/cupboard/ceiling above, or 2.5 m above floor directly below the cooking surface (whichever is lower)."
+      ],
+      "tags": ["cooking surface", "clearance", "socket-outlet", "switch"]
+    },
+    {
+      "id": "5.3.5",
+      "clause": "5.3.5",
+      "title": "MEN Connection — General",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "Every electrical installation shall have an MEN connection at the main switchboard.",
+      "requirements": [
+        "Every electrical installation shall have an MEN connection (MEN link) at the main switchboard",
+        "Function: connects earthing system to supply neutral conductor via main earthing terminal/connection to earthing terminal on main neutral bar",
+        "Exceptions: NE connection at substation earth bar, distributor neutral bar, or via distributor's earthing conductor/terminal",
+        "MEN/NE connection shall be in accessible position for disconnection/testing"
+      ],
+      "tags": ["MEN", "earthing", "neutral", "main switchboard"]
+    },
+    {
+      "id": "5.3.5.2",
+      "clause": "5.3.5.2",
+      "title": "MEN Connection — Size",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "Sizing requirements for the MEN link.",
+      "requirements": [
+        "Cross-sectional area capable of carrying maximum short-circuit current",
+        "Minimum size: not less than current-carrying capacity of main neutral conductor; or for switchboards ≥800 A/phase, as per Table 5.1",
+        "Exceptions: min size need not exceed main earthing conductor if short-circuit protection provided on supply side, or double insulation maintained"
+      ],
+      "tags": ["MEN", "sizing", "short-circuit"]
+    },
+    {
+      "id": "5.3.5.3",
+      "clause": "5.3.5.3",
+      "title": "MEN Connection — Identification",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "MEN conductor identification requirements.",
+      "requirements": [
+        "If insulated: green or green/yellow per Clause 3.8"
+      ],
+      "tags": ["MEN", "identification", "green/yellow"]
+    },
+    {
+      "id": "5.7",
+      "clause": "5.7",
+      "title": "Earth Fault-Loop Impedance (EFLI)",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for fault protection by automatic disconnection of supply.",
+      "requirements": [
+        "Fault protection by automatic disconnection of supply",
+        "If touch potential exceeds 50 V a.c. or 120 V d.c., circuit-protective device shall disconnect within required time",
+        "Impedance limited to generate sufficient current for device operation"
+      ],
+      "tags": ["EFLI", "earth fault", "loop impedance", "disconnection"]
+    },
+    {
+      "id": "5.7.2",
+      "clause": "5.7.2",
+      "title": "Disconnection Times (230 V Supply)",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "Maximum disconnection times for fault protection.",
+      "requirements": [
+        "(a) 0.4 s for final subcircuits supplying: (i) Socket-outlets ≤63 A, (ii) Hand-held Class I equipment, (iii) Portable equipment for manual movement during use",
+        "(b) 5 s for other circuits where safe touch voltages maintained"
+      ],
+      "tags": ["disconnection time", "0.4s", "5s", "socket-outlet"]
+    },
+    {
+      "id": "5.7.3",
+      "clause": "5.7.3",
+      "title": "Earth Fault-Loop Composition",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "Components that comprise the earth fault-loop.",
+      "requirements": [
+        "(a) Active conductor to point of fault",
+        "(b) Protective earthing conductor (PE) including MEN connection",
+        "(c) Neutral-return path (N) to transformer",
+        "(d) Through transformer neutral point and winding"
+      ],
+      "tags": ["EFLI", "earth fault-loop", "PE", "MEN", "neutral return"]
+    },
+    {
+      "id": "5.7.4",
+      "clause": "5.7.4",
+      "title": "EFLI Formula",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "The earth fault-loop impedance formula: Zs × Ia ≤ Uo.",
+      "requirements": [
+        "Zs × Ia ≤ Uo (230 V)",
+        "Zs = earth fault-loop impedance",
+        "Ia = current for automatic operation within required time",
+        "Uo = nominal voltage to earth (230 V)"
+      ],
+      "tags": ["EFLI", "formula", "Zs", "Ia", "Uo"]
+    },
+    {
+      "id": "5.7.5",
+      "clause": "5.7.5",
+      "title": "Supplementary Equipotential Bonding",
+      "category": "Earthing",
+      "jurisdiction": "AU+NZ",
+      "summary": "Supplementary equipotential bonding may be used to reduce EFLI.",
+      "requirements": [
+        "Supplementary equipotential bonding may be used to reduce EFLI"
+      ],
+      "tags": ["bonding", "EFLI", "supplementary"]
+    },
+    {
+      "id": "6.1",
+      "clause": "6.1",
+      "title": "Damp Situations — General Scope",
+      "category": "Damp Situations (Section 6)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Section 6 applies to baths/showers, pools/spas, fountains, saunas, refrigeration rooms, and sanitization areas.",
+      "requirements": [
+        "Applies to: baths/showers/fixed water containers, swimming pools/paddling pools/spa pools, fountains/water features, saunas, refrigeration rooms, sanitization/hosing-down operations."
+      ],
+      "tags": ["damp", "bath", "shower", "pool", "spa", "sauna", "sanitization"]
+    },
+    {
+      "id": "6.2.2",
+      "clause": "6.2.2",
+      "title": "Bathroom Zones Classification (Zones 0, 1, 2, 3)",
+      "category": "Damp Situations (Section 6)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Zone classification for baths and showers.",
+      "requirements": [
+        "Zone 0: Interior of bath or shower base",
+        "Zone 1 (bath): Zone 0 + vertical projection of internal rim + (if shower) 1.2 m radius from shower connection + floor to 2.5 m (AU) / 2.25 m (NZ)",
+        "Zone 1 (shower): 1.2 m radius from fixed plumbing connection (wall) or 0.6 m (AU) / 1.2 m (NZ) from ceiling connection",
+        "Zone 2: Vertical plane 0.6 m external to Zone 1, floor to 2.25 m",
+        "Zone 3: 2.4 m external to Zone 2, floor to 2.5 m (AU) / 2.25 m (NZ)"
+      ],
+      "tags": ["zone 0", "zone 1", "zone 2", "zone 3", "bath", "shower"]
+    },
+    {
+      "id": "6.2.2.2",
+      "clause": "6.2.2.2",
+      "title": "Other Fixed Water Container Zones",
+      "category": "Damp Situations (Section 6)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Zone classification for other fixed water containers.",
+      "requirements": [
+        "Two zones (0 and 2):",
+        "Zone 0: Interior of container",
+        "Zone 2 (container ≤40 L): 0.15 m from rim, 0.4 m above container",
+        "Zone 2 (container >40 L or flexible hose): 0.5 m from rim, 1.0 m above"
+      ],
+      "tags": ["water container", "zone 0", "zone 2"]
+    },
+    {
+      "id": "6.2.3",
+      "clause": "6.2.3",
+      "title": "Prohibited Protection Measures in Bathrooms",
+      "category": "Damp Situations (Section 6)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Protection by obstacles and protection by placing out of reach are prohibited in bathroom zones.",
+      "requirements": [
+        "Protection by obstacles (Clause 1.5.4.5) — prohibited",
+        "Protection by placing out of reach (Clause 1.5.4.6) — prohibited"
+      ],
+      "tags": ["bathroom", "prohibited", "protection", "obstacles"]
+    },
+    {
+      "id": "6.2.4",
+      "clause": "6.2.4",
+      "title": "Bathroom Zone — Selection and Installation Requirements",
+      "category": "Damp Situations (Section 6)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Selection and installation requirements for electrical equipment in bathroom zones.",
+      "requirements": [
+        "Degree of protection: Zone 0 = IPX7, Zones 1 & 2 = IPX4, Zone 3 = no specific",
+        "Socket-outlets: Not in Zone 0 or 1; Zone 2: shaver unit (AS/NZS 3194) or RCD ≤30 mA in cupboard; Zone 3: RCD ≤30 mA, separated circuit, or SELV/PELV",
+        "Socket-outlets not within 0.3 m of floor in bathrooms/laundries",
+        "Switches/accessories: Not in Zone 0; Zones 1 & 2 require minimum IP",
+        "Luminaires: Zone 0 = max 12 V a.c./30 V d.c. SELV/PELV; Zones 1-3: IP required",
+        "Switchboards: Not located within any classified zone",
+        "Heating cables embedded in floor may be installed"
+      ],
+      "tags": ["IPX7", "IPX4", "socket-outlet", "shaver", "luminaire", "heating cable", "bathroom"]
+    },
+    {
+      "id": "6.3",
+      "clause": "6.3",
+      "title": "Swimming Pools and Spa Pools",
+      "category": "Damp Situations (Section 6)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Zone classification and RCD requirements for swimming pools and spa pools.",
+      "requirements": [
+        "Zone classification and IP requirements apply",
+        "RCD protection requirements"
+      ],
+      "tags": ["pool", "spa", "RCD", "zones"]
+    },
+    {
+      "id": "7.3",
+      "clause": "7.3",
+      "title": "Electricity Generation Systems",
+      "category": "Special Installations",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for electricity generation systems.",
+      "requirements": [
+        "7.3.1 General — Requirements for electricity generation systems",
+        "7.3.2 Selection and installation",
+        "7.3.3 Control",
+        "7.3.4 Isolation",
+        "7.3.5 Overcurrent protection",
+        "7.3.6 Earthing",
+        "7.3.7 Connected electrical equipment",
+        "7.3.8 Connection to electrical installation"
+      ],
+      "tags": ["generation", "solar", "isolation", "earthing"]
+    },
+    {
+      "id": "7.8.3.1",
+      "clause": "7.8.3.1",
+      "title": "Outdoor Sites Under Heavy Conditions",
+      "category": "Special Installations",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for outdoor sites under heavy conditions such as open-cast mines and quarries.",
+      "requirements": [
+        "Includes open-cast mines, quarries, stockpiles, industrial areas",
+        "Refer to AS/NZS 3007 for additional requirements"
+      ],
+      "references": ["AS/NZS 3007"],
+      "tags": ["outdoor", "heavy conditions", "mine", "quarry", "industrial"]
+    },
+    {
+      "id": "7.9.1",
+      "clause": "7.9.1",
+      "title": "Supplies for Electric Vehicles (NZ) — Scope",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "Scope of the NZ-specific requirements for EV charging.",
+      "requirements": [
+        "The particular requirements of Clause 7.9 supplement or amend the requirements of Sections 2 to 7 of this Standard for parts of electrical installations intended for the charging of electric vehicles for New Zealand only.",
+        "Appendix P contains information on the modes of charging.",
+        "Attention is drawn to the contribution of EV charging to the maximum demand of an installation. Refer to Tables C1 and C2.",
+        "Electricity distributors may require notification of the installation of EV charging equipment."
+      ],
+      "references": ["Appendix P", "Table C1", "Table C2"],
+      "tags": ["EV", "NZ", "charging", "scope"]
+    },
+    {
+      "id": "7.9.2.1",
+      "clause": "7.9.2.1",
+      "title": "EV Supply — Source of Supply (NZ)",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "Supply for EV charging shall not be obtained from a switchboard in an outbuilding with a separate MEN system.",
+      "requirements": [
+        "The supply shall not be obtained from a switchboard in an outbuilding that has a separate MEN earthing system in accordance with Clause 5.5.3.1 option (c)."
+      ],
+      "tags": ["EV", "NZ", "supply", "MEN", "outbuilding"]
+    },
+    {
+      "id": "7.9.2.2",
+      "clause": "7.9.2.2",
+      "title": "Mode 1 Charging Prohibited (NZ)",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "Socket-outlets shall not be installed for Mode 1 charging in New Zealand.",
+      "requirements": [
+        "Socket-outlets shall not be installed for use for Mode 1 charging."
+      ],
+      "tags": ["EV", "NZ", "Mode 1", "prohibited"]
+    },
+    {
+      "id": "7.9.3.1",
+      "clause": "7.9.3.1",
+      "title": "Domestic Installations — EV Charging Facility (NZ)",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "Every new domestic installation with an enclosed garage shall have an EV charging facility.",
+      "requirements": [
+        "Every new domestic electrical installation that has a garage, being fully enclosed space including a door that is used for accommodating a motor vehicle that is incorporated as part of the main dwelling structure, shall have a facility to enable electric vehicle charging in accordance with either Clause 7.9.3.2 or Clause 7.9.3.3."
+      ],
+      "tags": ["EV", "NZ", "domestic", "garage", "charging facility"]
+    },
+    {
+      "id": "7.9.3.2",
+      "clause": "7.9.3.2",
+      "title": "Facilities for Mode 2 Charging (NZ)",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "Requirements for Mode 2 EV charging facilities in New Zealand.",
+      "requirements": [
+        "(a) The final subcircuit shall have a minimum current-carrying capacity of 20 A and shall not supply any other socket-outlet or point in wiring.",
+        "(b) The socket-outlet shall comply with one of: (i) AS/NZS 3112, (ii) IEC 60309-2, (iii) AS/NZS 3123, (iv) BS 1363-2. Not switched by insertion or withdrawal of plug.",
+        "(c) The socket-outlet shall be installed at a minimum height of 800 mm from the floor or ground."
+      ],
+      "tags": ["EV", "NZ", "Mode 2", "20A", "800mm", "socket-outlet"]
+    },
+    {
+      "id": "7.9.3.3",
+      "clause": "7.9.3.3",
+      "title": "Facilities for Mode 3 and 4 Charging (NZ)",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "Requirements for Mode 3 and 4 EV charging facilities in New Zealand.",
+      "requirements": [
+        "(a) Single-phase final subcircuits shall have a minimum current-carrying capacity of 32 A.",
+        "(b) The final subcircuit shall not supply any other point in wiring.",
+        "(c) RCD requirements: The final subcircuit shall be protected by a separate RCD of Type B complying with IEC 62423, with a maximum rated residual current of 30 mA which operates in all live (active and neutral) conductors. Combined RCBOs may be used.",
+        "(c) Exception: For Mode 3 charging facilities a Type A RCD with 30 mA, in conjunction with a residual direct current-detecting device (RDC-DD) conforming to IEC 62955 may be used.",
+        "(d) The charging equipment shall be connected by direct connection in accordance with Clause 4.3.2.1.",
+        "(e) An isolating switch complying with Clause 2.3.2.2.1, with a minimum current rating 32 A, shall be provided for the final subcircuit adjacent to the charging facility.",
+        "(f) The socket-outlet or cable of the charging equipment shall be installed at a minimum height of 800 mm from the floor or ground."
+      ],
+      "tags": ["EV", "NZ", "Mode 3", "Mode 4", "32A", "Type B RCD", "RDC-DD", "isolating switch", "800mm"]
+    },
+    {
+      "id": "7.9.4",
+      "clause": "7.9.4",
+      "title": "Other Installations — EV Charging RCD (NZ)",
+      "category": "EV Charging (NZ Clause 7.9)",
+      "jurisdiction": "NZ",
+      "summary": "RCD requirements for non-domestic EV charging in New Zealand.",
+      "requirements": [
+        "The final subcircuit shall be protected by a separate residual current device (RCD) of Type B complying with IEC 62423, with a maximum rated residual current of 30 mA which operates in all live (active and neutral) conductors. Combined RCBOs may be used.",
+        "Exception: For Mode 3 charging facilities a Type A RCD with 30 mA, in conjunction with a residual direct current-detecting device (RDC-DD) conforming to IEC 62955 may be used."
+      ],
+      "tags": ["EV", "NZ", "non-domestic", "Type B RCD", "RDC-DD"]
+    },
+    {
+      "id": "8.3.1",
+      "clause": "8.3.1",
+      "title": "Testing — General",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "After visual inspection, tests shall be performed to verify compliance.",
+      "requirements": [
+        "After visual inspection, tests per Clause 8.3.3 on electrical installation to verify compliance and suitability"
+      ],
+      "tags": ["testing", "compliance", "verification"]
+    },
+    {
+      "id": "8.3.2",
+      "clause": "8.3.2",
+      "title": "Testing — Test Methods",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "AS/NZS 3017 sets out common test methods.",
+      "requirements": [
+        "AS/NZS 3017 sets out common test methods",
+        "Testing carried out safely for operator and equipment",
+        "Recording of results recommended"
+      ],
+      "references": ["AS/NZS 3017"],
+      "tags": ["testing", "methods", "AS/NZS 3017"]
+    },
+    {
+      "id": "8.3.3",
+      "clause": "8.3.3",
+      "title": "Mandatory Tests (Low Voltage)",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Six mandatory tests for low voltage electrical installations.",
+      "requirements": [
+        "(a) Continuity of earthing system (Clause 8.3.5)",
+        "(b) Insulation resistance (Clause 8.3.6)",
+        "(c) Polarity (Clause 8.3.7)",
+        "(d) Correct circuit connections (Clause 8.3.8)",
+        "(e) Earth fault-loop impedance (Clause 8.3.9)",
+        "(f) Operation of RCDs (Clause 8.3.10)",
+        "Exception: EFLI verification may be omitted if automatic disconnection is not the method for fault protection."
+      ],
+      "tags": ["testing", "earthing continuity", "insulation resistance", "polarity", "EFLI", "RCD"]
+    },
+    {
+      "id": "8.3.4",
+      "clause": "8.3.4",
+      "title": "Testing — Sequence of Tests",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "The prescribed sequence for mandatory tests.",
+      "requirements": [
+        "Earth resistance (main earthing conductor), other earthing/bonding continuity, insulation resistance, polarity (consumer mains, submains, final subcircuits), EFLI, RCD operation."
+      ],
+      "tags": ["testing", "sequence"]
+    },
+    {
+      "id": "8.3.5",
+      "clause": "8.3.5",
+      "title": "Continuity of Earthing System",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Tests prove earthing system installed to operate protective devices. Main earthing conductor resistance ≤0.5 ohms.",
+      "requirements": [
+        "Tests prove earthing system installed to operate protective devices",
+        "Main earthing conductor or bonding conductor resistance: ≤0.5 ohms"
+      ],
+      "tags": ["testing", "earthing continuity", "0.5 ohms"]
+    },
+    {
+      "id": "8.3.6",
+      "clause": "8.3.6",
+      "title": "Insulation Resistance Testing",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Insulation resistance test requirements using 500 V d.c.",
+      "requirements": [
+        "Test: 500 V d.c. for low voltage circuits",
+        "Results: ≥1 M ohm between conductors and live-to-earthed parts",
+        "Sheathed heating elements: ≥0.01 M ohm",
+        "RCD functional earth: ≥0.05 M ohm",
+        "Exceptions: EMC filters, SPDs, electronic equipment may be disconnected or tested at 250 V d.c."
+      ],
+      "tags": ["testing", "insulation resistance", "500V", "1 M ohm"]
+    },
+    {
+      "id": "8.3.7",
+      "clause": "8.3.7",
+      "title": "Polarity and Correct Circuit Connections",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Requirements for polarity testing and verification of correct circuit connections.",
+      "requirements": [
+        "No transposition of active/neutral",
+        "Switches/protective devices not in earthing or PEN conductors",
+        "No switches in neutral conductors alone",
+        "All Edison screw lampholders: neutral to outer contact",
+        "Multiphase socket-outlets: consistent phase sequence",
+        "No short-circuits between conductors",
+        "No interconnections between different circuits"
+      ],
+      "tags": ["testing", "polarity", "circuit connections", "phase sequence"]
+    },
+    {
+      "id": "8.3.9",
+      "clause": "8.3.9",
+      "title": "Verification of Earth Fault-Loop Impedance (EFLI)",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "EFLI verification requirements and methods.",
+      "requirements": [
+        "Required for circuits supplying socket-outlets where: (a) Fault protection by automatic disconnection, (b) Supply one or more socket-outlets, (c) Socket-outlets NOT protected by RCD ≤30 mA",
+        "Not required for RCD-protected socket-outlets",
+        "Not required for separated supplies",
+        "Method 8.3.9.2.2 (Supply available): EFLI tester at furthest socket-outlet on each branch. MEN connection left intact.",
+        "Method 8.3.9.2.3 (No supply): Resistance measurement using ohmmeter (connect active and PEC at origin, measure at furthest point)",
+        "Results: Measured Zs ≤ Table 8.1 value for applicable protective device OR Rphe ≤ Table 8.2 value"
+      ],
+      "tags": ["testing", "EFLI", "socket-outlet", "RCD", "Zs"]
+    },
+    {
+      "id": "8.3.10",
+      "clause": "8.3.10",
+      "title": "Operation of RCDs",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "All RCDs must be tested for correct operation.",
+      "requirements": [
+        "Tests on all RCDs",
+        "Verification by integral test device or special test equipment",
+        "Isolation of all switched poles verified after RCD operation"
+      ],
+      "tags": ["testing", "RCD", "operation"]
+    },
+    {
+      "id": "Table_8.1",
+      "clause": "Table 8.1",
+      "title": "Maximum Values of Earth Fault-Loop Impedance (Zs at 230 V)",
+      "category": "Testing (Clause 8.3)",
+      "jurisdiction": "AU+NZ",
+      "summary": "Maximum Zs values for MCBs (Types B, C, D) and fuses at various ratings for compliance with disconnection times.",
+      "values": {
+        "MCB_type_B": {
+          "description": "Type B MCB — instantaneous trip at ~4× rated current (0.1 s max)",
+          "Zs_max_ohms": {
+            "6": 9.6, "10": 5.8, "16": 3.6, "20": 2.9, "25": 2.3, "32": 1.8, "40": 1.4,
+            "50": 1.2, "63": 0.9, "80": 0.7, "100": 0.6, "125": 0.5, "160": 0.4, "200": 0.3
+          }
+        },
+        "MCB_type_C": {
+          "description": "Type C MCB — instantaneous trip at ~7.5× rated current (0.1 s max)",
+          "Zs_max_ohms": {
+            "6": 5.1, "10": 3.1, "16": 1.9, "20": 1.5, "25": 1.2, "32": 1.0, "40": 0.8,
+            "50": 0.6, "63": 0.5, "80": 0.4, "100": 0.3, "125": 0.2, "160": 0.2, "200": 0.2
+          }
+        },
+        "MCB_type_D": {
+          "description": "Type D MCB — instantaneous trip at ~12.5× rated current (0.1 s max)",
+          "Zs_max_ohms": {
+            "6": 3.1, "10": 1.8, "16": 1.2, "20": 0.9, "25": 0.7, "32": 0.6, "40": 0.5,
+            "50": 0.4, "63": 0.3, "80": 0.2, "100": 0.2, "125": 0.1, "160": 0.1, "200": 0.1
+          }
+        },
+        "Fuse_0.4s": {
+          "description": "Fuses — 0.4 s disconnection time",
+          "Zs_max_ohms": {
+            "6": 11.5, "10": 6.4, "16": 3.1, "20": 2.1, "25": 1.6, "32": 1.3, "40": 1.0,
+            "50": 0.7, "63": 0.6, "80": 0.4, "100": 0.3, "125": 0.2, "160": 0.2, "200": 0.1
+          }
+        },
+        "Fuse_5s": {
+          "description": "Fuses — 5 s disconnection time",
+          "Zs_max_ohms": {
+            "6": 15.3, "10": 9.2, "16": 5.0, "20": 3.6, "25": 2.7, "32": 2.2, "40": 1.6,
+            "50": 1.3, "63": 0.9, "80": 0.7, "100": 0.5, "125": 0.4, "160": 0.3, "200": 0.2
+          }
+        }
+      },
+      "tags": ["Table 8.1", "EFLI", "Zs", "MCB", "fuse", "disconnection time"]
+    },
+    {
+      "id": "Appendix_B4",
+      "clause": "Appendix B4",
+      "title": "Earth Fault-Loop Impedance — Guidance",
+      "category": "Appendices",
+      "jurisdiction": "AU+NZ",
+      "summary": "Guidance on disconnection times, EFLI requirements, and EFLI testing.",
+      "requirements": [
+        "B4.1 Application: Guidance on disconnection times, earthing system impedance (EFLI) requirements per Clause 5.7, and EFLI test per Clause 8.3.9.3",
+        "B4.2 Principle: Prevent dangerous touch voltage duration. Requires conducting earth fault-loop path and interruption within max time by protective device.",
+        "B4.3 Disconnection times: Touch voltage limit 50 V (normal), 25 V (wet conditions). Hand-held equipment at 230 V: max 0.4 s. Other circuits: max 5 s.",
+        "B4.4 Earth fault-loop (MEN system): Comprises PE conductor (incl. MEN), neutral return path, transformer winding, active conductor. Zs = Zext + Zint.",
+        "B4.5 Calculation: Zs = Uo / Ia. Where Uo = 230 V, Ia = 4× rated for Type B, 7.5× for Type C, 12.5× for Type D MCB. Fuses: mean values from IEC 60269.1.",
+        "B4.6 EFLI Measurement: Measured impedance ≤ Table 8.1 value. MEN connection left intact. Submain: between active and main earthing terminal at switchboard. Final subcircuit: between furthest active point and associated PEC.",
+        "B5 Maximum circuit lengths: Lmax = (0.8 × Uo × Sph × Spe) / (la × rho × (Sph + Spe)). Alternative: Zint ≤ 0.8 Zs."
+      ],
+      "tags": ["Appendix B", "EFLI", "disconnection time", "touch voltage", "calculation"]
+    },
+    {
+      "id": "Appendix_C_EV",
+      "clause": "Appendix C — EV Charging Load Groups",
+      "title": "Maximum Demand — EV Charging Load Groups",
+      "category": "Appendices",
+      "jurisdiction": "AU+NZ",
+      "summary": "Demand factors for EV charging equipment when calculating maximum demand.",
+      "requirements": [
+        "Table C1 — Domestic: Single installation or individual living unit per phase: Full connected load",
+        "Table C1 — Domestic: 2 to 5 living units per phase (blocks): 100% connected load",
+        "Table C1 — Domestic: 6 to 20 living units per phase (blocks): 90% connected load",
+        "Table C1 — Domestic: 21 or more living units per phase (blocks): 75% connected load",
+        "Table C2 — Non-Domestic: Residential institutions, hotels, hospitals, etc.: Full load of highest rated + 75% of remainder",
+        "Table C2 — Non-Domestic: Factories, shops, offices, schools, etc.: Full load of highest rated + 75% of remainder",
+        "Table C3 — Carpark EV charging: Open air 5-15 VA/m² (assessment 10 VA/m²); Basement 10-30 VA/m² (assessment 20 VA/m²)",
+        "NOTE: EV charging should be considered in addition to all other energy demands."
+      ],
+      "tags": ["maximum demand", "EV", "load group", "demand factor", "carpark"]
+    },
+    {
+      "id": "Appendix_P",
+      "clause": "Appendix P",
+      "title": "Guidance for EV Charging Socket-Outlets and Charging Stations",
+      "category": "Appendices",
+      "jurisdiction": "AU+NZ",
+      "summary": "Informative guidance for installation and location of EV charging equipment.",
+      "requirements": [
+        "P1 Scope: Covers circuits for supplying EV energy and for feedback of electricity from EVs. Applies up to 1000 V a.c. or 1500 V d.c.",
+        "P1.5 Charging Modes: Mode 1 (≤20 A, ≤250/480 V, via standard socket-outlets); Mode 2 (≤32 A, ≤250/480 V, with IC-CPD and RCD); Mode 3 (dedicated EV supply equipment); Mode 4 (off-board charger).",
+        "P2 Maximum Demand: Each connection point at full rated current; all points considered for simultaneous use.",
+        "P3.1 General: Dedicated circuit recommended. Socket-outlet/connector as close as possible to EV parking place.",
+        "P3.2 External Influences: Outdoor connection points min IPX4 and IP4X. Mechanical protection per IK07 or position/location.",
+        "P4.1 RCDs: Each connecting point should be protected by its own RCD of at least Type A, ≤30 mA. For IEC 62196 connectors: Type B OR Type A + RDC-DD (≥6 mA d.c. disconnection). RCDs should disconnect all live conductors.",
+        "P4.2 Overcurrent: Each connecting point by individual final subcircuit with overcurrent protective device (AS/NZS 60898, 61009, or 60947 series).",
+        "P4.3 Protective conductors: Control signals on PE shall not flow into fixed installation.",
+        "P5.1 Socket-outlets and vehicle connectors: Each connection point with one socket-outlet or connector per IEC 62196. Socket-outlets ≤20 A per AS/NZS 3112, AS/NZS 3123 or IEC 60309. Portable socket-outlets not permitted. One socket-outlet = one EV.",
+        "P5.2 Ratings: Type 1 (250 V, 20 A, single-phase); Type 2 (250 V 20/32/63/70 A single-phase, or 380-480 V 20/32/63 A three-phase); Type 3 (250 V 20/32 A single-phase, or 380-480 V 32/63 A three-phase).",
+        "P5.3 Permitted socket-outlets: 20 A 250 V (AS/NZS 3112), 20 A 250 V (AS/NZS 3123/IEC 60309), Type 1/2/3 vehicle connector (AS IEC 62196-2) for Mode 3 only.",
+        "P6 Charging stations: Cables not inadvertently run over or pinched. Ground surface not damaging cable sheath. Consider earth-screened cable. Design per IEC TS 61439-7.",
+        "P7 Periodic verification: Publicly available EV charging stations — inspect at least once per week (visible damage, operational faults) and at least once per year (correct operation)."
+      ],
+      "references": ["AS/NZS 3112", "AS/NZS 3123", "IEC 60309", "IEC 62196", "AS/NZS 60898", "AS/NZS 61009", "AS/NZS 60947", "IEC TS 61439-7", "IEC 62955"],
+      "tags": ["Appendix P", "EV", "charging", "RCD", "Mode 1", "Mode 2", "Mode 3", "Mode 4", "socket-outlet", "IPX4"]
+    },
+    {
+      "id": "B4_formula",
+      "clause": "Appendix B4 — Max Circuit Length",
+      "title": "Maximum Circuit Length Formula",
+      "category": "Appendices",
+      "jurisdiction": "AU+NZ",
+      "summary": "Formula for calculating maximum circuit lengths based on EFLI constraints.",
+      "requirements": [
+        "Lmax = (0.8 × Uo × Sph × Spe) / (Ia × rho × (Sph + Spe))",
+        "Alternative: Zint ≤ 0.8 × Zs (Equation B6)"
+      ],
+      "tags": ["maximum circuit length", "formula", "cable sizing"]
+    }
+  ]
+}

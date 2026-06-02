@@ -1,0 +1,411 @@
+{
+  "metadata": {
+    "generated": "2026-06-02",
+    "sources": [
+      "AS/NZS 3017:2022 — Electrical installations — Verification by inspection and testing",
+      "AS/NZS 3012:2019 (inc Amd 001) — Electrical installations — Construction and demolition sites",
+      "Electricity Safety (General) Regulations 2019 (Vic) — S.R. No. 113/2019",
+      "AS/NZS 3760:2022 (inc Amd No. 1) — In-service safety inspection and testing of electrical equipment and RCDs"
+    ],
+    "description": "Structured clause knowledge base for auxiliary standards"
+  },
+
+  "standards": {
+    "AS_NZS_3017_2022": {
+      "title": "Electrical installations — Verification by inspection and testing",
+      "scope": "Sets out common inspection and test methods to verify low voltage electrical installations comply with safety requirements. Covers MEN (TN-C-S) systems.",
+      "key_clauses": {
+        "section_1_general": {
+          "4_1": {"title": "Competent person", "description": "Person who has acquired knowledge and skill through education, training, qualification or experience to perform the required task."},
+          "4_3": {"title": "Earth fault-loop impedance", "description": "Impedance of the earth fault-current loop (active-to-earth loop) starting and ending at the point of earth fault."},
+          "4_11": {"title": "Known earth", "description": "Earth point previously tested to confirm it is connected to the installation earthing system."},
+          "4_16": {"title": "Verification", "description": "Provision of objective evidence that a given item fulfils specified requirements. Comprises inspection, testing and reporting."},
+          "5_1": {"title": "Safety", "description": "Testing inherently involves hazard and shall be undertaken by a competent person. Site-specific risk assessment required before commencing."}
+        },
+        "section_2_test_equipment": {
+          "2_1": {"title": "Equipment required", "description": "Voltage indicator, volt meter, low range ohmmeter, insulation resistance test instrument, EFLI measuring instrument, RCD test instrument/device."},
+          "2_2_1_2": {"title": "Meter error", "description": "Max inherent error: (a) analogue — 5% full scale deflection; (b) digital — 5% of value being measured."}
+        },
+        "section_4_testing_installations": {
+          "4_3": {"title": "Test for de-energized", "description": "All circuits shall be proven de-energized and isolated before testing."},
+          "4_4_earth_continuity": {
+            "title": "Earth continuity and resistance",
+            "description": "Testing to prove continuity of earthing system: main earthing conductor, protective earthing conductors, bonding conductors.",
+            "pass_fail": {
+              "main_earthing_conductor": "Resistance shall be not more than 0.5 Ohm",
+              "equipotential_bonding_conductor": "Resistance shall be not more than 0.5 Ohm",
+              "protective_earthing_conductor": "Low enough to permit passage of current to operate overcurrent protective device; consistent with length, CSA and material type.",
+              "method": "Disconnect main earthing conductor, measure between conductor and earth electrode with low-range ohmmeter."
+            }
+          },
+          "4_5_insulation_resistance": {
+            "title": "Insulation resistance",
+            "description": "Ensures insulation between all live conductors and earth is adequate to prevent shock, fire and equipment damage.",
+            "method": "Apply DC 500 V for LV circuits. Disconnect neutral from MEN system. Remove MEN link.",
+            "pass_fail": {
+              "general": "Not less than 1 MOhm",
+              "sheathed_heating_elements": "Not less than 0.01 MOhm",
+              "rcd_functional_earth": "Not less than 0.05 MOhm (or as per manufacturer)",
+              "reduced_voltage_test": "At 250 V d.c. if sensitive equipment connected, minimum still 1 MOhm"
+            }
+          },
+          "4_6_polarity": {
+            "title": "Polarity and correct circuit connections",
+            "description": "Ensures no shock hazard from incorrect connection of active, neutral and earthing conductors.",
+            "requirements": [
+              "Every single-pole switch or protective device shall operate in the active conductor",
+              "Multi-phase switch/protective device shall operate in all active conductors",
+              "RCDs required to switch all live conductors shall switch active and neutral",
+              "Socket-outlets for flat-pin plugs: order earth, active, neutral clockwise from front",
+              "All neutral conductors connected to neutral bar of switchboard",
+              "Consumers mains neutral connected to neutral bar of main switchboard",
+              "No short-circuit between conductors, no transposition, no interconnection between different circuits"
+            ],
+            "verification": "Polarity verified by approximate zero-Ohm reading on each conductor; infinity reading on incorrect configurations."
+          },
+          "4_7_phase_sequence": {
+            "title": "Phase sequence of multi-phase socket outlets",
+            "description": "Where multi-phase socket-outlets of the same type are installed, phase sequence shall be the same throughout."
+          },
+          "4_8_earth_fault_loop_impedance": {
+            "title": "Earth fault-loop impedance (EFLI)",
+            "description": "Measured to ensure sufficient fault current to operate protective device within specified disconnection time.",
+            "method": {
+              "energized": "Use EFLI tester at furthest point of each branch of final subcircuit. MEN left intact.",
+              "de_energized": "Measure total resistance (Rphe) of active + protective earthing conductors using ohmmeter."
+            },
+            "pass_fail": "Maximum EFLI shall not exceed values from Table 4.5 (MCBs: Type B/C/D) or Ia per manufacturer data. For 0.4s disconnection: e.g., 6A MCB Type B = 9.6 Ohm, Type C = 5.1 Ohm; 20A Type B = 2.9 Ohm, Type C = 1.5 Ohm."
+          },
+          "4_9_rcd_testing": {
+            "title": "Confirming function of residual current devices (RCDs)",
+            "description": "Ensures RCD correctly installed, operates at approximately rated residual current, and disconnects all required conductors.",
+            "methods": [
+              "Integral test button (push-button) — device must activate without undue delay",
+              "RCD test instrument at socket outlet — verify correct operation at rated I_delta_n"
+            ],
+            "pass_fail": [
+              "RCD correctly installed",
+              "RCD operates when residual current of approximately rated value is present",
+              "Protected circuit(s) disconnected from supply to required degree (all actives, or all actives plus neutral)"
+            ]
+          },
+          "4_10_earth_electrode": {
+            "title": "Measuring resistance of earth electrode to general mass of earth",
+            "description": "Tests integrity of the earth electrode system."
+          },
+          "4_11_touch_voltage": {
+            "title": "Measuring touch voltage",
+            "description": "Procedure for measuring touch voltage at electrical installations."
+          },
+          "4_12_incoming_neutral": {
+            "title": "Test for integrity of the incoming neutral",
+            "description": "Tests that the incoming neutral conductor is continuous and correctly connected."
+          }
+        }
+      }
+    },
+
+    "AS_NZS_3012_2019": {
+      "title": "Electrical installations — Construction and demolition sites (inc Amd 001)",
+      "scope": "Minimum requirements for design, construction and testing of electrical installations supplying appliances and equipment on construction and demolition sites, and in-service testing of electrical equipment used on such sites.",
+      "key_clauses": {
+        "section_2_installation": {
+          "2_4_6_3": {"title": "RCD protection on construction sites", "description": "All socket-outlets shall be protected by RCD with max rated residual current of 30 mA operating in all live conductors (active and neutral). In NZ, Type A RCD per IEC 61008-1 or IEC 61009-1."},
+          "2_6": {"title": "Flexible cords, cord extension sets, flexible cables and accessories", "description": "Requirements for flexible cords and cables on construction sites."},
+          "2_7_3_1": {"title": "Emergency lighting", "description": "Requirement to prevent unauthorised disconnection of emergency lighting."},
+          "2_7_6": {"title": "Temporary protected lighting (TPL)", "description": "TPL per AS/NZS 60598.2.20 not considered festoon lighting."}
+        },
+        "section_3_verification": {
+          "3_1": {"title": "Application", "description": "Describes verification (assessment, inspection and testing) procedures and frequency for all components of electrical installations on construction and demolition sites."},
+          "3_2_frequency": {
+            "title": "Frequency of verification",
+            "description": "Determined by hazard/risk level and degree of misuse based on specific conditions, not general site conditions.",
+            "requirements": {
+              "new_equipment": "Prior to initial introduction into service",
+              "repaired_equipment": "Prior to return to service after repair or servicing affecting electrical safety",
+              "hire_equipment": "Inspection prior to each hire, testing at not greater than monthly intervals",
+              "all_equipment": "Intervals not exceeding those in Table 6"
+            }
+          },
+          "table_6_verification_intervals": {
+            "title": "Table 6 — Periodic verification intervals",
+            "environments": {
+              "construction_demolition_sites": {
+                "equipment": {
+                  "transportable_structures_and_fixed_equipment": "6 months",
+                  "portable_equipment": "3 months"
+                },
+                "rcd_pushbutton": {
+                  "portable": "After connection to a socket or before connection of equipment, and at least once every day in use",
+                  "non_portable_fixed": "1 month"
+                },
+                "rcd_operating_time": {
+                  "portable": "3 months",
+                  "non_portable_fixed": "12 months"
+                }
+              }
+            }
+          },
+          "3_3": {
+            "title": "Construction wiring and transportable structures",
+            "description": "All construction wiring, including switchboards, fixed RCDs and transportable structures, shall be inspected and tested by a qualified person following initial installation and periodically per Table 6."
+          },
+          "3_4_rcds": {
+            "title": "RCDs",
+            "description": "RCDs shall be (a) successfully operated by in-built test facility (push-button), (b) subject to and comply with operating time test per AS/NZS 3760, and (c) tested by a competent person. In NZ, check RCD labelled as Type A per IEC 61008-1 or IEC 61009-1."
+          },
+          "3_5": {
+            "title": "Other electrical equipment on site",
+            "description": "Power tools, flexible cords, cord extension sets and PSOAs shall be tested before being put into service and at intervals per Table 6.",
+            "protective_earthing_continuity": "Class I equipment: continuity from plug earth pin to exposed conductive parts per AS/NZS 3760. Resistance less than max values in AS/NZS 3760 (1 Ohm per AS 3760 Clause 2.4.3.1).",
+            "insulation_resistance": "Class I and Class II: tested per AS/NZS 3760. Values not less than minimum in AS/NZS 3760 (1.0 MOhm generally).",
+            "arc_welders_table_7": "Input circuit to welding circuit: 5 MOhm min. All circuits to exposed conductive parts: 2.5 MOhm min. Welding circuit to auxiliary circuits > ELV: 1 MOhm min."
+          },
+          "3_6": {
+            "title": "Generator connections",
+            "description": "RCD-equipped generators: verify integrity of connection between windings and equipotential bonding. Isolated winding generators: frame-to-bonding connection < 1 Ohm; winding-to-frame insulation > 1 MOhm."
+          },
+          "3_7": {
+            "title": "Actions from inspection and test",
+            "description": "Non-compliant equipment: withdraw from service immediately, attach out-of-service tag, send for repair/disposal/destruction. Compliant equipment: fit durable non-reusable non-metallic tag with person's name, test and re-test dates.",
+            "tag_colour_coding": "Refer to Appendix D for recommended colour coding schedule. Tags identify period in which test was performed."
+          },
+          "3_9": {
+            "title": "Documentation",
+            "description": "Records of inspection and testing to be kept."
+          }
+        },
+        "appendices": {
+          "d": {"title": "Appendix D — Recommended colours for tags on tested equipment", "description": "Colour coding schedule for test tags."},
+          "e": {"title": "Appendix E — Electrical verification of generators with RCD protection", "description": "Test procedures for generators per AS/NZS 3012 and AS/NZS 3760."},
+          "f": {"title": "Appendix F — Electrical verification of portable inverters", "description": "Test procedures for portable inverters."},
+          "j": {"title": "Appendix J — Construction power supply arrangements for domestic housing sites (NZ only)", "description": "New Zealand-specific requirements for domestic housing site power."}
+        }
+      }
+    },
+
+    "ESR_2019_Victoria": {
+      "title": "Electricity Safety (General) Regulations 2019 — S.R. No. 113/2019",
+      "jurisdiction": "Victoria, Australia",
+      "regulator": "Energy Safe Victoria",
+      "key_regulations": {
+        "part_1_preliminary": {
+          "108": {
+            "title": "Application of the Australian/New Zealand Wiring Rules",
+            "description": "AS/NZS 3000 applied with modifications: (a) 'regulatory authority' = Energy Safe Victoria; (b) 'electrician' = licensed electrician; (c) 'licensed electrical contractor' = registered electrical contractor; (d) water/gas suppliers includes telecom suppliers."
+          }
+        },
+        "part_2_electrical_installations": {
+          "202": {
+            "title": "General wiring methods",
+            "description": "Installations must comply with Divisions 1-9 of Part 2 and Part 2 of AS/NZS 3000."
+          },
+          "214": {
+            "title": "Electricity supplies — construction and demolition sites",
+            "description": "(1) Switchboards/enclosures on C&D sites must be securely attached to rigid structure. (2) Free-standing enclosures must be securely fixed. (3) Underground consumer's mains entering switchboard must be enclosed in heavy duty non-metallic conduit from ground exit to enclosure, with additional mechanical protection (WSX3 per AS/NZS 3013)."
+          },
+          "division_10_testing": {
+            "240": {
+              "title": "General testing requirements for LV electrical installation work",
+              "description": "LV electrical installation work must be tested per AS/NZS 3000 to verify compliance with Divisions 1-9 of Part 2 after completion and before certification or inspection."
+            },
+            "241": {
+              "title": "Testing of underground consumer's mains",
+              "description": "New underground consumer's mains: insulation resistance tested per Reg 228(1) after completion. Existing mains after work: tested per Reg 228(2)."
+            },
+            "242": {
+              "title": "Testing in patient areas",
+              "description": "Must be tested per AS/NZS 3000 to verify compliance with AS/NZS 3003."
+            },
+            "243": {
+              "title": "Testing of photovoltaic arrays",
+              "description": "Must be tested per AS/NZS 5033 to verify compliance. Penalty: 20 penalty units."
+            },
+            "244": {
+              "title": "Testing of battery systems",
+              "description": "Must be tested per AS/NZS 3000 to verify compliance with AS/NZS 5139. Penalty: 20 penalty units."
+            },
+            "245": {
+              "title": "Testing of grid-connected inverter energy systems",
+              "description": "After completion and before service: (a) inverter takes >60s to connect to network after main switch closed; (b) inverter disconnects from network in <2s after main switch opened. Penalty: 20 penalty units."
+            },
+            "246": {
+              "title": "Testing of HV electrical installation work",
+              "description": "HV installations tested per AS 2067. Earthing systems: resistance to earth not greater than design, connections maintain conductivity, earth potential rise does not exceed design."
+            },
+            "247": {
+              "title": "Persons authorised to carry out testing",
+              "description": "Testing must be carried out by: (a) a licensed electrician; (b) a person licensed to carry out the work; or (c) for HV work, a competent person."
+            },
+            "248": {
+              "title": "Results of HV testing",
+              "description": "Person carrying out HV testing must: (a) record results in writing; (b) give copy to premises owner; (c) retain copy for 3 years. Penalty: 20 penalty units."
+            }
+          },
+          "division_11_inspection": {
+            "249": {
+              "title": "Electrical installation work that must be inspected",
+              "description": "Prescribed electrical installation work includes: consumer's mains, main earthing systems, consumer's terminals, connection devices, overhead service line supports, overcurrent protective devices at origin of private aerial lines, main switchboard parts related to control or fire protection."
+            },
+            "250": {
+              "title": "Inspection of prescribed electrical installation work",
+              "description": "Prescribed work must be inspected by a licensed electrical inspector."
+            },
+            "251": {
+              "title": "Certificates of inspection",
+              "description": "Certificates must be issued for prescribed installation work."
+            }
+          }
+        }
+      }
+    },
+
+    "AS_NZS_3760_2022": {
+      "title": "In-service safety inspection and testing of electrical equipment and RCDs (inc Amd No. 1)",
+      "scope": "Procedures for safety inspection and testing of low voltage single phase and polyphase electrical equipment connected by flexible cord or connecting device. Covers new, in-service, repaired, second-hand, and hire equipment. Also covers RCDs (Australia) and portable inverters.",
+      "key_clauses": {
+        "section_1_scope": {
+          "1_1": {"title": "Scope", "description": "Applies to portable, hand-held, stationary equipment; cord sets, cord extension sets, EPODs; PRCDs, ACS, PSOAs; flexible cords in hostile environments; portable power supplies; battery chargers; heavy duty tools. Does NOT apply to equipment at height >=2.5m where no reasonable chance of touching earth."},
+          "1_2_4_2": {"title": "Hire equipment responsibility", "description": "Responsibility for testing, inspection and tagging passes to hiree. Retest interval derived from Table 2.4."}
+        },
+        "section_2_inspection_and_tests": {
+          "2_2_frequency": {
+            "title": "Frequency of inspection and tests",
+            "description": "Equipment inspected and tested at intervals indicated in Table 2.4 (tolerance 2 weeks) or as varied by documented risk assessment. Return to service after repair (AS/NZS 5762). Second-hand before service (AS/NZS 5761).",
+            "risk_assessment": "Organizations may substitute other periods after documented risk assessment per AS/NZS ISO 31000. This option does NOT apply to hire equipment."
+          },
+          "2_3_personnel": {
+            "title": "Competent person",
+            "description": "Tasks carried out by a competent person with understanding of Class I/II equipment, insulation types, protective earth, earth continuity, insulation resistance, leakage current, relevant legislation."
+          },
+          "2_4_1": {
+            "title": "Inspection and testing includes",
+            "description": "(a) External inspection; (b) Protective earth continuity tests for Class I, EPODs, cord sets, cord extension sets; (c) Insulation testing (IR or leakage current); (d) Polarity of rewireable plugs/sockets."
+          },
+          "2_4_2_inspection": {
+            "title": "Visual and physical inspection",
+            "description": "Check for: damage/defects/modifications, cord anchoring, cord damage (inner cores not exposed, sheath not cut/abraded/twisted), EPOD load warning label, operating controls, covers/guards, ventilation, plug pin damage, cord extension socket shroud, current rating consistency."
+          },
+          "2_4_3_1_earth_continuity": {
+            "title": "Earthing continuity",
+            "description": "Continuity from plug earth pin to accessible earthed parts (Class I) and to earth contact of each outlet (cord sets, EPODs, PRCDs).",
+            "pass_fail": "Measured resistance not exceeding 1 Ohm"
+          },
+          "2_4_3_2_insulation_testing": {
+            "title": "Testing of insulation",
+            "description": "Leakage current test OR insulation resistance test per Appendix E.",
+            "pass_fail": "See Tables 2.1 and 2.2"
+          },
+          "table_2_1_leakage_current": {
+            "title": "Table 2.1 — Leakage current limits",
+            "rows": [
+              {"equipment": "Class I", "method": "Current in protective earthing conductor", "max": "5 mA"},
+              {"equipment": "Class II", "method": "Current between accessible metal and earth", "max": "1 mA"},
+              {"equipment": "PRCDs with FE", "method": "Current in functional earthing conductor", "max": "5 mA"},
+              {"equipment": "Cord extension sets, cord sets, EPODs, PRCDs", "method": "Current in protective earthing conductor", "max": "5 mA"}
+            ]
+          },
+          "table_2_2_insulation_resistance": {
+            "title": "Table 2.2 — Insulation resistance limits",
+            "rows": [
+              {"equipment": "Class I", "method": "Between live parts and accessible earthed parts", "min": "1.0 MOhm"},
+              {"equipment": "Class II", "method": "Between live parts and any accessible metal parts", "min": "1.0 MOhm"},
+              {"equipment": "PRCDs with FE", "method": "Between live parts and functional earthing conductor", "min": "0.05 MOhm"},
+              {"equipment": "Cord extension sets, cord sets, EPODs, PRCDs", "method": "Between live parts and protective earthing conductor", "min": "1.0 MOhm"},
+              {"equipment": "Class I with mineral insulated metal sheath heating elements", "method": "Between live parts and accessible earthed parts", "min": "0.01 MOhm"}
+            ]
+          },
+          "table_2_3_rcd_tripping": {
+            "title": "Table 2.3 — Maximum tripping times (RCDs)",
+            "rows": [
+              {"type": "Type I (10 mA)", "test_current_mA": 10, "max_trip_time_ms": 40},
+              {"type": "Type II (30 mA)", "test_current_mA": 30, "max_trip_time_ms": 300}
+            ],
+            "notes": [
+              "RCDs permanently wired: test button only, observe 'without undue delay'. In doubt, use external timing: 30mA RCD max 300ms, 10mA RCD max 40ms.",
+              "Push-button test only confirms operation, not actual trip-time."
+            ]
+          },
+          "table_2_4_inspection_intervals": {
+            "title": "Table 2.4 — Indicative testing and inspection intervals",
+            "rows": [
+              {
+                "environment": "Factories, workshops, manufacturing/assembly/maintenance/fabrication",
+                "equipment_interval": "6 months",
+                "rcd_pushbutton_portable": "Daily or before every use, whichever longer",
+                "rcd_pushbutton_fixed": "6 months",
+                "rcd_operating_time_portable": "12 months",
+                "rcd_operating_time_fixed": "12 months"
+              },
+              {
+                "environment": "Environment where equipment/cord subject to flexing OR open to abuse OR hostile environment",
+                "equipment_interval": "12 months",
+                "rcd_pushbutton_portable": "3 months",
+                "rcd_pushbutton_fixed": "6 months",
+                "rcd_operating_time_portable": "12 months",
+                "rcd_operating_time_fixed": "12 months"
+              },
+              {
+                "environment": "Environment where equipment/cord NOT subject to flexing AND NOT open to abuse AND NOT hostile",
+                "equipment_interval": "5 years",
+                "rcd_pushbutton_portable": "3 months",
+                "rcd_pushbutton_fixed": "6 months",
+                "rcd_operating_time_portable": "2 years",
+                "rcd_operating_time_fixed": "2 years"
+              },
+              {
+                "environment": "Residential type areas (hotels, motels, boarding houses, halls, hostels)",
+                "equipment_interval": "2 years",
+                "rcd_pushbutton_portable": "6 months",
+                "rcd_pushbutton_fixed": "6 months",
+                "rcd_operating_time_portable": "2 years",
+                "rcd_operating_time_fixed": "2 years"
+              },
+              {
+                "environment": "Equipment used for commercial cleaning",
+                "equipment_interval": "6 months",
+                "rcd_pushbutton_portable": "Daily or before every use, whichever longer",
+                "rcd_pushbutton_fixed": "N/A",
+                "rcd_operating_time_portable": "6 months",
+                "rcd_operating_time_fixed": "N/A"
+              },
+              {
+                "environment": "Hire equipment — inspection, test and tag",
+                "equipment_interval": "Prior to hire / 3 months",
+                "rcd_pushbutton_portable": "Including push-button test by hirer prior to hire",
+                "rcd_pushbutton_fixed": "N/A",
+                "rcd_operating_time_portable": "3 months",
+                "rcd_operating_time_fixed": "12 months"
+              },
+              {
+                "environment": "Repaired and serviced equipment",
+                "equipment_interval": "After repair or service that could affect electrical safety, or on reintroduction to service. AS/NZS 5762 applies.",
+                "rcd_pushbutton_portable": "N/A",
+                "rcd_pushbutton_fixed": "N/A",
+                "rcd_operating_time_portable": "N/A",
+                "rcd_operating_time_fixed": "N/A"
+              }
+            ]
+          },
+          "2_5_1_non_compliant": {
+            "title": "Non-compliant equipment",
+            "description": "Withdraw from service, label to indicate remedial action and warn against further use."
+          },
+          "2_5_2_compliant": {
+            "title": "Compliant equipment tag",
+            "description": "Fit durable, non-reusable, non-metallic tag with: (a) name of person and entity who performed test; (b) test date, retest date, reference to AS/NZS 3760. Colour coding per period. New equipment in Australia: tag with 'new to service', entry date, next test date, statement 'not tested per AS/NZS 3760'."
+          },
+          "2_6_documentation": {
+            "title": "Documentation",
+            "description": "Australia: records should be kept. New Zealand: records shall be kept with register of all equipment tested. Records retained for 7 years or as required by regulator."
+          }
+        },
+        "appendices": {
+          "d": {"title": "Appendix D — Test of earthing continuity (Normative)", "description": "Measurement method: resistance between accessible earthed metal parts and earth pin of mains plug. Pass: <=1 Ohm."},
+          "e": {"title": "Appendix E — Insulation testing (Normative)", "description": "Leakage current test or insulation resistance test methods for Class I, II, EPODs."},
+          "h": {"title": "Appendix H — Test for operating time of RCDs (Normative)", "description": "RCD test instrument used to measure tripping time. Type I (10mA): max 40ms. Type II (30mA): max 300ms."}
+        }
+      }
+    }
+  }
+}
