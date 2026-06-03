@@ -1237,35 +1237,115 @@ function doSearch() {
     return;
   }
 
-  // Search each word independently, aggregate results
-  const resultMap = new Map(); // index -> { bestScore, wordCount, item }
+  // Score each entry: exact/token matching with field weights
+  function scoreEntry(entry, queryWords) {
+    let total = 0;
+    const matchedWords = new Set();
 
-  for (const word of words) {
-    const rawMatches = fuse.search(word);
-    for (const match of rawMatches) {
-      if (catFilter && match.item.c !== catFilter) continue;
-      const idx = match.refIndex;
-      if (resultMap.has(idx)) {
-        const entry = resultMap.get(idx);
-        if (match.score < entry.bestScore) entry.bestScore = match.score;
-        entry.wordCount++;
-      } else {
-        resultMap.set(idx, { bestScore: match.score, wordCount: 1, item: match.item });
+    for (const word of queryWords) {
+      let best = 0;
+      const w = word.toLowerCase();
+      const esc = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const wordRe = new RegExp('\\b' + esc + '\\b', 'i');
+
+      // Keywords (k) — curated, highest weight
+      if (entry.k && Array.isArray(entry.k)) {
+        for (const kw of entry.k) {
+          const kws = kw.toLowerCase();
+          if (kws === w) { best = Math.max(best, 25); break; }
+          if (kws.includes(w) || w.includes(kws)) { best = Math.max(best, 18); break; }
+        }
+      }
+
+      // Title (t)
+      if (entry.t) {
+        const t = entry.t;
+        if (wordRe.test(t)) best = Math.max(best, 20);
+        else if (t.toLowerCase().includes(w)) best = Math.max(best, 10);
+      }
+
+      // Summary (s)
+      if (entry.s) {
+        const s = entry.s;
+        if (wordRe.test(s)) best = Math.max(best, 12);
+        else if (s.toLowerCase().includes(w)) best = Math.max(best, 6);
+      }
+
+      // Category (c)
+      if (entry.c) {
+        const c = entry.c;
+        if (wordRe.test(c)) best = Math.max(best, 8);
+        else if (c.toLowerCase().includes(w)) best = Math.max(best, 4);
+      }
+
+      // Detail (d)
+      if (entry.d) {
+        const d = entry.d;
+        if (wordRe.test(d)) best = Math.max(best, 5);
+        else if (d.toLowerCase().includes(w)) best = Math.max(best, 2);
+      }
+
+      if (best > 0) {
+        total += best;
+        matchedWords.add(word);
+      }
+    }
+
+    // Multi-word bonus: matched words × 15% each extra word
+    const mw = matchedWords.size;
+    if (mw > 1) {
+      total = Math.round(total * (1 + (mw - 1) * 0.15));
+    }
+
+    return { score: total, words: mw };
+  }
+
+  // Phase 1: exact scoring
+  let scored = [];
+  for (let i = 0; i < KB_DATA.length; i++) {
+    const e = KB_DATA[i];
+    if (catFilter && e.c !== catFilter) continue;
+    const s = scoreEntry(e, words);
+    if (s.score > 0) {
+      scored.push({ idx: i, entry: e, score: s.score, wordCount: s.words });
+    }
+  }
+
+  // Phase 2: if too few exact results, supplement with Fuse fuzzy
+  if (scored.length < 3 && words.length > 0) {
+    const fuseMap = new Map();
+    for (const word of words) {
+      const raw = fuse.search(word);
+      for (const m of raw) {
+        if (catFilter && m.item.c !== catFilter) continue;
+        const idx = m.refIndex;
+        if (fuseMap.has(idx)) {
+          fuseMap.get(idx).wordCount++;
+        } else {
+          fuseMap.set(idx, { wordCount: 1, entry: m.item, idx });
+        }
+      }
+    }
+    for (const [idx, fm] of fuseMap) {
+      // Only add entries not already in exact results
+      if (!scored.some(s => s.idx === idx)) {
+        scored.push({
+          idx,
+          entry: fm.entry,
+          score: 10 + fm.wordCount * 8,
+          wordCount: fm.wordCount
+        });
       }
     }
   }
 
-  // Convert to array, sort: word count desc, then score asc
-  let matches = Array.from(resultMap.values());
-  matches.sort((a, b) => {
-    if (b.wordCount !== a.wordCount) return b.wordCount - a.wordCount;
-    return a.bestScore - b.bestScore;
-  });
+  // Sort by score descending, then word count desc
+  scored.sort((a, b) => b.score - a.score || b.wordCount - a.wordCount);
 
-  const top = matches.slice(0, 30);
+  const top = scored.slice(0, 25);
 
   empty.style.display = 'none';
-  count.textContent = `${matches.length} result${matches.length !== 1 ? 's' : ''}`;
+  count.textContent = `${scored.length} result${scored.length !== 1 ? 's' : ''}`;
 
   if (top.length === 0) {
     results.innerHTML = '<p style="color:var(--text2);font-size:12px;text-align:center;padding:12px;">No results found. Try shorter or different keywords.</p>';
@@ -1273,14 +1353,15 @@ function doSearch() {
   }
 
   let html = '';
-  for (const match of top) {
-    const e = match.item;
+  for (const m of top) {
+    const e = m.entry;
     const tt = highlight(e.t, q);
     const ss = highlight(e.s, q);
     const dd = e.d ? highlight(e.d, q) : '';
     const showDetail = dd ? `<div class="detail">${dd}</div>` : '';
     html += `<div class="search-result">
       <span class="cat">${e.c}</span><strong>${tt}</strong>
+      <div style="margin-top:4px;font-size:11px;color:var(--text2);">Score: ${m.score}</div>
       <div style="margin-top:4px;">${ss}</div>
       <div class="ref">${e.r}</div>
       ${showDetail}
