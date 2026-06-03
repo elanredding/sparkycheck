@@ -417,6 +417,7 @@
 
 <div class="header">
   <div class="header-brand">
+    <button id="back-btn" onclick="showScreen('home')" style="display:none; background:none; border:none; color:var(--text2); font-size:18px; cursor:pointer; padding:0 4px 0 0; line-height:1;">←</button>
     <div class="header-logo">⚡</div>
     <h1><span>Sparky</span>Check</h1>
   </div>
@@ -480,7 +481,6 @@
 
 <!-- VOLTAGE DROP CALC -->
 <div id="screen-vd" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>📏 Voltage Drop Calculator</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000 Clause 3.6 — Max 5% drop from point of supply to load (8% for street lighting)</p>
@@ -517,7 +517,6 @@
 
 <!-- MAX DEMAND -->
 <div id="screen-maxd" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>⚡ Max Demand Calculator</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 — Table C1 (domestic) &amp; Table C2 (non-domestic)</p>
@@ -601,7 +600,6 @@
 
 <!-- RCD REQUIREMENTS -->
 <div id="screen-rcd" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   
   <div class="card">
     <h3>🛡️ RCD Requirements — NZ (Clause 2.6)</h3>
@@ -627,7 +625,6 @@
 
 <!-- CABLE SIZING -->
 <div id="screen-cable" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="tab-bar">
     <button class="active" onclick="switchCableTab('table')">Cable Table</button>
     <button onclick="switchCableTab('derate')">Derating</button>
@@ -685,7 +682,6 @@
 
 <!-- SWITCHBOARD -->
 <div id="screen-board" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>📋 Switchboard Compliance Checklist</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Clause 2.9 (Fire/Arcing) &amp; Clause 2.10 (Location &amp; Construction)</p>
@@ -696,7 +692,6 @@
 
 <!-- OUTDOOR / WET -->
 <div id="screen-outdoor" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>🌿 Outdoor & Wet Area Requirements</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Section 6 (Damp situations) &amp; related wiring clauses. Outdoor wiring per Clauses 3.11–3.12.</p>
@@ -707,7 +702,6 @@
 
 <!-- EV CHARGER -->
 <div id="screen-ev" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>🚗 EV Charger Install — NZ Requirements</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Clause 7.9 (NZ only) &amp; Appendix P — EV charging requirements.</p>
@@ -718,7 +712,6 @@
 
 <!-- SMOKE ALARM -->
 <div id="screen-smoke" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>🔥 Smoke Alarm Compliance</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS 3786, NZBC Clause F7, AS/NZS 3000:2018 Clause 4.6</p>
@@ -730,7 +723,6 @@
 
 <!-- GENERAL CHECKLIST -->
 <div id="screen-general" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>✅ General Installation Checks</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">AS/NZS 3000:2018 Section 8 (Verification) — 6 mandatory tests per Clause 8.3.3</p>
@@ -739,7 +731,6 @@
   </div>
 </div>
 <div id="screen-ze" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>📖 Max Earth Fault Loop Impedance (Zs)</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:10px;">AS/NZS 3000:2018 Table 8.1 — Max Zs for instantaneous tripping. Uo=230V, Cmin=0.95. MCB Ia uses mean tripping: B=4×, C=7.5×, D=12.5×.</p>
@@ -766,7 +757,6 @@
 
 <!-- GENERAL CHECKLIST -->
 <div id="screen-general" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>✅ General Installation Checks</h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Quick run-through of key AS/NZS 3000 requirements for any job</p>
@@ -777,7 +767,6 @@
 
 <!-- SEARCH -->
 <div id="screen-search" class="screen">
-  <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
     <h3>📖 Search Wiring Rules <span class="tag">172 entries</span></h3>
     <p style="font-size:12px; color:var(--text2); margin-bottom:14px; line-height:1.5;">Ask a question about AS/NZS 3000, AS/NZS 3008, AS 3017, and more. Results from the actual standards.</p>
@@ -804,11 +793,14 @@
 <script>
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const backBtn = document.getElementById('back-btn');
   if (id === 'home') {
     document.getElementById('home').classList.add('active');
+    backBtn.style.display = 'none';
     return;
   }
   document.getElementById('screen-' + id).classList.add('active');
+  backBtn.style.display = 'block';
 }
 
 // ====== CHECKLIST HELPER ======
