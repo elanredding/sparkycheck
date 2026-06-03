@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sparky Check — Design Direction</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #0a0a0f;
+    color: #f1f5f9;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== TOKENS ====== */
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-hover: #1a1a2a;
+    --card2: #1e1e30;
+    --amber: #f59e0b;
+    --cyan: #06b6d4;
+    --green: #10b981;
+    --purple: #8b5cf6;
+    --rose: #f43f5e;
+    --text: #f1f5f9;
+    --text2: #64748b;
+    --text3: #475569;
+    --border: #1e293b;
+    --glow-amber: rgba(245,158,11,0.15);
+    --glow-cyan: rgba(6,182,212,0.15);
+  }
+
+  /* ====== SCROLLBAR ====== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--card2); border-radius: 3px; }
+
+  /* ====== HEADER ====== */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-logo {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0a0a0f;
+    box-shadow: 0 0 20px var(--glow-amber);
+  }
+  .header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .header h1 span { color: var(--amber); }
+  .header-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    color: #0a0a0f;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* ====== CONTAINER ====== */
+  .container { max-width: 800px; margin: 0 auto; padding: 20px 16px; }
+
+  /* ====== HOME TAGLINE ====== */
+  .tagline {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .tagline-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--cyan), #0891b2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ====== MODULE GRID ====== */
+  .module-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .module-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all .2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .module-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    transition: all .2s ease;
+  }
+  .module-btn:hover {
+    background: var(--card-hover);
+    border-color: var(--text3);
+    transform: translateY(-1px);
+  }
+  .module-btn:active {
+    transform: translateY(0);
+  }
+  .module-btn.calc::before { background: var(--cyan); }
+  .module-btn.check::before { background: var(--green); }
+  .module-btn.ref::before { background: var(--amber); }
+  .module-btn.search-btn::before { background: var(--purple); }
+  .module-btn.calc:hover { border-color: rgba(6,182,212,0.3); box-shadow: 0 0 24px var(--glow-cyan); }
+  .module-btn.check:hover { border-color: rgba(16,185,129,0.3); }
+  .module-btn.ref:hover { border-color: rgba(245,158,11,0.3); }
+  .module-btn.search-btn:hover { border-color: rgba(139,92,246,0.3); }
+
+  .module-btn .icon-box {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all .2s ease;
+  }
+  .module-btn.calc .icon-box { background: rgba(6,182,212,0.12); }
+  .module-btn.check .icon-box { background: rgba(16,185,129,0.12); }
+  .module-btn.ref .icon-box { background: rgba(245,158,11,0.12); }
+  .module-btn.search-btn .icon-box { background: rgba(139,92,246,0.12); }
+  .module-btn:hover .icon-box.calc { background: rgba(6,182,212,0.2); }
+  .module-btn:hover .icon-box.check { background: rgba(16,185,129,0.2); }
+  .module-btn:hover .icon-box.ref { background: rgba(245,158,11,0.2); }
+  .module-btn:hover .icon-box.search-btn { background: rgba(139,92,246,0.2); }
+
+  .module-btn .btn-text .label { display: block; }
+  .module-btn .btn-text .desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+  .module-btn .badge-new {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  .badge-new.cyan { background: rgba(6,182,212,0.2); color: var(--cyan); }
+  .badge-new.amber { background: rgba(245,158,11,0.2); color: var(--amber); }
+
+  /* ====== SEARCH SCREEN ====== */
+  .screen { display: none; }
+  .screen.active { display: block; animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .back-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    transition: all .15s;
+  }
+  .back-btn:hover { background: var(--card-hover); color: var(--text); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 .tag {
+    font-size: 10px;
+    font-weight: 600;
+    background: rgba(139,92,246,0.15);
+    color: var(--purple);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .search-input-wrap {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .search-input-wrap .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-size: 14px;
+    pointer-events: none;
+  }
+  .search-input-wrap input {
+    width: 100%;
+    padding: 12px 14px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card2);
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition: all .2s;
+  }
+  .search-input-wrap input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+  }
+  .search-input-wrap input::placeholder { color: var(--text3); }
+
+  .search-meta {
+    font-size: 11px;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .search-meta .count { color: var(--text); font-weight: 600; }
+  .search-meta select {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    outline: none;
+  }
+
+  .search-result {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    transition: all .15s;
+  }
+  .search-result:hover {
+    border-color: var(--text3);
+    background: var(--card-hover);
+  }
+  .search-result .cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .cat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .cat.protection { background: rgba(245,158,11,0.12); color: var(--amber); }
+  .cat.protection .cat-dot { background: var(--amber); }
+  .cat.testing { background: rgba(139,92,246,0.12); color: var(--purple); }
+  .cat.testing .cat-dot { background: var(--purple); }
+  .cat.cable { background: rgba(6,182,212,0.12); color: var(--cyan); }
+  .cat.cable .cat-dot { background: var(--cyan); }
+  .cat.earthing { background: rgba(16,185,129,0.12); color: var(--green); }
+  .cat.earthing .cat-dot { background: var(--green); }
+  .cat.ev { background: rgba(244,63,94,0.12); color: var(--rose); }
+  .cat.ev .cat-dot { background: var(--rose); }
+  .cat.definitions { background: rgba(148,163,184,0.12); color: #94a3b8; }
+  .cat.definitions .cat-dot { background: #94a3b8; }
+
+  .search-result strong { color: var(--text); }
+  .search-result .summary {
+    color: var(--text2);
+    margin-top: 4px;
+  }
+  .search-result .ref {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 6px;
+    font-family: ui-monospace, 'Cascadia Code', 'SF Mono', monospace;
+  }
+  .search-result .detail {
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    white-space: pre-wrap;
+  }
+  .highlight { background: rgba(139,92,246,0.25); padding: 0 2px; border-radius: 2px; }
+
+  .search-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text2);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .search-empty .big-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    opacity: 0.3;
+  }
+
+  /* ====== FOOTER ====== */
+  .footer {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--text3);
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .footer a { color: var(--text2); text-decoration: none; }
+  .footer a:hover { color: var(--text); }
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 500px) {
+    .container { padding: 14px 12px; }
+    .card { padding: 16px; }
+  }
+
+  /* ====== DEMO SWITCHER ====== */
+  .demo-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    background: var(--card);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .demo-bar button {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text2);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .demo-bar button.active {
+    background: var(--card2);
+    color: var(--text);
+  }
+  .demo-bar button:hover:not(.active) { color: var(--text); }
+  .demo-note {
+    font-size: 11px;
+    color: var(--text3);
+    text-align: center;
+    margin-bottom: 16px;
+    padding: 8px;
+    background: rgba(139,92,246,0.08);
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">
+    <div class="header-logo">⚡</div>
+    <h1><span>Sparky</span>Check</h1>
+  </div>
+  <span class="header-badge">AS/NZS 3000</span>
+</div>
+
+<div class="container">
+
+  <div class="demo-note">
+    👆 Design mockup — tap the tabs below to preview different screens
+  </div>
+
+  <div class="demo-bar">
+    <button class="active" onclick="showPanel('home')">🏠 Home</button>
+    <button onclick="showPanel('search')">🔍 Search</button>
+    <button onclick="showPanel('result')">📄 Search Results</button>
+  </div>
+
+  <!-- ====== HOME PANEL ====== -->
+  <div id="panel-home" class="screen active">
+    <div class="tagline">
+      <div class="tagline-icon">⚡</div>
+      <div>Compliance checkers, calculators, and references for NZ electricians — based on AS/NZS 3000:2018.</div>
+    </div>
+
+    <div class="module-grid">
+      <button class="module-btn calc">
+        <div class="icon-box calc">📏</div>
+        <div class="btn-text">
+          <span class="label">Voltage Drop Calculator</span>
+          <span class="desc">Check cable voltage drop is within 5% limit</span>
+        </div>
+      </button>
+
+      <button class="module-btn calc">
+        <div class="icon-box calc">⚡</div>
+        <div class="btn-text">
+          <span class="label">Max Demand Calculator</span>
+          <span class="desc">Calculate maximum demand for a switchboard</span>
+        </div>
+      </button>
+
+      <button class="module-btn check">
+        <div class="icon-box check">🛡️</div>
+        <div class="btn-text">
+          <span class="label">RCD Requirements</span>
+          <span class="desc">Check what needs RCD protection (Clause 2.6)</span>
+        </div>
+      </button>
+
+      <button class="module-btn calc">
+        <div class="icon-box calc">🔌</div>
+        <div class="btn-text">
+          <span class="label">Cable Sizing Guide</span>
+          <span class="desc">Min cable sizes, derating, installation factors</span>
+        </div>
+      </button>
+
+      <button class="module-btn check">
+        <div class="icon-box check">📋</div>
+        <div class="btn-text">
+          <span class="label">Switchboard Compliance</span>
+          <span class="desc">Switchboard installation checklist</span>
+        </div>
+      </button>
+
+      <button class="module-btn check">
+        <div class="icon-box check">🌿</div>
+        <div class="btn-text">
+          <span class="label">Outdoor & Wet Areas</span>
+          <span class="desc">IP ratings, RCDs, cable types for outdoor</span>
+        </div>
+      </button>
+
+      <button class="module-btn check">
+        <div class="icon-box check">🚗</div>
+        <div class="btn-text">
+          <span class="label">EV Charger Install</span>
+          <span class="desc">EV charging requirements (Clause 7.6)</span>
+          <span class="badge-new amber">NZ</span>
+        </div>
+      </button>
+
+      <button class="module-btn check">
+        <div class="icon-box check">🔥</div>
+        <div class="btn-text">
+          <span class="label">Smoke Alarm Compliance</span>
+          <span class="desc">AS 3786, placement, interconnection</span>
+        </div>
+      </button>
+
+      <button class="module-btn ref">
+        <div class="icon-box ref">📖</div>
+        <div class="btn-text">
+          <span class="label">Earth Fault Loop Zs</span>
+          <span class="desc">Max Zs values for MCBs, RCBOs, fuses</span>
+        </div>
+      </button>
+
+      <button class="module-btn search-btn">
+        <div class="icon-box search-btn">🔍</div>
+        <div class="btn-text">
+          <span class="label">Search Wiring Rules</span>
+          <span class="desc">172 entries from AS/NZS 3000, 3008, 3017, and more</span>
+          <span class="badge-new cyan">172</span>
+        </div>
+      </button>
+
+      <button class="module-btn check">
+        <div class="icon-box check">✅</div>
+        <div class="btn-text">
+          <span class="label">General Install Checklist</span>
+          <span class="desc">Quick overall compliance checklist</span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ====== SEARCH PANEL ====== -->
+  <div id="panel-search" class="screen">
+    <button class="back-btn" onclick="showPanel('home')">← Back</button>
+    <div class="card">
+      <h3>
+        🔍 Search Wiring Rules
+        <span class="tag">172 entries</span>
+      </h3>
+      <p style="font-size:12px; color:var(--text2); margin-bottom:14px; line-height:1.5;">
+        Ask a question about AS/NZS 3000, AS/NZS 3008, AS 3017, and more. Results from the actual standards.
+      </p>
+      <div class="search-input-wrap">
+        <span class="icon">🔍</span>
+        <input type="text" placeholder="e.g. what RCD for heat pump?" value="max Zs 20A">
+      </div>
+      <div class="search-meta">
+        <span><span class="count">12</span> results</span>
+        <span>·</span>
+        <span>Categories:</span>
+        <select>
+          <option>All</option>
+          <option>Protection — RCD</option>
+          <option>Cable Sizing</option>
+          <option>Testing</option>
+          <option>Earthing</option>
+        </select>
+      </div>
+      <div id="search-results">
+        <div class="search-result">
+          <div class="cat testing"><span class="cat-dot"></span> Testing</div>
+          <strong>Maximum Values of Earth Fault-Loop Impedance (Zs at 230 V)</strong>
+          <div class="summary">Maximum Zs values for MCBs (Types B, C, D) and fuses at various ratings for compliance with disconnection times.</div>
+          <div class="ref">AS/NZS 3000:2018 Table 8.1</div>
+        </div>
+        <div class="search-result">
+          <div class="cat earthing"><span class="cat-dot"></span> Earthing</div>
+          <strong>EFLI Formula</strong>
+          <div class="summary">The earth fault-loop impedance formula: Zs × Ia ≤ Uo (230 V).</div>
+          <div class="ref">AS/NZS 3000:2018 Cl 5.7.4</div>
+        </div>
+        <div class="search-result">
+          <div class="cat testing"><span class="cat-dot"></span> Testing</div>
+          <strong>Verification of Earth Fault-Loop Impedance (EFLI)</strong>
+          <div class="summary">EFLI verification requirements and methods.</div>
+          <div class="ref">AS/NZS 3000:2018 Cl 8.3.3</div>
+        </div>
+        <div class="search-result">
+          <div class="cat cable"><span class="cat-dot"></span> Cable Sizing</div>
+          <strong>Maximum Circuit Length Formula</strong>
+          <div class="summary">Formula for calculating maximum circuit lengths based on voltage drop and current.</div>
+          <div class="ref">AS/NZS 3000:2018 Appendix C</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SEARCH RESULTS PANEL ====== -->
+  <div id="panel-result" class="screen">
+    <button class="back-btn" onclick="showPanel('home')">← Back</button>
+    <div class="card">
+      <h3>
+        🔍 Search Wiring Rules
+        <span class="tag">172 entries</span>
+      </h3>
+      <p style="font-size:12px; color:var(--text2); margin-bottom:14px; line-height:1.5;">
+        Ask a question about AS/NZS 3000, AS/NZS 3008, AS 3017, and more.
+      </p>
+      <div class="search-input-wrap">
+        <span class="icon">🔍</span>
+        <input type="text" placeholder="e.g. what RCD for heat pump?" value="cable size 32A PVC clipped direct">
+      </div>
+      <div class="search-meta">
+        <span><span class="count">4</span> results</span>
+        <span>·</span>
+        <span>Categories:</span>
+        <select>
+          <option>All</option>
+          <option>Protection — RCD</option>
+          <option>Cable Sizing</option>
+          <option>Testing</option>
+          <option>Earthing</option>
+        </select>
+      </div>
+      <div id="search-results-2">
+        <div class="search-result">
+          <div class="cat cable"><span class="cat-dot"></span> Cable Sizing</div>
+          <strong>two_core — touching clipped direct</strong>
+          <div class="summary">Tables 10-12, Columns 5-7 — Cables clipped direct to wall/floor/ceiling, in ventilated trench, in open trunking.</div>
+          <div class="ref">AS/NZS 3008.1.1:2017 table_3_1_unenclosed_in_air</div>
+          <div class="detail"><span class="highlight">Clipped direct</span> method applies to <span class="highlight">cable</span> runs on walls/floors/ceilings with minimum separation. Refer to Tables 10-12 for 2-core, Tables 13-15 for 3/4-core. Grouping derating per Table 22.</div>
+        </div>
+        <div class="search-result">
+          <div class="cat cable"><span class="cat-dot"></span> Cable Sizing</div>
+          <strong>three_four_core — touching clipped direct</strong>
+          <div class="summary">Tables 13-15, Columns 5-7 — Cables clipped direct to wall/floor/ceiling, in ventilated trench, in open trunking.</div>
+          <div class="ref">AS/NZS 3008.1.1:2017 table_3_1_unenclosed_in_air</div>
+        </div>
+        <div class="search-result">
+          <div class="cat cable"><span class="cat-dot"></span> Cable Sizing</div>
+          <strong>two_core — buried direct</strong>
+          <div class="summary">Tables 10-12, Columns 23-24 — Cables buried direct in ground.</div>
+          <div class="ref">AS/NZS 3008.1.1:2017 table_3_2_enclosed</div>
+        </div>
+        <div class="search-result">
+          <div class="cat cable"><span class="cat-dot"></span> Cable Sizing</div>
+          <strong>AS/NZS 3008.1.1:2017 — Cable Selection Standard</strong>
+          <div class="summary">Electrical installations — Selection of cables — Current-carrying capacity, voltage drop and short-circuit temperature rise.</div>
+          <div class="ref">AS/NZS 3008.1.1:2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Reference only — always verify against current AS/NZS 3000<br>
+    <span style="font-size:10px; color:var(--text3);">Design mockup · Not the live app</span>
+  </div>
+
+</div>
+
+<script>
+function showPanel(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  document.querySelectorAll('.demo-bar button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.demo-bar button').forEach(b => {
+    if (b.textContent.includes(id === 'home' ? 'Home' : id === 'search' ? 'Search' : 'Results')) {
+      b.classList.add('active');
+    }
+  });
+}
+</script>
+</body>
+</html>

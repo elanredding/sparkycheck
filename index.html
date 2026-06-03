@@ -8,28 +8,40 @@
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.basic.min.js"></script>
 <style>
   :root {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --card2: #334155;
-    --accent: #f59e0b;
-    --accent2: #eab308;
-    --green: #22c55e;
-    --red: #ef4444;
-    --text: #f8fafc;
-    --text2: #94a3b8;
-    --border: #475569;
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-hover: #1a1a2a;
+    --card2: #1e1e30;
+    --amber: #f59e0b;
+    --cyan: #06b6d4;
+    --green: #10b981;
+    --purple: #8b5cf6;
+    --rose: #f43f5e;
+    --red: #f43f5e;
+    --text: #f1f5f9;
+    --text2: #64748b;
+    --text3: #475569;
+    --border: #1e293b;
+    --glow-amber: rgba(245,158,11,0.15);
+    --glow-cyan: rgba(6,182,212,0.15);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--card2); border-radius: 3px; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
   .header {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    border-bottom: 2px solid var(--accent);
-    padding: 16px 20px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,33 +49,54 @@
     top: 0;
     z-index: 100;
   }
-  .header h1 {
-    font-size: 20px;
-    font-weight: 700;
+  .header-brand {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .header h1 span { color: var(--accent); }
-  .header .badge {
-    font-size: 10px;
-    background: var(--accent);
-    color: #0f172a;
-    padding: 2px 8px;
-    border-radius: 10px;
+  .header-logo {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0a0a0f;
+    box-shadow: 0 0 20px var(--glow-amber);
+  }
+  .header h1 {
+    font-size: 18px;
     font-weight: 700;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 0;
   }
-  .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+  .header h1 span { color: var(--amber); }
+  .header-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    color: #0a0a0f;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px 16px; }
   .module-grid {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
   .module-btn {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 20px;
+    border-radius: 14px;
+    padding: 16px 18px;
     color: var(--text);
     font-size: 15px;
     font-weight: 600;
@@ -72,25 +105,63 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    transition: all .15s;
+    transition: all .2s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .module-btn:active { background: var(--card2); border-color: var(--accent); }
-  .module-btn .icon {
-    width: 36px; height: 36px;
+  .module-btn::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+  }
+  .module-btn.calc::before { background: var(--cyan); }
+  .module-btn.check::before { background: var(--green); }
+  .module-btn.ref::before { background: var(--amber); }
+  .module-btn.search-btn::before { background: var(--purple); }
+  .module-btn:hover {
+    background: var(--card-hover);
+    border-color: var(--text3);
+    transform: translateY(-1px);
+  }
+  .module-btn:active { transform: translateY(0); }
+  .module-btn.calc:hover { border-color: rgba(6,182,212,0.3); box-shadow: 0 0 24px var(--glow-cyan); }
+  .module-btn.check:hover { border-color: rgba(16,185,129,0.3); }
+  .module-btn.ref:hover { border-color: rgba(245,158,11,0.3); }
+  .module-btn.search-btn:hover { border-color: rgba(139,92,246,0.3); }
+  .module-btn .icon-box {
+    width: 40px; height: 40px;
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
     font-size: 18px;
     flex-shrink: 0;
   }
-  .module-btn .icon.calc { background: #1e3a5f; }
-  .module-btn .icon.check { background: #1e3a2f; }
-  .module-btn .icon.ref { background: #3a1e2f; }
-  .module-btn .desc {
+  .module-btn.calc .icon-box { background: rgba(6,182,212,0.12); }
+  .module-btn.check .icon-box { background: rgba(16,185,129,0.12); }
+  .module-btn.ref .icon-box { background: rgba(245,158,11,0.12); }
+  .module-btn.search-btn .icon-box { background: rgba(139,92,246,0.12); }
+  .module-btn .btn-text .label { display: block; }
+  .module-btn .btn-text .desc {
     font-size: 12px;
     font-weight: 400;
     color: var(--text2);
     margin-top: 2px;
   }
+  .badge-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-tag.cyan { background: rgba(6,182,212,0.2); color: var(--cyan); }
+  .badge-tag.amber { background: rgba(245,158,11,0.2); color: var(--amber); }
+  .badge-tag.purple { background: rgba(139,92,246,0.2); color: var(--purple); }
   .screen {
     display: none;
     animation: slideIn .2s ease;
@@ -101,29 +172,42 @@
     to { opacity: 1; transform: translateX(0); }
   }
   .back-btn {
-    background: none;
-    border: none;
-    color: var(--accent);
-    font-size: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    padding: 8px 0;
+    padding: 8px 14px;
+    border-radius: 10px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     margin-bottom: 16px;
+    transition: all .15s;
   }
+  .back-btn:hover { background: var(--card-hover); color: var(--text); }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 20px;
     margin-bottom: 12px;
   }
   .card h3 {
     font-size: 16px;
     margin-bottom: 12px;
-    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 .tag {
+    font-size: 10px;
+    font-weight: 600;
+    background: rgba(139,92,246,0.15);
+    color: var(--purple);
+    padding: 2px 8px;
+    border-radius: 6px;
   }
   label {
     display: block;
@@ -145,15 +229,15 @@
     outline: none;
     transition: border .15s;
   }
-  input:focus, select:focus { border-color: var(--accent); }
+  input:focus, select:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(245,158,11,0.15); }
   input[type="number"] { -moz-appearance: textfield; }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
   .btn {
-    background: var(--accent);
-    color: #0f172a;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    color: #0a0a0f;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 12px 24px;
     font-size: 15px;
     font-weight: 700;
@@ -204,7 +288,7 @@
     height: 20px;
     flex-shrink: 0;
     margin-top: 2px;
-    accent-color: var(--accent);
+    accent-color: var(--amber);
   }
   .checkbox-item label {
     color: var(--text);
@@ -264,8 +348,8 @@
     transition: all .15s;
   }
   .tab-bar button.active {
-    background: var(--accent);
-    color: #0f172a;
+    background: var(--amber);
+    color: #0a0a0f;
   }
   .ref-table {
     width: 100%;
@@ -286,23 +370,27 @@
   }
   select option { background: #1e293b; color: #f8fafc; }
   .search-result {
-    background: var(--card2);
-    border-radius: 8px;
-    padding: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
     margin-bottom: 8px;
     font-size: 13px;
     line-height: 1.5;
-    border-left: 3px solid var(--accent);
+    transition: all .15s;
   }
+  .search-result:hover { border-color: var(--text3); background: var(--card-hover); }
   .search-result .cat {
     display: inline-block;
     font-size: 10px;
-    font-weight: 600;
-    background: var(--accent);
-    color: #0f172a;
-    padding: 1px 6px;
-    border-radius: 4px;
-    margin-right: 6px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    background: rgba(245,158,11,0.12);
+    color: var(--amber);
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 6px;
   }
   .search-result .ref {
     font-size: 11px;
@@ -317,10 +405,10 @@
     border-top: 1px solid var(--border);
     white-space: pre-wrap;
   }
-  .highlight { background: #f59e0b33; padding: 0 2px; border-radius: 2px; }
+  .highlight { background: rgba(245,158,11,0.25); padding: 0 2px; border-radius: 2px; }
   @media (max-width: 500px) {
-    .container { padding: 12px; }
-    .card { padding: 14px; }
+    .container { padding: 14px 12px; }
+    .card { padding: 16px; }
     .inline-row { grid-template-columns: 1fr; }
   }
 </style>
@@ -328,64 +416,67 @@
 <body>
 
 <div class="header">
-  <h1>⚡ <span>Sparky</span>Check</h1>
-  <span class="badge">AS/NZS 3000</span>
+  <div class="header-brand">
+    <div class="header-logo">⚡</div>
+    <h1><span>Sparky</span>Check</h1>
+  </div>
+  <span class="header-badge">AS/NZS 3000</span>
 </div>
 
 <div class="container">
 
 <!-- HOME -->
 <div id="home" class="screen active">
-  <p style="color:var(--text2); margin-bottom:16px; font-size:13px; line-height:1.5;">
-    Compliance checkers, calculators, and references for NZ electricians based on AS/NZS 3000:2018.
-  </p>
+  <div class="tagline" style="font-size:13px; color:var(--text2); line-height:1.6; margin-bottom:20px; padding:14px 18px; background:var(--card); border-radius:12px; border:1px solid var(--border);">
+    Compliance checkers, calculators, and references for NZ electricians — based on AS/NZS 3000:2018.
+  </div>
   <div class="module-grid">
-    <button class="module-btn" onclick="showScreen('vd')">
-      <div class="icon calc">📏</div>
-      <div>Voltage Drop Calculator<div class="desc">Check cable voltage drop is within 5% limit</div></div>
+    <button class="module-btn calc" onclick="showScreen('vd')">
+      <div class="icon-box">📏</div>
+      <div class="btn-text"><span class="label">Voltage Drop Calculator</span><span class="desc">Check cable voltage drop is within 5% limit</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('maxd')">
-      <div class="icon calc">⚡</div>
-      <div>Max Demand Calculator<div class="desc">Calculate maximum demand for a switchboard</div></div>
+    <button class="module-btn calc" onclick="showScreen('maxd')">
+      <div class="icon-box">⚡</div>
+      <div class="btn-text"><span class="label">Max Demand Calculator</span><span class="desc">Calculate maximum demand for a switchboard</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('rcd')">
-      <div class="icon check">🛡️</div>
-      <div>RCD Requirements<div class="desc">Check what needs RCD protection (Clause 2.6)</div></div>
+    <button class="module-btn check" onclick="showScreen('rcd')">
+      <div class="icon-box">🛡️</div>
+      <div class="btn-text"><span class="label">RCD Requirements</span><span class="desc">Check what needs RCD protection (Clause 2.6)</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('cable')">
-      <div class="icon calc">🔌</div>
-      <div>Cable Sizing Guide<div class="desc">Min cable sizes, derating, installation factors</div></div>
+    <button class="module-btn calc" onclick="showScreen('cable')">
+      <div class="icon-box">🔌</div>
+      <div class="btn-text"><span class="label">Cable Sizing Guide</span><span class="desc">Min cable sizes, derating, installation factors</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('board')">
-      <div class="icon check">📋</div>
-      <div>Switchboard Compliance<div class="desc">Switchboard installation checklist</div></div>
+    <button class="module-btn check" onclick="showScreen('board')">
+      <div class="icon-box">📋</div>
+      <div class="btn-text"><span class="label">Switchboard Compliance</span><span class="desc">Switchboard installation checklist</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('outdoor')">
-      <div class="icon check">🌿</div>
-      <div>Outdoor & Wet Areas<div class="desc">IP ratings, RCDs, cable types for outdoor</div></div>
+    <button class="module-btn check" onclick="showScreen('outdoor')">
+      <div class="icon-box">🌿</div>
+      <div class="btn-text"><span class="label">Outdoor & Wet Areas</span><span class="desc">IP ratings, RCDs, cable types for outdoor</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('ev')">
-      <div class="icon check">🚗</div>
-      <div>EV Charger Install<div class="desc">EV charging requirements (Clause 7.6)</div></div>
+    <button class="module-btn check" onclick="showScreen('ev')">
+      <div class="icon-box">🚗</div>
+      <div class="btn-text"><span class="label">EV Charger Install</span><span class="desc">EV charging requirements (Clause 7.6)</span> <span class="badge-tag amber">NZ</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('smoke')">
-      <div class="icon check">🔥</div>
-      <div>Smoke Alarm Compliance<div class="desc">AS 3786, placement, interconnection</div></div>
+    <button class="module-btn check" onclick="showScreen('smoke')">
+      <div class="icon-box">🔥</div>
+      <div class="btn-text"><span class="label">Smoke Alarm Compliance</span><span class="desc">AS 3786, placement, interconnection</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('ze')">
-      <div class="icon ref">📖</div>
-      <div>Earth Fault Loop Zs<div class="desc">Max Zs values for MCBs, RCBOs, fuses</div></div>
+    <button class="module-btn ref" onclick="showScreen('ze')">
+      <div class="icon-box">📖</div>
+      <div class="btn-text"><span class="label">Earth Fault Loop Zs</span><span class="desc">Max Zs values for MCBs, RCBOs, fuses</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('search')">
-      <div class="icon ref">📖</div>
-      <div>Search Wiring Rules<div class="desc">Ask a question — find answers from AS/NZS 3000 PDFs</div></div>
+    <button class="module-btn search-btn" onclick="showScreen('search')">
+      <div class="icon-box">🔍</div>
+      <div class="btn-text"><span class="label">Search Wiring Rules</span><span class="desc">Ask a question — find answers from AS/NZS 3000 PDFs</span> <span class="badge-tag purple">172</span></div>
     </button>
-    <button class="module-btn" onclick="showScreen('general')">
-      <div class="icon check">✅</div>
-      <div>General Install Checklist<div class="desc">Quick overall compliance checklist</div></div>
+    <button class="module-btn check" onclick="showScreen('general')">
+      <div class="icon-box">✅</div>
+      <div class="btn-text"><span class="label">General Install Checklist</span><span class="desc">Quick overall compliance checklist</span></div>
     </button>
   </div>
-  <p style="color:var(--text2); font-size:11px; text-align:center; margin-top:24px;">
+  <p style="color:var(--text3); font-size:11px; text-align:center; margin-top:24px;">
     Reference only — always verify against current AS/NZS 3000
   </p>
 </div>
@@ -691,10 +782,13 @@
 <div id="screen-search" class="screen">
   <button class="back-btn" onclick="showScreen('home')">← Back</button>
   <div class="card">
-    <h3>📖 Search Wiring Rules</h3>
-    <p style="font-size:12px; color:var(--text2); margin-bottom:12px;">Ask a question about AS/NZS 3000, AS/NZS 3008, AS 3017, and more. Results from the actual standards.</p>
-    <input type="text" id="search-input" placeholder="e.g. what RCD for heat pump?" oninput="doSearch()" style="margin-bottom:12px;">
-    <div style="font-size:11px; color:var(--text2); text-align:center; margin-bottom:8px;">
+    <h3>📖 Search Wiring Rules <span class="tag">172 entries</span></h3>
+    <p style="font-size:12px; color:var(--text2); margin-bottom:14px; line-height:1.5;">Ask a question about AS/NZS 3000, AS/NZS 3008, AS 3017, and more. Results from the actual standards.</p>
+    <div style="position:relative; margin-bottom:12px;">
+      <span style="position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text3); font-size:14px; pointer-events:none;">🔍</span>
+      <input type="text" id="search-input" placeholder="e.g. what RCD for heat pump?" oninput="doSearch()" style="padding-left:40px; margin-bottom:0;">
+    </div>
+    <div style="font-size:11px; color:var(--text2); display:flex; align-items:center; gap:8px; margin-bottom:8px;">
       <span id="search-count">0 results</span> · 
       Categories: <select id="search-cat" onchange="doSearch()" style="width:auto; display:inline; padding:2px 6px; font-size:11px;">
         <option value="">All</option>
@@ -1388,6 +1482,10 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initSearch, 100);
 });
 </script>
+
+<div style="text-align:center; padding:32px 16px; color:var(--text3); font-size:11px; line-height:1.8;">
+  Reference only — always verify against current AS/NZS 3000
+</div>
 
 </body>
 </html>
